@@ -1,0 +1,108 @@
+{
+  "cell": "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly",
+  "role": "core_cross",
+  "matrix_summary_kind": "cross",
+  "calibrator": "identity",
+  "B": 1000,
+  "seed": 3407,
+  "unit": "test image",
+  "resampling": "copied verbatim from bootstrap_ci.py (same rng draw, same statistic)",
+  "created": "2026-09-13T01:58:42",
+  "results": {
+    "LaECE_0": {
+      "point": 0.24431102660487564,
+      "boot_mean": 0.24627623477461505,
+      "boot_se": 0.014006393303613033,
+      "n_nan_replicates": 0,
+      "fraction_replicates_below_point": 0.434,
+      "percentile_ci95": [
+        0.21880406592623666,
+        0.2748102016566846
+      ],
+      "basic_ci95": [
+        0.21381185155306665,
+        0.2698179872835146
+      ],
+      "bca": {
+        "z0": -0.16619944017035887,
+        "a": -0.0034713506168546843,
+        "ci95": [
+          0.2147523937210233,
+          0.2688654574551412
+        ],
+        "alpha_lo": 0.010494784993550077,
+        "alpha_hi": 0.9470030748965266,
+        "note": "jackknife over 4306 images"
+      },
+      "n_images": 4306,
+      "n_classes": 1,
+      "seconds_bootstrap": 1.6,
+      "seconds_jackknife": 6.3,
+      "jackknife": {
+        "n": 4306,
+        "n_nan": 0,
+        "mean": 0.24431150691122297,
+        "se_jackknife": 0.013809444060872672
+      },
+      "reproduces_calibration_ci": {
+        "ref_ci95": [
+          0.21880406592623666,
+          0.2748102016566846
+        ],
+        "ref_point": 0.24431102660487564,
+        "ref_B": 1000,
+        "max_abs_diff": 0.0,
+        "point_abs_diff": 0.0,
+        "within_1e-9": true
+      }
+    },
+    "D_ECE": {
+      "point": 0.20299752389705888,
+      "boot_mean": 0.20439851895164368,
+      "boot_se": 0.019281430059668987,
+      "n_nan_replicates": 0,
+      "fraction_replicates_below_point": 0.463,
+      "percentile_ci95": [
+        0.16651737212853407,
+        0.24246410634517424
+      ],
+      "basic_ci95": [
+        0.16353094144894353,
+        0.2394776756655837
+      ],
+      "bca": {
+        "z0": -0.0928786087772564,
+        "a": -0.00467880159932124,
+        "ci95": [
+          0.16077796719275284,
+          0.23739003628048713
+        ],
+        "alpha_lo": 0.01516974935842219,
+        "alpha_hi": 0.9606294505917666,
+        "note": "jackknife over 4306 images"
+      },
+      "n_images": 4306,
+      "n_classes": 1,
+      "seconds_bootstrap": 1.1,
+      "seconds_jackknife": 4.3,
+      "jackknife": {
+        "n": 4306,
+        "n_nan": 0,
+        "mean": 0.20299752093089568,
+        "se_jackknife": 0.01918226667615213
+      },
+      "reproduces_calibration_ci": {
+        "ref_ci95": [
+          0.16651737212853407,
+          0.24246410634517424
+        ],
+        "ref_point": 0.20299752389705888,
+        "ref_B": 1000,
+        "max_abs_diff": 0.0,
+        "point_abs_diff": 0.0,
+        "within_1e-9": true
+      }
+    }
+  },
+  "wall_s": 24.1
+}

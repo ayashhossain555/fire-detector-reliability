@@ -1,0 +1,4697 @@
+{
+  "created": "2026-09-13T01:46:00",
+  "inputs": {
+    "refine": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\label_free_threshold_refine.json",
+    "pilot": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\label_free_threshold_pilot.json",
+    "refine_created": "2026-09-12T11:39:46",
+    "pilot_created": "2026-09-12T11:33:32"
+  },
+  "protocol": "Label-free threshold transfer, broken down by transfer direction (referee item).\n\nReads ONLY the stored per-cell numbers of\n  analysis/label_free_threshold_refine.json  (methods.M0_t_src / D25_default / M1c_kept_rate /\n                                              ORC_target_calval .f1, and their image-bootstrap CIs)\n  analysis/label_free_threshold_pilot.json   (methods.M1a_quantile_pooled.box.f1 - the quantile-\n                                              pooled rule, which the refine dropped)\nand re-summarises them for the four transfer directions\n\n  D-Fire -> Pyro-SDIS            (13 cells: 10 dfire + 2 dfiredd + 1 dfiresub trained runs)\n  D-Fire -> thesis               (13 cells)\n  Pyro-SDIS -> D-Fire (smoke)    ( 9 cells)\n  Pyro-SDIS -> thesis (smoke)    ( 9 cells)\n\nfor the subsets \"all\" and \"oracle F1 >= 0.10\" (cells whose target-calval-oracle threshold reaches\na target-test box F1 of at least 0.10; below that floor the F1 gap is a small number divided by\nanother small number and \"gap closed\" is not meaningful).\n\nPer direction x subset x rule (D25 default 0.25, M1c kept-rate, M1a quantile-pooled):\n  n cells, mean F1 at t_src / 0.25 / kept-rate / quantile-pooled / oracle,\n  mean gap = mean(F1_oracle - F1_t_src), mean regret = mean(F1_oracle - F1_rule),\n  gap closed = 1 - mean regret / mean gap  (ratio of means, NOT mean of per-cell ratios),\n  cell-level bootstrap (resample cells with replacement, seed 0, B = 10,000, percentile 2.5-97.5)\n  of the mean regret and of gap closed, beats / worse / ties vs t_src (|dF1| <= 1e-12 = tie, as in\n  the refine's n_beats_t_src / n_worse_than_t_src).\nPlus the paired per-cell difference  F1(kept-rate) - F1(quantile-pooled)  (mean, cell bootstrap CI,\nwins / losses / ties), overall and per direction.\n\nThe stored per-cell image-level CIs (refine) are carried through for reference; no image-level\nreplicates are re-drawn - the refine does not store them and the cell-level question (is the\n0.009 vs 0.014 mean regret difference distinguishable across cells?) is answered at cell level.\n\nWrites analysis/label_free_by_direction.json and .md. CPU only, seconds.\n",
+  "floor_oracle_f1": 0.1,
+  "tie_tolerance": 1e-12,
+  "bootstrap": {
+    "unit": "cell",
+    "B": 10000,
+    "seed": 0
+  },
+  "directions": {
+    "D-Fire->Pyro-SDIS": {
+      "n_cells": 13,
+      "cells": [
+        "rtdetrl_dfire_s1337__to__pyro_sdis_caltest",
+        "rtdetrl_dfire_s3407__to__pyro_sdis_caltest",
+        "v8m_dfire_s3407__to__pyro_sdis_caltest",
+        "v8n_dfire_s3407__to__pyro_sdis_caltest",
+        "v8s_dfire_s1337__to__pyro_sdis_caltest",
+        "v8s_dfire_s3407__to__pyro_sdis_caltest",
+        "v8s_dfiredd_s3407__to__pyro_sdis_caltest",
+        "v8s_dfiresub_s3407__to__pyro_sdis_caltest",
+        "y11m_dfire_s3407__to__pyro_sdis_caltest",
+        "y11n_dfire_s3407__to__pyro_sdis_caltest",
+        "y11s_dfire_s1337__to__pyro_sdis_caltest",
+        "y11s_dfire_s3407__to__pyro_sdis_caltest",
+        "y11s_dfiredd_s3407__to__pyro_sdis_caltest"
+      ]
+    },
+    "D-Fire->thesis": {
+      "n_cells": 13,
+      "cells": [
+        "rtdetrl_dfire_s1337__to__thesis_test",
+        "rtdetrl_dfire_s3407__to__thesis_test",
+        "v8m_dfire_s3407__to__thesis_test",
+        "v8n_dfire_s3407__to__thesis_test",
+        "v8s_dfire_s1337__to__thesis_test",
+        "v8s_dfire_s3407__to__thesis_test",
+        "v8s_dfiredd_s3407__to__thesis_test",
+        "v8s_dfiresub_s3407__to__thesis_test",
+        "y11m_dfire_s3407__to__thesis_test",
+        "y11n_dfire_s3407__to__thesis_test",
+        "y11s_dfire_s1337__to__thesis_test",
+        "y11s_dfire_s3407__to__thesis_test",
+        "y11s_dfiredd_s3407__to__thesis_test"
+      ]
+    },
+    "Pyro-SDIS->D-Fire (smoke)": {
+      "n_cells": 9,
+      "cells": [
+        "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly",
+        "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly",
+        "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly",
+        "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+        "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+        "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+        "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+        "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+        "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly"
+      ]
+    },
+    "Pyro-SDIS->thesis (smoke)": {
+      "n_cells": 9,
+      "cells": [
+        "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly",
+        "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly",
+        "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly",
+        "v8n_pyrosdis_s3407__to__thesis_test_smokeonly",
+        "v8s_pyrosdis_s1337__to__thesis_test_smokeonly",
+        "v8s_pyrosdis_s3407__to__thesis_test_smokeonly",
+        "y11n_pyrosdis_s3407__to__thesis_test_smokeonly",
+        "y11s_pyrosdis_s1337__to__thesis_test_smokeonly",
+        "y11s_pyrosdis_s3407__to__thesis_test_smokeonly"
+      ]
+    }
+  },
+  "cells_below_floor": {
+    "n": 9,
+    "floor": 0.1,
+    "cells": {
+      "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.012345679012345678,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.013651877133105802,
+        "f1_quantile_pooled": 0.013664596273291928,
+        "f1_default": 0.02077922077922078,
+        "n_target_test_gt": 245
+      },
+      "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.015841584158415842,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.01601423487544484,
+        "f1_quantile_pooled": 0.01601423487544484,
+        "f1_default": 0.0049382716049382715,
+        "n_target_test_gt": 245
+      },
+      "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.0,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.0,
+        "f1_quantile_pooled": 0.0,
+        "f1_default": 0.0,
+        "n_target_test_gt": 245
+      },
+      "v8n_pyrosdis_s3407__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.013043478260869565,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.017421602787456445,
+        "f1_quantile_pooled": 0.010582010582010581,
+        "f1_default": 0.0,
+        "n_target_test_gt": 245
+      },
+      "v8s_pyrosdis_s1337__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.010327022375215147,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.00946372239747634,
+        "f1_quantile_pooled": 0.014388489208633093,
+        "f1_default": 0.0,
+        "n_target_test_gt": 245
+      },
+      "v8s_pyrosdis_s3407__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.02059202059202059,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.016722408026755852,
+        "f1_quantile_pooled": 0.010840108401084013,
+        "f1_default": 0.0,
+        "n_target_test_gt": 245
+      },
+      "y11n_pyrosdis_s3407__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.018281535648994516,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.01524390243902439,
+        "f1_quantile_pooled": 0.015779092702169626,
+        "f1_default": 0.0,
+        "n_target_test_gt": 245
+      },
+      "y11s_pyrosdis_s1337__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.01834862385321101,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.015174506828528073,
+        "f1_quantile_pooled": 0.005988023952095809,
+        "f1_default": 0.0,
+        "n_target_test_gt": 245
+      },
+      "y11s_pyrosdis_s3407__to__thesis_test_smokeonly": {
+        "direction": "Pyro-SDIS->thesis (smoke)",
+        "oracle_f1": 0.010471204188481676,
+        "f1_t_src": 0.0,
+        "f1_kept_rate": 0.013675213675213675,
+        "f1_quantile_pooled": 0.01379310344827586,
+        "f1_default": 0.0,
+        "n_target_test_gt": 245
+      }
+    }
+  },
+  "n_cells_at_or_above_floor": 35,
+  "groups": {
+    "D-Fire->Pyro-SDIS": {
+      "all": {
+        "n_cells": 13,
+        "cells": [
+          "rtdetrl_dfire_s1337__to__pyro_sdis_caltest",
+          "rtdetrl_dfire_s3407__to__pyro_sdis_caltest",
+          "v8m_dfire_s3407__to__pyro_sdis_caltest",
+          "v8n_dfire_s3407__to__pyro_sdis_caltest",
+          "v8s_dfire_s1337__to__pyro_sdis_caltest",
+          "v8s_dfire_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiredd_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiresub_s3407__to__pyro_sdis_caltest",
+          "y11m_dfire_s3407__to__pyro_sdis_caltest",
+          "y11n_dfire_s3407__to__pyro_sdis_caltest",
+          "y11s_dfire_s1337__to__pyro_sdis_caltest",
+          "y11s_dfire_s3407__to__pyro_sdis_caltest",
+          "y11s_dfiredd_s3407__to__pyro_sdis_caltest"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.21191685346221514,
+          "D25_default": 0.2582107849392242,
+          "M1c_kept_rate": 0.28771768480109683,
+          "M1a_quantile_pooled": 0.2961756833421835,
+          "ORC_target_calval": 0.30091051486836207
+        },
+        "mean_gap_oracle_minus_t_src": 0.08899366140614694,
+        "mean_gap_ci95_cell_bootstrap": [
+          0.0788235582115938,
+          0.09901736315527912
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.2582107849392242,
+            "mean_regret": 0.04269972992913789,
+            "median_regret": 0.051407184464941136,
+            "max_regret": 0.0658724852057549,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.031100943650903132,
+              0.05227198624121633
+            ],
+            "gap_closed": 0.5201935817173992,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.4213883986584028,
+              0.637670538242577
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.04629393147700906,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.0358201763559276,
+              0.05778373601628513
+            ],
+            "n_beats_t_src": 13,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.28771768480109683,
+            "mean_regret": 0.013192830067265203,
+            "median_regret": 0.01521169335238906,
+            "max_regret": 0.025189601896592834,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.009833978817801368,
+              0.016665553224496966
+            ],
+            "gap_closed": 0.8517553962966407,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.7965144676984459,
+              0.8973136051763737
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.07580083133888176,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.06321036048520647,
+              0.08810999878718362
+            ],
+            "n_beats_t_src": 13,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.2961756833421835,
+            "mean_regret": 0.004734831526178566,
+            "median_regret": 0.0033202710602092123,
+            "max_regret": 0.02198533723929441,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.0014277562893220221,
+              0.008589656877208385
+            ],
+            "gap_closed": 0.9467958565658978,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.9075400695675626,
+              0.9829679755909528
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.0842588298799684,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.07490314646525659,
+              0.09331806199711765
+            ],
+            "n_beats_t_src": 13,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": -0.008457998541086639,
+          "median": -0.0049380154572332136,
+          "ci95_cell_bootstrap": [
+            -0.013208961301669545,
+            -0.003784844497828811
+          ],
+          "p_two_sided_cell_bootstrap": 0.0,
+          "n_wins_kept_rate": 2,
+          "n_losses_kept_rate": 11,
+          "n_ties": 0,
+          "mean_regret_kept_rate": 0.013192830067265203,
+          "mean_regret_quantile_pooled": 0.004734831526178566,
+          "per_cell": {
+            "rtdetrl_dfire_s1337__to__pyro_sdis_caltest": -0.01884869740791878,
+            "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": -0.01701529675341723,
+            "v8m_dfire_s3407__to__pyro_sdis_caltest": 0.007256969799841084,
+            "v8n_dfire_s3407__to__pyro_sdis_caltest": -0.01379767920512659,
+            "v8s_dfire_s1337__to__pyro_sdis_caltest": -0.017698497004683622,
+            "v8s_dfire_s3407__to__pyro_sdis_caltest": -0.002086304393494165,
+            "v8s_dfiredd_s3407__to__pyro_sdis_caltest": -0.02184342861728089,
+            "v8s_dfiresub_s3407__to__pyro_sdis_caltest": -0.0024884702600383446,
+            "y11m_dfire_s3407__to__pyro_sdis_caltest": 0.0015762197641336906,
+            "y11n_dfire_s3407__to__pyro_sdis_caltest": -0.012826266186375668,
+            "y11s_dfire_s1337__to__pyro_sdis_caltest": -0.0049380154572332136,
+            "y11s_dfire_s3407__to__pyro_sdis_caltest": -0.002467458030272207,
+            "y11s_dfiredd_s3407__to__pyro_sdis_caltest": -0.004777057282260355
+          }
+        }
+      },
+      "oracle_f1_ge_0.10": {
+        "n_cells": 13,
+        "cells": [
+          "rtdetrl_dfire_s1337__to__pyro_sdis_caltest",
+          "rtdetrl_dfire_s3407__to__pyro_sdis_caltest",
+          "v8m_dfire_s3407__to__pyro_sdis_caltest",
+          "v8n_dfire_s3407__to__pyro_sdis_caltest",
+          "v8s_dfire_s1337__to__pyro_sdis_caltest",
+          "v8s_dfire_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiredd_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiresub_s3407__to__pyro_sdis_caltest",
+          "y11m_dfire_s3407__to__pyro_sdis_caltest",
+          "y11n_dfire_s3407__to__pyro_sdis_caltest",
+          "y11s_dfire_s1337__to__pyro_sdis_caltest",
+          "y11s_dfire_s3407__to__pyro_sdis_caltest",
+          "y11s_dfiredd_s3407__to__pyro_sdis_caltest"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.21191685346221514,
+          "D25_default": 0.2582107849392242,
+          "M1c_kept_rate": 0.28771768480109683,
+          "M1a_quantile_pooled": 0.2961756833421835,
+          "ORC_target_calval": 0.30091051486836207
+        },
+        "mean_gap_oracle_minus_t_src": 0.08899366140614694,
+        "mean_gap_ci95_cell_bootstrap": [
+          0.0788235582115938,
+          0.09901736315527912
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.2582107849392242,
+            "mean_regret": 0.04269972992913789,
+            "median_regret": 0.051407184464941136,
+            "max_regret": 0.0658724852057549,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.031100943650903132,
+              0.05227198624121633
+            ],
+            "gap_closed": 0.5201935817173992,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.4213883986584028,
+              0.637670538242577
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.04629393147700906,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.0358201763559276,
+              0.05778373601628513
+            ],
+            "n_beats_t_src": 13,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.28771768480109683,
+            "mean_regret": 0.013192830067265203,
+            "median_regret": 0.01521169335238906,
+            "max_regret": 0.025189601896592834,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.009833978817801368,
+              0.016665553224496966
+            ],
+            "gap_closed": 0.8517553962966407,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.7965144676984459,
+              0.8973136051763737
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.07580083133888176,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.06321036048520647,
+              0.08810999878718362
+            ],
+            "n_beats_t_src": 13,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.2961756833421835,
+            "mean_regret": 0.004734831526178566,
+            "median_regret": 0.0033202710602092123,
+            "max_regret": 0.02198533723929441,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.0014277562893220221,
+              0.008589656877208385
+            ],
+            "gap_closed": 0.9467958565658978,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.9075400695675626,
+              0.9829679755909528
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.0842588298799684,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.07490314646525659,
+              0.09331806199711765
+            ],
+            "n_beats_t_src": 13,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": -0.008457998541086639,
+          "median": -0.0049380154572332136,
+          "ci95_cell_bootstrap": [
+            -0.013208961301669545,
+            -0.003784844497828811
+          ],
+          "p_two_sided_cell_bootstrap": 0.0,
+          "n_wins_kept_rate": 2,
+          "n_losses_kept_rate": 11,
+          "n_ties": 0,
+          "mean_regret_kept_rate": 0.013192830067265203,
+          "mean_regret_quantile_pooled": 0.004734831526178566,
+          "per_cell": {
+            "rtdetrl_dfire_s1337__to__pyro_sdis_caltest": -0.01884869740791878,
+            "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": -0.01701529675341723,
+            "v8m_dfire_s3407__to__pyro_sdis_caltest": 0.007256969799841084,
+            "v8n_dfire_s3407__to__pyro_sdis_caltest": -0.01379767920512659,
+            "v8s_dfire_s1337__to__pyro_sdis_caltest": -0.017698497004683622,
+            "v8s_dfire_s3407__to__pyro_sdis_caltest": -0.002086304393494165,
+            "v8s_dfiredd_s3407__to__pyro_sdis_caltest": -0.02184342861728089,
+            "v8s_dfiresub_s3407__to__pyro_sdis_caltest": -0.0024884702600383446,
+            "y11m_dfire_s3407__to__pyro_sdis_caltest": 0.0015762197641336906,
+            "y11n_dfire_s3407__to__pyro_sdis_caltest": -0.012826266186375668,
+            "y11s_dfire_s1337__to__pyro_sdis_caltest": -0.0049380154572332136,
+            "y11s_dfire_s3407__to__pyro_sdis_caltest": -0.002467458030272207,
+            "y11s_dfiredd_s3407__to__pyro_sdis_caltest": -0.004777057282260355
+          }
+        }
+      }
+    },
+    "D-Fire->thesis": {
+      "all": {
+        "n_cells": 13,
+        "cells": [
+          "rtdetrl_dfire_s1337__to__thesis_test",
+          "rtdetrl_dfire_s3407__to__thesis_test",
+          "v8m_dfire_s3407__to__thesis_test",
+          "v8n_dfire_s3407__to__thesis_test",
+          "v8s_dfire_s1337__to__thesis_test",
+          "v8s_dfire_s3407__to__thesis_test",
+          "v8s_dfiredd_s3407__to__thesis_test",
+          "v8s_dfiresub_s3407__to__thesis_test",
+          "y11m_dfire_s3407__to__thesis_test",
+          "y11n_dfire_s3407__to__thesis_test",
+          "y11s_dfire_s1337__to__thesis_test",
+          "y11s_dfire_s3407__to__thesis_test",
+          "y11s_dfiredd_s3407__to__thesis_test"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.2557646924010061,
+          "D25_default": 0.2507349379259596,
+          "M1c_kept_rate": 0.2580892264301873,
+          "M1a_quantile_pooled": 0.22887528650534322,
+          "ORC_target_calval": 0.2605358289953363
+        },
+        "mean_gap_oracle_minus_t_src": 0.0047711365943301515,
+        "mean_gap_ci95_cell_bootstrap": [
+          -0.00033589775134645867,
+          0.009751543206239615
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.2507349379259596,
+            "mean_regret": 0.009800891069376694,
+            "median_regret": 0.0009014736847670624,
+            "max_regret": 0.07276323183089523,
+            "mean_regret_ci95_cell_bootstrap": [
+              -0.002127429727345021,
+              0.024923110860490243
+            ],
+            "gap_closed": -1.0542046691817046,
+            "gap_closed_ci95_cell_bootstrap": [
+              -24.371335293160364,
+              15.019547002157333
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 331,
+            "mean_f1_gain_vs_t_src": -0.005029754475046542,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              -0.023756270248956296,
+              0.009471546574210425
+            ],
+            "n_beats_t_src": 10,
+            "n_worse_than_t_src": 3,
+            "n_ties_t_src": 0
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.2580892264301873,
+            "mean_regret": 0.0024466025651489753,
+            "median_regret": 0.001505235602094257,
+            "max_regret": 0.02849155292645389,
+            "mean_regret_ci95_cell_bootstrap": [
+              -0.0033326403634646026,
+              0.00873239730725519
+            ],
+            "gap_closed": 0.48720760414689646,
+            "gap_closed_ci95_cell_bootstrap": [
+              -6.176085473109854,
+              4.694349041278214
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 331,
+            "mean_f1_gain_vs_t_src": 0.0023245340291811766,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              -0.007543122591697032,
+              0.01094324526213192
+            ],
+            "n_beats_t_src": 8,
+            "n_worse_than_t_src": 5,
+            "n_ties_t_src": 0
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.22887528650534322,
+            "mean_regret": 0.03166054248999303,
+            "median_regret": 0.02927027082221073,
+            "max_regret": 0.05969146769510769,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.022817288488488664,
+              0.040704823815457446
+            ],
+            "gap_closed": -5.6358491030454445,
+            "gap_closed_ci95_cell_bootstrap": [
+              -42.091275509408064,
+              19.37884098053775
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 331,
+            "mean_f1_gain_vs_t_src": -0.026889405895662875,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              -0.035946386696187445,
+              -0.018013886558805862
+            ],
+            "n_beats_t_src": 1,
+            "n_worse_than_t_src": 12,
+            "n_ties_t_src": 0
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": 0.029213939924844053,
+          "median": 0.03298192771084335,
+          "ci95_cell_bootstrap": [
+            0.01876874568957877,
+            0.03903465519846995
+          ],
+          "p_two_sided_cell_bootstrap": 0.0,
+          "n_wins_kept_rate": 13,
+          "n_losses_kept_rate": 0,
+          "n_ties": 0,
+          "mean_regret_kept_rate": 0.0024466025651489753,
+          "mean_regret_quantile_pooled": 0.03166054248999303,
+          "per_cell": {
+            "rtdetrl_dfire_s1337__to__thesis_test": 0.0001717164705323515,
+            "rtdetrl_dfire_s3407__to__thesis_test": 0.00019421668878205622,
+            "v8m_dfire_s3407__to__thesis_test": 0.028560215844984027,
+            "v8n_dfire_s3407__to__thesis_test": 0.05571027788585586,
+            "v8s_dfire_s1337__to__thesis_test": 0.05402248253347286,
+            "v8s_dfire_s3407__to__thesis_test": 0.034016329574125176,
+            "v8s_dfiredd_s3407__to__thesis_test": 0.006705854531941474,
+            "v8s_dfiresub_s3407__to__thesis_test": 0.0483990547924974,
+            "y11m_dfire_s3407__to__thesis_test": 0.043566870289970944,
+            "y11n_dfire_s3407__to__thesis_test": 0.01964333402569657,
+            "y11s_dfire_s1337__to__thesis_test": 0.03298192771084335,
+            "y11s_dfire_s3407__to__thesis_test": 0.04043651153713762,
+            "y11s_dfiredd_s3407__to__thesis_test": 0.015372427137133021
+          }
+        }
+      },
+      "oracle_f1_ge_0.10": {
+        "n_cells": 13,
+        "cells": [
+          "rtdetrl_dfire_s1337__to__thesis_test",
+          "rtdetrl_dfire_s3407__to__thesis_test",
+          "v8m_dfire_s3407__to__thesis_test",
+          "v8n_dfire_s3407__to__thesis_test",
+          "v8s_dfire_s1337__to__thesis_test",
+          "v8s_dfire_s3407__to__thesis_test",
+          "v8s_dfiredd_s3407__to__thesis_test",
+          "v8s_dfiresub_s3407__to__thesis_test",
+          "y11m_dfire_s3407__to__thesis_test",
+          "y11n_dfire_s3407__to__thesis_test",
+          "y11s_dfire_s1337__to__thesis_test",
+          "y11s_dfire_s3407__to__thesis_test",
+          "y11s_dfiredd_s3407__to__thesis_test"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.2557646924010061,
+          "D25_default": 0.2507349379259596,
+          "M1c_kept_rate": 0.2580892264301873,
+          "M1a_quantile_pooled": 0.22887528650534322,
+          "ORC_target_calval": 0.2605358289953363
+        },
+        "mean_gap_oracle_minus_t_src": 0.0047711365943301515,
+        "mean_gap_ci95_cell_bootstrap": [
+          -0.00033589775134645867,
+          0.009751543206239615
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.2507349379259596,
+            "mean_regret": 0.009800891069376694,
+            "median_regret": 0.0009014736847670624,
+            "max_regret": 0.07276323183089523,
+            "mean_regret_ci95_cell_bootstrap": [
+              -0.002127429727345021,
+              0.024923110860490243
+            ],
+            "gap_closed": -1.0542046691817046,
+            "gap_closed_ci95_cell_bootstrap": [
+              -24.371335293160364,
+              15.019547002157333
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 331,
+            "mean_f1_gain_vs_t_src": -0.005029754475046542,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              -0.023756270248956296,
+              0.009471546574210425
+            ],
+            "n_beats_t_src": 10,
+            "n_worse_than_t_src": 3,
+            "n_ties_t_src": 0
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.2580892264301873,
+            "mean_regret": 0.0024466025651489753,
+            "median_regret": 0.001505235602094257,
+            "max_regret": 0.02849155292645389,
+            "mean_regret_ci95_cell_bootstrap": [
+              -0.0033326403634646026,
+              0.00873239730725519
+            ],
+            "gap_closed": 0.48720760414689646,
+            "gap_closed_ci95_cell_bootstrap": [
+              -6.176085473109854,
+              4.694349041278214
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 331,
+            "mean_f1_gain_vs_t_src": 0.0023245340291811766,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              -0.007543122591697032,
+              0.01094324526213192
+            ],
+            "n_beats_t_src": 8,
+            "n_worse_than_t_src": 5,
+            "n_ties_t_src": 0
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.22887528650534322,
+            "mean_regret": 0.03166054248999303,
+            "median_regret": 0.02927027082221073,
+            "max_regret": 0.05969146769510769,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.022817288488488664,
+              0.040704823815457446
+            ],
+            "gap_closed": -5.6358491030454445,
+            "gap_closed_ci95_cell_bootstrap": [
+              -42.091275509408064,
+              19.37884098053775
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 331,
+            "mean_f1_gain_vs_t_src": -0.026889405895662875,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              -0.035946386696187445,
+              -0.018013886558805862
+            ],
+            "n_beats_t_src": 1,
+            "n_worse_than_t_src": 12,
+            "n_ties_t_src": 0
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": 0.029213939924844053,
+          "median": 0.03298192771084335,
+          "ci95_cell_bootstrap": [
+            0.01876874568957877,
+            0.03903465519846995
+          ],
+          "p_two_sided_cell_bootstrap": 0.0,
+          "n_wins_kept_rate": 13,
+          "n_losses_kept_rate": 0,
+          "n_ties": 0,
+          "mean_regret_kept_rate": 0.0024466025651489753,
+          "mean_regret_quantile_pooled": 0.03166054248999303,
+          "per_cell": {
+            "rtdetrl_dfire_s1337__to__thesis_test": 0.0001717164705323515,
+            "rtdetrl_dfire_s3407__to__thesis_test": 0.00019421668878205622,
+            "v8m_dfire_s3407__to__thesis_test": 0.028560215844984027,
+            "v8n_dfire_s3407__to__thesis_test": 0.05571027788585586,
+            "v8s_dfire_s1337__to__thesis_test": 0.05402248253347286,
+            "v8s_dfire_s3407__to__thesis_test": 0.034016329574125176,
+            "v8s_dfiredd_s3407__to__thesis_test": 0.006705854531941474,
+            "v8s_dfiresub_s3407__to__thesis_test": 0.0483990547924974,
+            "y11m_dfire_s3407__to__thesis_test": 0.043566870289970944,
+            "y11n_dfire_s3407__to__thesis_test": 0.01964333402569657,
+            "y11s_dfire_s1337__to__thesis_test": 0.03298192771084335,
+            "y11s_dfire_s3407__to__thesis_test": 0.04043651153713762,
+            "y11s_dfiredd_s3407__to__thesis_test": 0.015372427137133021
+          }
+        }
+      }
+    },
+    "Pyro-SDIS->D-Fire (smoke)": {
+      "all": {
+        "n_cells": 9,
+        "cells": [
+          "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly",
+          "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.10186155407789615,
+          "D25_default": 0.11699744543208708,
+          "M1c_kept_rate": 0.12990136585436304,
+          "M1a_quantile_pooled": 0.14014467367581715,
+          "ORC_target_calval": 0.15168519441494543
+        },
+        "mean_gap_oracle_minus_t_src": 0.04982364033704925,
+        "mean_gap_ci95_cell_bootstrap": [
+          0.04060716464313241,
+          0.05793922122465979
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.11699744543208708,
+            "mean_regret": 0.034687748982858334,
+            "median_regret": 0.042717908536701904,
+            "max_regret": 0.05763906488258126,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.020286076925847735,
+              0.047296447513517574
+            ],
+            "gap_closed": 0.3037893508342414,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.1714724891891004,
+              0.5107367217296823
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.015135891354190918,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.009550959960056041,
+              0.021462126306039032
+            ],
+            "n_beats_t_src": 9,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.12990136585436304,
+            "mean_regret": 0.021783828560582367,
+            "median_regret": 0.01878945495307749,
+            "max_regret": 0.03665980068729015,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.016682856894358042,
+              0.02738430324491281
+            ],
+            "gap_closed": 0.5627812738447427,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.35822719315891993,
+              0.6989973683916417
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.028039811776466885,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.014958065096035299,
+              0.039694783790368594
+            ],
+            "n_beats_t_src": 8,
+            "n_worse_than_t_src": 1,
+            "n_ties_t_src": 0
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.14014467367581715,
+            "mean_regret": 0.011540520739128266,
+            "median_regret": 0.0007668909756623488,
+            "max_regret": 0.041284897068207455,
+            "mean_regret_ci95_cell_bootstrap": [
+              8.665823097631283e-05,
+              0.02403659727281468
+            ],
+            "gap_closed": 0.7683725905803265,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.4349330639241737,
+              0.9984526113699994
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.038283119597920995,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.018200812107798312,
+              0.055890382927578246
+            ],
+            "n_beats_t_src": 7,
+            "n_worse_than_t_src": 2,
+            "n_ties_t_src": 0
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": -0.0102433078214541,
+          "median": -0.01719359095292239,
+          "ci95_cell_bootstrap": [
+            -0.01696740997530742,
+            -0.00288025065524846
+          ],
+          "p_two_sided_cell_bootstrap": 0.0062,
+          "n_wins_kept_rate": 3,
+          "n_losses_kept_rate": 6,
+          "n_ties": 0,
+          "mean_regret_kept_rate": 0.021783828560582367,
+          "mean_regret_quantile_pooled": 0.011540520739128266,
+          "per_cell": {
+            "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly": 0.008345231093628475,
+            "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly": 5.999280344393121e-05,
+            "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly": 0.0028171385820710687,
+            "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.009668142536816055,
+            "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.01719359095292239,
+            "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.02370742725165366,
+            "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017732872602733707,
+            "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.017344879841347638,
+            "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017765219686756928
+          }
+        }
+      },
+      "oracle_f1_ge_0.10": {
+        "n_cells": 9,
+        "cells": [
+          "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly",
+          "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.10186155407789615,
+          "D25_default": 0.11699744543208708,
+          "M1c_kept_rate": 0.12990136585436304,
+          "M1a_quantile_pooled": 0.14014467367581715,
+          "ORC_target_calval": 0.15168519441494543
+        },
+        "mean_gap_oracle_minus_t_src": 0.04982364033704925,
+        "mean_gap_ci95_cell_bootstrap": [
+          0.04060716464313241,
+          0.05793922122465979
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.11699744543208708,
+            "mean_regret": 0.034687748982858334,
+            "median_regret": 0.042717908536701904,
+            "max_regret": 0.05763906488258126,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.020286076925847735,
+              0.047296447513517574
+            ],
+            "gap_closed": 0.3037893508342414,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.1714724891891004,
+              0.5107367217296823
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.015135891354190918,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.009550959960056041,
+              0.021462126306039032
+            ],
+            "n_beats_t_src": 9,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 0
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.12990136585436304,
+            "mean_regret": 0.021783828560582367,
+            "median_regret": 0.01878945495307749,
+            "max_regret": 0.03665980068729015,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.016682856894358042,
+              0.02738430324491281
+            ],
+            "gap_closed": 0.5627812738447427,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.35822719315891993,
+              0.6989973683916417
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.028039811776466885,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.014958065096035299,
+              0.039694783790368594
+            ],
+            "n_beats_t_src": 8,
+            "n_worse_than_t_src": 1,
+            "n_ties_t_src": 0
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.14014467367581715,
+            "mean_regret": 0.011540520739128266,
+            "median_regret": 0.0007668909756623488,
+            "max_regret": 0.041284897068207455,
+            "mean_regret_ci95_cell_bootstrap": [
+              8.665823097631283e-05,
+              0.02403659727281468
+            ],
+            "gap_closed": 0.7683725905803265,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.4349330639241737,
+              0.9984526113699994
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.038283119597920995,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.018200812107798312,
+              0.055890382927578246
+            ],
+            "n_beats_t_src": 7,
+            "n_worse_than_t_src": 2,
+            "n_ties_t_src": 0
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": -0.0102433078214541,
+          "median": -0.01719359095292239,
+          "ci95_cell_bootstrap": [
+            -0.01696740997530742,
+            -0.00288025065524846
+          ],
+          "p_two_sided_cell_bootstrap": 0.0062,
+          "n_wins_kept_rate": 3,
+          "n_losses_kept_rate": 6,
+          "n_ties": 0,
+          "mean_regret_kept_rate": 0.021783828560582367,
+          "mean_regret_quantile_pooled": 0.011540520739128266,
+          "per_cell": {
+            "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly": 0.008345231093628475,
+            "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly": 5.999280344393121e-05,
+            "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly": 0.0028171385820710687,
+            "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.009668142536816055,
+            "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.01719359095292239,
+            "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.02370742725165366,
+            "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017732872602733707,
+            "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.017344879841347638,
+            "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017765219686756928
+          }
+        }
+      }
+    },
+    "Pyro-SDIS->thesis (smoke)": {
+      "all": {
+        "n_cells": 9,
+        "cells": [
+          "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly",
+          "v8n_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "v8s_pyrosdis_s1337__to__thesis_test_smokeonly",
+          "v8s_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "y11n_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "y11s_pyrosdis_s1337__to__thesis_test_smokeonly",
+          "y11s_pyrosdis_s3407__to__thesis_test_smokeonly"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.0,
+          "D25_default": 0.00285749915379545,
+          "M1c_kept_rate": 0.01304082979588949,
+          "M1a_quantile_pooled": 0.01122773993811175,
+          "ORC_target_calval": 0.013250127565506002
+        },
+        "mean_gap_oracle_minus_t_src": 0.013250127565506002,
+        "mean_gap_ci95_cell_bootstrap": [
+          0.009172277914636569,
+          0.016725495750203132
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.00285749915379545,
+            "mean_regret": 0.010392628411710552,
+            "median_regret": 0.010903312553477571,
+            "max_regret": 0.02059202059202059,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.004104825730719391,
+              0.015874795184149387
+            ],
+            "gap_closed": 0.21565823722590904,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.0,
+              0.6277636900288279
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.00285749915379545,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.0,
+              0.007475103771400069
+            ],
+            "n_beats_t_src": 2,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 7
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.01304082979588949,
+            "mean_regret": 0.0002092977696165118,
+            "median_regret": 0.0,
+            "max_regret": 0.0038696125652647392,
+            "mean_regret_ci95_cell_bootstrap": [
+              -0.0015417613287547094,
+              0.0019643619817624972
+            ],
+            "gap_closed": 0.9842040939921683,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.8694499019759347,
+              1.1351358965992346
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.01304082979588949,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.009257289565316068,
+              0.015780792194390065
+            ],
+            "n_beats_t_src": 8,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 1
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.01122773993811175,
+            "mean_regret": 0.002022387627394253,
+            "median_regret": 0.0,
+            "max_regret": 0.012360599901115201,
+            "mean_regret_ci95_cell_bootstrap": [
+              -0.0011817352829089553,
+              0.0056540437360227845
+            ],
+            "gap_closed": 0.8473684409907777,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.6288891344763275,
+              1.105932182602245
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.01122773993811175,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.007753942343868384,
+              0.014048200704041747
+            ],
+            "n_beats_t_src": 8,
+            "n_worse_than_t_src": 0,
+            "n_ties_t_src": 1
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": 0.0018130898577777407,
+          "median": 0.0,
+          "ci95_cell_bootstrap": [
+            -0.000909537353350754,
+            0.00464271050312815
+          ],
+          "p_two_sided_cell_bootstrap": 0.195,
+          "n_wins_kept_rate": 3,
+          "n_losses_kept_rate": 4,
+          "n_ties": 2,
+          "mean_regret_kept_rate": 0.0002092977696165118,
+          "mean_regret_quantile_pooled": 0.002022387627394253,
+          "per_cell": {
+            "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly": -1.2719140186126174e-05,
+            "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly": 0.0,
+            "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly": 0.0,
+            "v8n_pyrosdis_s3407__to__thesis_test_smokeonly": 0.006839592205445864,
+            "v8s_pyrosdis_s1337__to__thesis_test_smokeonly": -0.004924766811156752,
+            "v8s_pyrosdis_s3407__to__thesis_test_smokeonly": 0.0058822996256718395,
+            "y11n_pyrosdis_s3407__to__thesis_test_smokeonly": -0.0005351902631452361,
+            "y11s_pyrosdis_s1337__to__thesis_test_smokeonly": 0.009186482876432265,
+            "y11s_pyrosdis_s3407__to__thesis_test_smokeonly": -0.00011788977306218494
+          }
+        }
+      },
+      "oracle_f1_ge_0.10": {
+        "n_cells": 0,
+        "cells": []
+      }
+    },
+    "overall": {
+      "all": {
+        "n_cells": 44,
+        "cells": [
+          "rtdetrl_dfire_s1337__to__pyro_sdis_caltest",
+          "rtdetrl_dfire_s1337__to__thesis_test",
+          "rtdetrl_dfire_s3407__to__pyro_sdis_caltest",
+          "rtdetrl_dfire_s3407__to__thesis_test",
+          "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly",
+          "v8m_dfire_s3407__to__pyro_sdis_caltest",
+          "v8m_dfire_s3407__to__thesis_test",
+          "v8n_dfire_s3407__to__pyro_sdis_caltest",
+          "v8n_dfire_s3407__to__thesis_test",
+          "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "v8n_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "v8s_dfire_s1337__to__pyro_sdis_caltest",
+          "v8s_dfire_s1337__to__thesis_test",
+          "v8s_dfire_s3407__to__pyro_sdis_caltest",
+          "v8s_dfire_s3407__to__thesis_test",
+          "v8s_dfiredd_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiredd_s3407__to__thesis_test",
+          "v8s_dfiresub_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiresub_s3407__to__thesis_test",
+          "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "v8s_pyrosdis_s1337__to__thesis_test_smokeonly",
+          "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "v8s_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "y11m_dfire_s3407__to__pyro_sdis_caltest",
+          "y11m_dfire_s3407__to__thesis_test",
+          "y11n_dfire_s3407__to__pyro_sdis_caltest",
+          "y11n_dfire_s3407__to__thesis_test",
+          "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11n_pyrosdis_s3407__to__thesis_test_smokeonly",
+          "y11s_dfire_s1337__to__pyro_sdis_caltest",
+          "y11s_dfire_s1337__to__thesis_test",
+          "y11s_dfire_s3407__to__pyro_sdis_caltest",
+          "y11s_dfire_s3407__to__thesis_test",
+          "y11s_dfiredd_s3407__to__pyro_sdis_caltest",
+          "y11s_dfiredd_s3407__to__thesis_test",
+          "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "y11s_pyrosdis_s1337__to__thesis_test_smokeonly",
+          "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11s_pyrosdis_s3407__to__thesis_test_smokeonly"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.15901395643006688,
+          "D25_default": 0.17488611133000756,
+          "M1c_kept_rate": 0.1904993092467947,
+          "M1a_quantile_pooled": 0.18609123478507286,
+          "ORC_target_calval": 0.19961864472845778
+        },
+        "mean_gap_oracle_minus_t_src": 0.0406046882983909,
+        "mean_gap_ci95_cell_bootstrap": [
+          0.03002048062553471,
+          0.05190890157423335
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.17488611133000756,
+            "mean_regret": 0.024732533398450218,
+            "median_regret": 0.01831507975110276,
+            "max_regret": 0.07276323183089523,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.017434710505276917,
+              0.032060261993221435
+            ],
+            "gap_closed": 0.3908946371734535,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.21168808466962086,
+              0.5307627028261706
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.015872154899940684,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.007174990383193951,
+              0.024408298364288494
+            ],
+            "n_beats_t_src": 34,
+            "n_worse_than_t_src": 3,
+            "n_ties_t_src": 7
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.1904993092467947,
+            "mean_regret": 0.00911933548166305,
+            "median_regret": 0.0058944774569550384,
+            "max_regret": 0.03665980068729015,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.0057767887423852615,
+              0.012482226328292028
+            ],
+            "gap_closed": 0.7754117599758934,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.680131477033369,
+              0.8520077388261752
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.031485352816727846,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.021610659012417117,
+              0.04199757020004231
+            ],
+            "n_beats_t_src": 37,
+            "n_worse_than_t_src": 6,
+            "n_ties_t_src": 1
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.18609123478507286,
+            "mean_regret": 0.01352740994338485,
+            "median_regret": 0.0036305473546232175,
+            "max_regret": 0.05969146769510769,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.008526862937157318,
+              0.01875009500393111
+            ],
+            "gap_closed": 0.6668510334576089,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.42964183869448297,
+              0.8149565404057472
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.027077278355006052,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.013372919550862013,
+              0.04116208990213251
+            ],
+            "n_beats_t_src": 29,
+            "n_worse_than_t_src": 14,
+            "n_ties_t_src": 1
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": 0.004408074461721799,
+          "median": 0.0,
+          "ci95_cell_bootstrap": [
+            -0.0014007382305216464,
+            0.01059861863234944
+          ],
+          "p_two_sided_cell_bootstrap": 0.1422,
+          "n_wins_kept_rate": 21,
+          "n_losses_kept_rate": 21,
+          "n_ties": 2,
+          "mean_regret_kept_rate": 0.00911933548166305,
+          "mean_regret_quantile_pooled": 0.01352740994338485,
+          "per_cell": {
+            "rtdetrl_dfire_s1337__to__pyro_sdis_caltest": -0.01884869740791878,
+            "rtdetrl_dfire_s1337__to__thesis_test": 0.0001717164705323515,
+            "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": -0.01701529675341723,
+            "rtdetrl_dfire_s3407__to__thesis_test": 0.00019421668878205622,
+            "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly": 0.008345231093628475,
+            "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly": -1.2719140186126174e-05,
+            "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly": 5.999280344393121e-05,
+            "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly": 0.0,
+            "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly": 0.0028171385820710687,
+            "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly": 0.0,
+            "v8m_dfire_s3407__to__pyro_sdis_caltest": 0.007256969799841084,
+            "v8m_dfire_s3407__to__thesis_test": 0.028560215844984027,
+            "v8n_dfire_s3407__to__pyro_sdis_caltest": -0.01379767920512659,
+            "v8n_dfire_s3407__to__thesis_test": 0.05571027788585586,
+            "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.009668142536816055,
+            "v8n_pyrosdis_s3407__to__thesis_test_smokeonly": 0.006839592205445864,
+            "v8s_dfire_s1337__to__pyro_sdis_caltest": -0.017698497004683622,
+            "v8s_dfire_s1337__to__thesis_test": 0.05402248253347286,
+            "v8s_dfire_s3407__to__pyro_sdis_caltest": -0.002086304393494165,
+            "v8s_dfire_s3407__to__thesis_test": 0.034016329574125176,
+            "v8s_dfiredd_s3407__to__pyro_sdis_caltest": -0.02184342861728089,
+            "v8s_dfiredd_s3407__to__thesis_test": 0.006705854531941474,
+            "v8s_dfiresub_s3407__to__pyro_sdis_caltest": -0.0024884702600383446,
+            "v8s_dfiresub_s3407__to__thesis_test": 0.0483990547924974,
+            "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.01719359095292239,
+            "v8s_pyrosdis_s1337__to__thesis_test_smokeonly": -0.004924766811156752,
+            "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.02370742725165366,
+            "v8s_pyrosdis_s3407__to__thesis_test_smokeonly": 0.0058822996256718395,
+            "y11m_dfire_s3407__to__pyro_sdis_caltest": 0.0015762197641336906,
+            "y11m_dfire_s3407__to__thesis_test": 0.043566870289970944,
+            "y11n_dfire_s3407__to__pyro_sdis_caltest": -0.012826266186375668,
+            "y11n_dfire_s3407__to__thesis_test": 0.01964333402569657,
+            "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017732872602733707,
+            "y11n_pyrosdis_s3407__to__thesis_test_smokeonly": -0.0005351902631452361,
+            "y11s_dfire_s1337__to__pyro_sdis_caltest": -0.0049380154572332136,
+            "y11s_dfire_s1337__to__thesis_test": 0.03298192771084335,
+            "y11s_dfire_s3407__to__pyro_sdis_caltest": -0.002467458030272207,
+            "y11s_dfire_s3407__to__thesis_test": 0.04043651153713762,
+            "y11s_dfiredd_s3407__to__pyro_sdis_caltest": -0.004777057282260355,
+            "y11s_dfiredd_s3407__to__thesis_test": 0.015372427137133021,
+            "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.017344879841347638,
+            "y11s_pyrosdis_s1337__to__thesis_test_smokeonly": 0.009186482876432265,
+            "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017765219686756928,
+            "y11s_pyrosdis_s3407__to__thesis_test_smokeonly": -0.00011788977306218494
+          }
+        }
+      },
+      "oracle_f1_ge_0.10": {
+        "n_cells": 35,
+        "cells": [
+          "rtdetrl_dfire_s1337__to__pyro_sdis_caltest",
+          "rtdetrl_dfire_s1337__to__thesis_test",
+          "rtdetrl_dfire_s3407__to__pyro_sdis_caltest",
+          "rtdetrl_dfire_s3407__to__thesis_test",
+          "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly",
+          "v8m_dfire_s3407__to__pyro_sdis_caltest",
+          "v8m_dfire_s3407__to__thesis_test",
+          "v8n_dfire_s3407__to__pyro_sdis_caltest",
+          "v8n_dfire_s3407__to__thesis_test",
+          "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "v8s_dfire_s1337__to__pyro_sdis_caltest",
+          "v8s_dfire_s1337__to__thesis_test",
+          "v8s_dfire_s3407__to__pyro_sdis_caltest",
+          "v8s_dfire_s3407__to__thesis_test",
+          "v8s_dfiredd_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiredd_s3407__to__thesis_test",
+          "v8s_dfiresub_s3407__to__pyro_sdis_caltest",
+          "v8s_dfiresub_s3407__to__thesis_test",
+          "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11m_dfire_s3407__to__pyro_sdis_caltest",
+          "y11m_dfire_s3407__to__thesis_test",
+          "y11n_dfire_s3407__to__pyro_sdis_caltest",
+          "y11n_dfire_s3407__to__thesis_test",
+          "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+          "y11s_dfire_s1337__to__pyro_sdis_caltest",
+          "y11s_dfire_s1337__to__thesis_test",
+          "y11s_dfire_s3407__to__pyro_sdis_caltest",
+          "y11s_dfire_s3407__to__thesis_test",
+          "y11s_dfiredd_s3407__to__pyro_sdis_caltest",
+          "y11s_dfiredd_s3407__to__thesis_test",
+          "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+          "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly"
+        ],
+        "mean_f1": {
+          "M0_t_src": 0.19990325951208407,
+          "D25_default": 0.21912204017531925,
+          "M1c_kept_rate": 0.23613148967702746,
+          "M1a_quantile_pooled": 0.23105613346000575,
+          "ORC_target_calval": 0.24754197771321682
+        },
+        "mean_gap_oracle_minus_t_src": 0.04763871820113273,
+        "mean_gap_ci95_cell_bootstrap": [
+          0.03504672922897864,
+          0.06073362906398213
+        ],
+        "bootstrap": {
+          "unit": "cell",
+          "B": 10000,
+          "seed": 0,
+          "ci": "percentile 2.5-97.5",
+          "paired_across_rules": true
+        },
+        "rules": {
+          "D25_default": {
+            "label": "default 0.25",
+            "mean_f1": 0.21912204017531925,
+            "mean_regret": 0.028419937537897563,
+            "median_regret": 0.03981447637407193,
+            "max_regret": 0.07276323183089523,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.01958113557914207,
+              0.03729894557537
+            ],
+            "gap_closed": 0.40342774509785606,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.21450608942422394,
+              0.5489703398321447
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.01921878066323517,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.008414323025917015,
+              0.029566389594198987
+            ],
+            "n_beats_t_src": 32,
+            "n_worse_than_t_src": 3,
+            "n_ties_t_src": 0
+          },
+          "M1c_kept_rate": {
+            "label": "kept-rate (refine M1c)",
+            "mean_f1": 0.23613148967702746,
+            "mean_regret": 0.011410488036189305,
+            "median_regret": 0.010215276487726577,
+            "max_regret": 0.03665980068729015,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.007556137507479861,
+              0.015160614898648596
+            ],
+            "gap_closed": 0.7604786932340679,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.6542623817806773,
+              0.8390827552153316
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.03622823016494343,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.024140275598641826,
+              0.048951824388983566
+            ],
+            "n_beats_t_src": 29,
+            "n_worse_than_t_src": 6,
+            "n_ties_t_src": 0
+          },
+          "M1a_quantile_pooled": {
+            "label": "quantile-pooled (pilot M1a)",
+            "mean_f1": 0.23105613346000575,
+            "mean_regret": 0.016485844253211007,
+            "median_regret": 0.00989697306013046,
+            "max_regret": 0.05969146769510769,
+            "mean_regret_ci95_cell_bootstrap": [
+              0.010537172474495324,
+              0.02274485587842009
+            ],
+            "gap_closed": 0.6539402218253005,
+            "gap_closed_ci95_cell_bootstrap": [
+              0.3904473230484359,
+              0.8135848456649566
+            ],
+            "gap_closed_n_replicates_with_nonpositive_gap": 0,
+            "mean_f1_gain_vs_t_src": 0.031152873947921732,
+            "mean_f1_gain_vs_t_src_ci95_cell_bootstrap": [
+              0.013998604100160253,
+              0.048384946713962526
+            ],
+            "n_beats_t_src": 21,
+            "n_worse_than_t_src": 14,
+            "n_ties_t_src": 0
+          }
+        },
+        "paired_kept_rate_minus_quantile_pooled": {
+          "definition": "per cell F1(M1c kept-rate) - F1(M1a quantile-pooled); positive = kept-rate better (its regret is lower by the same amount)",
+          "mean": 0.005075356217021701,
+          "median": 5.999280344393121e-05,
+          "ci95_cell_bootstrap": [
+            -0.0023023880860088123,
+            0.013005274640424166
+          ],
+          "p_two_sided_cell_bootstrap": 0.1834,
+          "n_wins_kept_rate": 18,
+          "n_losses_kept_rate": 17,
+          "n_ties": 0,
+          "mean_regret_kept_rate": 0.011410488036189305,
+          "mean_regret_quantile_pooled": 0.016485844253211007,
+          "per_cell": {
+            "rtdetrl_dfire_s1337__to__pyro_sdis_caltest": -0.01884869740791878,
+            "rtdetrl_dfire_s1337__to__thesis_test": 0.0001717164705323515,
+            "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": -0.01701529675341723,
+            "rtdetrl_dfire_s3407__to__thesis_test": 0.00019421668878205622,
+            "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly": 0.008345231093628475,
+            "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly": 5.999280344393121e-05,
+            "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly": 0.0028171385820710687,
+            "v8m_dfire_s3407__to__pyro_sdis_caltest": 0.007256969799841084,
+            "v8m_dfire_s3407__to__thesis_test": 0.028560215844984027,
+            "v8n_dfire_s3407__to__pyro_sdis_caltest": -0.01379767920512659,
+            "v8n_dfire_s3407__to__thesis_test": 0.05571027788585586,
+            "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.009668142536816055,
+            "v8s_dfire_s1337__to__pyro_sdis_caltest": -0.017698497004683622,
+            "v8s_dfire_s1337__to__thesis_test": 0.05402248253347286,
+            "v8s_dfire_s3407__to__pyro_sdis_caltest": -0.002086304393494165,
+            "v8s_dfire_s3407__to__thesis_test": 0.034016329574125176,
+            "v8s_dfiredd_s3407__to__pyro_sdis_caltest": -0.02184342861728089,
+            "v8s_dfiredd_s3407__to__thesis_test": 0.006705854531941474,
+            "v8s_dfiresub_s3407__to__pyro_sdis_caltest": -0.0024884702600383446,
+            "v8s_dfiresub_s3407__to__thesis_test": 0.0483990547924974,
+            "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.01719359095292239,
+            "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.02370742725165366,
+            "y11m_dfire_s3407__to__pyro_sdis_caltest": 0.0015762197641336906,
+            "y11m_dfire_s3407__to__thesis_test": 0.043566870289970944,
+            "y11n_dfire_s3407__to__pyro_sdis_caltest": -0.012826266186375668,
+            "y11n_dfire_s3407__to__thesis_test": 0.01964333402569657,
+            "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017732872602733707,
+            "y11s_dfire_s1337__to__pyro_sdis_caltest": -0.0049380154572332136,
+            "y11s_dfire_s1337__to__thesis_test": 0.03298192771084335,
+            "y11s_dfire_s3407__to__pyro_sdis_caltest": -0.002467458030272207,
+            "y11s_dfire_s3407__to__thesis_test": 0.04043651153713762,
+            "y11s_dfiredd_s3407__to__pyro_sdis_caltest": -0.004777057282260355,
+            "y11s_dfiredd_s3407__to__thesis_test": 0.015372427137133021,
+            "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly": -0.017344879841347638,
+            "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly": -0.017765219686756928
+          }
+        }
+      }
+    }
+  },
+  "cells": {
+    "rtdetrl_dfire_s1337__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "rtdetrl_dfire_s1337",
+      "family": "rtdetr",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.3022556390977444,
+        "D25_default": 0.35443037974683544,
+        "M1c_kept_rate": 0.34027936798717656,
+        "ORC_target_calval": 0.35716320136713187,
+        "M1a_quantile_pooled": 0.35912806539509534
+      },
+      "threshold": {
+        "M0_t_src": 0.549165,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.143656,
+        "ORC_target_calval": 0.242891,
+        "M1a_quantile_pooled": 0.21779701356562134
+      },
+      "gap_oracle_minus_t_src": 0.05490756226938748,
+      "regret": {
+        "D25_default": 0.0027328216202964217,
+        "M1c_kept_rate": 0.016883833379955304,
+        "M1a_quantile_pooled": -0.0019648640279634755
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.27890206370260706,
+          0.32560165054811324
+        ],
+        "D25_default": [
+          0.3323647341262326,
+          0.3747214790543839
+        ],
+        "M1c_kept_rate": [
+          0.3212774760041275,
+          0.3566229259361388
+        ],
+        "ORC_target_calval": [
+          0.33487780168846215,
+          0.37710433393376286
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.03879458960338456,
+          0.07077754607758012
+        ],
+        "D25_default": [
+          -0.00021439960534710417,
+          0.005794627424195676
+        ],
+        "M1c_kept_rate": [
+          0.0056521836303371695,
+          0.027451399260879153
+        ]
+      },
+      "stored_gap_ci95": [
+        0.03879458960338456,
+        0.07077754607758012
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_dfire_s1337__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_dfire_s1337__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_dfire_s1337__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "rtdetrl_dfire_s1337",
+      "family": "rtdetr",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.2408839779005525,
+        "D25_default": 0.1571025399811853,
+        "M1c_kept_rate": 0.22014051522248243,
+        "ORC_target_calval": 0.22986577181208054,
+        "M1a_quantile_pooled": 0.21996879875195008
+      },
+      "threshold": {
+        "M0_t_src": 0.549165,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.388623,
+        "ORC_target_calval": 0.419653,
+        "M1a_quantile_pooled": 0.3882245752109815
+      },
+      "gap_oracle_minus_t_src": -0.011018206088471955,
+      "regret": {
+        "D25_default": 0.07276323183089523,
+        "M1c_kept_rate": 0.009725256589598108,
+        "M1a_quantile_pooled": 0.00989697306013046
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.19999468650371946,
+          0.2853581947007085
+        ],
+        "D25_default": [
+          0.1312236753781527,
+          0.186521660344375
+        ],
+        "M1c_kept_rate": [
+          0.18492121212121213,
+          0.2594524671440938
+        ],
+        "ORC_target_calval": [
+          0.19333546893919656,
+          0.2701240093006975
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.03137836140716115,
+          0.00844151300400614
+        ],
+        "D25_default": [
+          0.05197486422390798,
+          0.09306865045930686
+        ],
+        "M1c_kept_rate": [
+          0.0027806377933713954,
+          0.016327048877359564
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.03137836140716115,
+        0.00844151300400614
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_dfire_s1337__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_dfire_s1337__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "rtdetrl_dfire_s3407",
+      "family": "rtdetr",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.26324237560192615,
+        "D25_default": 0.35712116610993017,
+        "M1c_kept_rate": 0.33810888252148996,
+        "ORC_target_calval": 0.35663082437275984,
+        "M1a_quantile_pooled": 0.3551241792749072
+      },
+      "threshold": {
+        "M0_t_src": 0.592275,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.13717,
+        "ORC_target_calval": 0.238358,
+        "M1a_quantile_pooled": 0.20569264965156744
+      },
+      "gap_oracle_minus_t_src": 0.09338844877083369,
+      "regret": {
+        "D25_default": -0.00049034173717033,
+        "M1c_kept_rate": 0.018521941851269874,
+        "M1a_quantile_pooled": 0.0015066450978526436
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.2405758647226305,
+          0.2860559221783853
+        ],
+        "D25_default": [
+          0.33506873686001215,
+          0.37806134838581484
+        ],
+        "M1c_kept_rate": [
+          0.3187332565108116,
+          0.35589500745225855
+        ],
+        "ORC_target_calval": [
+          0.3357171666688587,
+          0.3775902406303972
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.07473113434582174,
+          0.11186656738821717
+        ],
+        "D25_default": [
+          -0.003708525712247064,
+          0.0027000651201181886
+        ],
+        "M1c_kept_rate": [
+          0.007157553467078625,
+          0.02901336578813902
+        ]
+      },
+      "stored_gap_ci95": [
+        0.07473113434582174,
+        0.11186656738821717
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_dfire_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_dfire_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_dfire_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "rtdetrl_dfire_s3407",
+      "family": "rtdetr",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.2737094837935174,
+        "D25_default": 0.2077922077922078,
+        "M1c_kept_rate": 0.23577906018136852,
+        "ORC_target_calval": 0.2642706131078224,
+        "M1a_quantile_pooled": 0.23558484349258646
+      },
+      "threshold": {
+        "M0_t_src": 0.592275,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.337581,
+        "ORC_target_calval": 0.488838,
+        "M1a_quantile_pooled": 0.3375339627448699
+      },
+      "gap_oracle_minus_t_src": -0.009438870685694989,
+      "regret": {
+        "D25_default": 0.0564784053156146,
+        "M1c_kept_rate": 0.02849155292645389,
+        "M1a_quantile_pooled": 0.028685769615235945
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.2307671957671958,
+          0.321914856107673
+        ],
+        "D25_default": [
+          0.17444819411684323,
+          0.23878977639532836
+        ],
+        "M1c_kept_rate": [
+          0.19581320595471116,
+          0.27128233434876403
+        ],
+        "ORC_target_calval": [
+          0.22108329054715664,
+          0.3097643240823635
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.023835914609519317,
+          0.0036797890494591535
+        ],
+        "D25_default": [
+          0.03155462984850864,
+          0.08318905180308564
+        ],
+        "M1c_kept_rate": [
+          0.009948110522095637,
+          0.04716899253852622
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.023835914609519317,
+        0.0036797890494591535
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_dfire_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_dfire_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "rtdetrl_pyrosdis_s1337",
+      "family": "rtdetr",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.16585024492652203,
+        "D25_default": 0.19909502262443438,
+        "M1c_kept_rate": 0.1686280831855554,
+        "ORC_target_calval": 0.20156774916013437,
+        "M1a_quantile_pooled": 0.16028285209192691
+      },
+      "threshold": {
+        "M0_t_src": 0.37299,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.129953,
+        "ORC_target_calval": 0.245514,
+        "M1a_quantile_pooled": 0.1198069935030234
+      },
+      "gap_oracle_minus_t_src": 0.035717504233612335,
+      "regret": {
+        "D25_default": 0.002472726535699993,
+        "M1c_kept_rate": 0.03293966597457898,
+        "M1a_quantile_pooled": 0.041284897068207455
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1469601572503511,
+          0.1844869504974074
+        ],
+        "D25_default": [
+          0.181918652250153,
+          0.21591549120929998
+        ],
+        "M1c_kept_rate": [
+          0.15707696443579638,
+          0.18030738534164392
+        ],
+        "ORC_target_calval": [
+          0.1846529521152952,
+          0.21820278215474334
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.02417044734379793,
+          0.04787867494880636
+        ],
+        "D25_default": [
+          -0.00023590873743806472,
+          0.005649081414699121
+        ],
+        "M1c_kept_rate": [
+          0.0205578540656816,
+          0.04419249386004085
+        ]
+      },
+      "stored_gap_ci95": [
+        0.02417044734379793,
+        0.04787867494880636
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "rtdetrl_pyrosdis_s1337",
+      "family": "rtdetr",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.02077922077922078,
+        "M1c_kept_rate": 0.013651877133105802,
+        "ORC_target_calval": 0.012345679012345678,
+        "M1a_quantile_pooled": 0.013664596273291928
+      },
+      "threshold": {
+        "M0_t_src": 0.37299,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.09934,
+        "ORC_target_calval": 0.132771,
+        "M1a_quantile_pooled": 0.09257591153923224
+      },
+      "gap_oracle_minus_t_src": 0.012345679012345678,
+      "regret": {
+        "D25_default": -0.008433541766875101,
+        "M1c_kept_rate": -0.0013061981207601239,
+        "M1a_quantile_pooled": -0.00131891726094625
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.004761060452549815,
+          0.04290413738134917
+        ],
+        "M1c_kept_rate": [
+          0.005653510751575393,
+          0.022574188919840546
+        ],
+        "ORC_target_calval": [
+          0.003955509958526725,
+          0.02254435244042972
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.003955509958526725,
+          0.02254435244042972
+        ],
+        "D25_default": [
+          -0.023070991845635165,
+          0.0040089036865674724
+        ],
+        "M1c_kept_rate": [
+          -0.007500784767442097,
+          0.004508461908813585
+        ]
+      },
+      "stored_gap_ci95": [
+        0.003955509958526725,
+        0.02254435244042972
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "rtdetrl_pyrosdis_s3407",
+      "family": "rtdetr",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.14085470085470086,
+        "D25_default": 0.16445497630331754,
+        "M1c_kept_rate": 0.1364036374303315,
+        "ORC_target_calval": 0.1631467793030623,
+        "M1a_quantile_pooled": 0.13634364462688756
+      },
+      "threshold": {
+        "M0_t_src": 0.411,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.161921,
+        "ORC_target_calval": 0.284614,
+        "M1a_quantile_pooled": 0.16186887185944268
+      },
+      "gap_oracle_minus_t_src": 0.022292078448361424,
+      "regret": {
+        "D25_default": -0.0013081970002552512,
+        "M1c_kept_rate": 0.026743141872730802,
+        "M1a_quantile_pooled": 0.026803134676174734
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1230871236889598,
+          0.15848717243220714
+        ],
+        "D25_default": [
+          0.14875029711267648,
+          0.17984523349899934
+        ],
+        "M1c_kept_rate": [
+          0.12488408825722047,
+          0.1468215534544591
+        ],
+        "ORC_target_calval": [
+          0.14600121075575073,
+          0.17858515473102157
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.01203557687844763,
+          0.03247597209941967
+        ],
+        "D25_default": [
+          -0.007299903421714991,
+          0.0042703748452779895
+        ],
+        "M1c_kept_rate": [
+          0.016211170245647763,
+          0.03714854054037981
+        ]
+      },
+      "stored_gap_ci95": [
+        0.01203557687844763,
+        0.03247597209941967
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "rtdetrl_pyrosdis_s3407",
+      "family": "rtdetr",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0049382716049382715,
+        "M1c_kept_rate": 0.01601423487544484,
+        "ORC_target_calval": 0.015841584158415842,
+        "M1a_quantile_pooled": 0.01601423487544484
+      },
+      "threshold": {
+        "M0_t_src": 0.411,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.121004,
+        "ORC_target_calval": 0.129492,
+        "M1a_quantile_pooled": 0.12098091499267973
+      },
+      "gap_oracle_minus_t_src": 0.015841584158415842,
+      "regret": {
+        "D25_default": 0.010903312553477571,
+        "M1c_kept_rate": -0.00017265071702899856,
+        "M1a_quantile_pooled": -0.00017265071702899856
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.015803456188154298
+        ],
+        "M1c_kept_rate": [
+          0.006974110681966404,
+          0.026416676380955552
+        ],
+        "ORC_target_calval": [
+          0.006256354275286757,
+          0.026953054041495336
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.006256354275286757,
+          0.026953054041495336
+        ],
+        "D25_default": [
+          -0.00011966478115450226,
+          0.023095524226335675
+        ],
+        "M1c_kept_rate": [
+          -0.004457781379569943,
+          0.0025335829510086108
+        ]
+      },
+      "stored_gap_ci95": [
+        0.006256354275286757,
+        0.026953054041495336
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "rtdetrl_pyrosdis_s3407_p60",
+      "family": "rtdetr",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.09417398244213887,
+        "D25_default": 0.1182341650671785,
+        "M1c_kept_rate": 0.10191485994619402,
+        "ORC_target_calval": 0.13857466063348417,
+        "M1a_quantile_pooled": 0.09909772136412295
+      },
+      "threshold": {
+        "M0_t_src": 0.341172,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.021421,
+        "ORC_target_calval": 0.063998,
+        "M1a_quantile_pooled": 0.02021408508591252
+      },
+      "gap_oracle_minus_t_src": 0.0444006781913453,
+      "regret": {
+        "D25_default": 0.02034049556630567,
+        "M1c_kept_rate": 0.03665980068729015,
+        "M1a_quantile_pooled": 0.039476939269361216
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.07782378803299306,
+          0.11028921427824012
+        ],
+        "D25_default": [
+          0.10116905652811073,
+          0.13487620351673874
+        ],
+        "M1c_kept_rate": [
+          0.09202447989246618,
+          0.1116917497054232
+        ],
+        "ORC_target_calval": [
+          0.12357192438151653,
+          0.15354762375482595
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.03160754025204558,
+          0.05649126753223902
+        ],
+        "D25_default": [
+          0.008929558715584584,
+          0.03137366821538577
+        ],
+        "M1c_kept_rate": [
+          0.027691187812010066,
+          0.045850975508813646
+        ]
+      },
+      "stored_gap_ci95": [
+        0.03160754025204558,
+        0.05649126753223902
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "rtdetrl_pyrosdis_s3407_p60",
+      "family": "rtdetr",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.0,
+        "ORC_target_calval": 0.0,
+        "M1a_quantile_pooled": 0.0
+      },
+      "threshold": {
+        "M0_t_src": 0.341172,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.017747,
+        "ORC_target_calval": 0.015197,
+        "M1a_quantile_pooled": 0.020189204928839577
+      },
+      "gap_oracle_minus_t_src": 0.0,
+      "regret": {
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.0,
+        "M1a_quantile_pooled": 0.0
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.0,
+          0.0
+        ],
+        "ORC_target_calval": [
+          0.0,
+          0.0
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.0,
+          0.0
+        ]
+      },
+      "stored_gap_ci95": [
+        0.0,
+        0.0
+      ],
+      "source_keys": {
+        "refine": "cells.rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8m_dfire_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "v8m_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.21347844286312265,
+        "D25_default": 0.2857142857142857,
+        "M1c_kept_rate": 0.3323047709470686,
+        "ORC_target_calval": 0.33776662484316183,
+        "M1a_quantile_pooled": 0.32504780114722753
+      },
+      "threshold": {
+        "M0_t_src": 0.396771,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.043464,
+        "ORC_target_calval": 0.053163,
+        "M1a_quantile_pooled": 0.13462973423238223
+      },
+      "gap_oracle_minus_t_src": 0.12428818198003919,
+      "regret": {
+        "D25_default": 0.052052339128876135,
+        "M1c_kept_rate": 0.005461853896093216,
+        "M1a_quantile_pooled": 0.0127188236959343
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1916568791946309,
+          0.23574491871202455
+        ],
+        "D25_default": [
+          0.2614608357828981,
+          0.3077544624156437
+        ],
+        "M1c_kept_rate": [
+          0.3151908841058846,
+          0.3485506747534012
+        ],
+        "ORC_target_calval": [
+          0.31984005482800465,
+          0.35523973762038064
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.10438973711134901,
+          0.14372501778786637
+        ],
+        "D25_default": [
+          0.03300481889861882,
+          0.07095269268917867
+        ],
+        "M1c_kept_rate": [
+          0.0007245431854029483,
+          0.010288052250681556
+        ]
+      },
+      "stored_gap_ci95": [
+        0.10438973711134901,
+        0.14372501778786637
+      ],
+      "source_keys": {
+        "refine": "cells.v8m_dfire_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.v8m_dfire_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8m_dfire_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "v8m_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.27055702917771884,
+        "D25_default": 0.27283511269276395,
+        "M1c_kept_rate": 0.271523178807947,
+        "ORC_target_calval": 0.2662037037037037,
+        "M1a_quantile_pooled": 0.242962962962963
+      },
+      "threshold": {
+        "M0_t_src": 0.396771,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.187905,
+        "ORC_target_calval": 0.227078,
+        "M1a_quantile_pooled": 0.05292284335169805
+      },
+      "gap_oracle_minus_t_src": -0.004353325474015124,
+      "regret": {
+        "D25_default": -0.006631408989060228,
+        "M1c_kept_rate": -0.005319475104243299,
+        "M1a_quantile_pooled": 0.02324074074074073
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.22372344034946348,
+          0.3219142582479393
+        ],
+        "D25_default": [
+          0.22756365625621644,
+          0.31967353362812523
+        ],
+        "M1c_kept_rate": [
+          0.22800891321893532,
+          0.3182223526780722
+        ],
+        "ORC_target_calval": [
+          0.22175868486352357,
+          0.31282493368700265
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.02066950811054376,
+          0.013657538168691906
+        ],
+        "D25_default": [
+          -0.01007760750736481,
+          -0.003763038478958046
+        ],
+        "M1c_kept_rate": [
+          -0.01659671099676861,
+          0.005084692861015809
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.02066950811054376,
+        0.013657538168691906
+      ],
+      "source_keys": {
+        "refine": "cells.v8m_dfire_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.v8m_dfire_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8n_dfire_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "v8n_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.24326530612244898,
+        "D25_default": 0.259596359319351,
+        "M1c_kept_rate": 0.3092691622103387,
+        "ORC_target_calval": 0.3254688445251059,
+        "M1a_quantile_pooled": 0.32306684141546527
+      },
+      "threshold": {
+        "M0_t_src": 0.285298,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.032077,
+        "ORC_target_calval": 0.091028,
+        "M1a_quantile_pooled": 0.12299327879367161
+      },
+      "gap_oracle_minus_t_src": 0.0822035384026569,
+      "regret": {
+        "D25_default": 0.0658724852057549,
+        "M1c_kept_rate": 0.016199682314767205,
+        "M1a_quantile_pooled": 0.002402003109640616
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.220167872294426,
+          0.2659256560947571
+        ],
+        "D25_default": [
+          0.23730632016347872,
+          0.2820509560533315
+        ],
+        "M1c_kept_rate": [
+          0.29453997421018696,
+          0.32453608380424287
+        ],
+        "ORC_target_calval": [
+          0.306605723335863,
+          0.3433496541308038
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.06485011175569796,
+          0.10025657681096053
+        ],
+        "D25_default": [
+          0.04979156360504955,
+          0.08223289455874765
+        ],
+        "M1c_kept_rate": [
+          0.004358924894488386,
+          0.027702007707541818
+        ]
+      },
+      "stored_gap_ci95": [
+        0.06485011175569796,
+        0.10025657681096053
+      ],
+      "source_keys": {
+        "refine": "cells.v8n_dfire_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.v8n_dfire_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8n_dfire_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "v8n_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.27939464493597205,
+        "D25_default": 0.28066298342541435,
+        "M1c_kept_rate": 0.2791145332050048,
+        "ORC_target_calval": 0.2830957230142566,
+        "M1a_quantile_pooled": 0.22340425531914893
+      },
+      "threshold": {
+        "M0_t_src": 0.285298,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.174258,
+        "ORC_target_calval": 0.206662,
+        "M1a_quantile_pooled": 0.07825521085594989
+      },
+      "gap_oracle_minus_t_src": 0.00370107807828457,
+      "regret": {
+        "D25_default": 0.00243273958884227,
+        "M1c_kept_rate": 0.003981189809251828,
+        "M1a_quantile_pooled": 0.05969146769510769
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.234132317631168,
+          0.32821917808219175
+        ],
+        "D25_default": [
+          0.2368685294595913,
+          0.3248130657221566
+        ],
+        "M1c_kept_rate": [
+          0.24059157689795185,
+          0.3195074180258396
+        ],
+        "ORC_target_calval": [
+          0.24332825060931798,
+          0.32561103775364464
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.013161155081393988,
+          0.022410392436077748
+        ],
+        "D25_default": [
+          -0.009981496590954658,
+          0.01615861541567607
+        ],
+        "M1c_kept_rate": [
+          -0.005110433735618192,
+          0.012636355559759548
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.013161155081393988,
+        0.022410392436077748
+      ],
+      "source_keys": {
+        "refine": "cells.v8n_dfire_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.v8n_dfire_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "v8n_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.07620528771384137,
+        "D25_default": 0.08702175543885972,
+        "M1c_kept_rate": 0.1183821111476488,
+        "ORC_target_calval": 0.12696078431372548,
+        "M1a_quantile_pooled": 0.12805025368446485
+      },
+      "threshold": {
+        "M0_t_src": 0.344215,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.012749,
+        "ORC_target_calval": 0.040436,
+        "M1a_quantile_pooled": 0.03902952854218787
+      },
+      "gap_oracle_minus_t_src": 0.05075549659988411,
+      "regret": {
+        "D25_default": 0.039939028874865765,
+        "M1c_kept_rate": 0.008578673166076689,
+        "M1a_quantile_pooled": -0.0010894693707393655
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.06048878380425088,
+          0.09031296254074166
+        ],
+        "D25_default": [
+          0.07072167748366251,
+          0.1021577409618533
+        ],
+        "M1c_kept_rate": [
+          0.10741479113384485,
+          0.12984190121756894
+        ],
+        "ORC_target_calval": [
+          0.11258452288689028,
+          0.14172048925215092
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.03937976741848916,
+          0.0633738499220232
+        ],
+        "D25_default": [
+          0.02861329610399385,
+          0.05208604304283086
+        ],
+        "M1c_kept_rate": [
+          0.00028575911411179544,
+          0.01687611819520985
+        ]
+      },
+      "stored_gap_ci95": [
+        0.03937976741848916,
+        0.0633738499220232
+      ],
+      "source_keys": {
+        "refine": "cells.v8n_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.v8n_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8n_pyrosdis_s3407__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "v8n_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.017421602787456445,
+        "ORC_target_calval": 0.013043478260869565,
+        "M1a_quantile_pooled": 0.010582010582010581
+      },
+      "threshold": {
+        "M0_t_src": 0.344215,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.006396,
+        "ORC_target_calval": 0.010711,
+        "M1a_quantile_pooled": 0.020187350693654765
+      },
+      "gap_oracle_minus_t_src": 0.013043478260869565,
+      "regret": {
+        "D25_default": 0.013043478260869565,
+        "M1c_kept_rate": -0.004378124526586881,
+        "M1a_quantile_pooled": 0.002461467678858983
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.003477660133663738,
+          0.03231615980269481
+        ],
+        "ORC_target_calval": [
+          0.0,
+          0.028629856850715747
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.0,
+          0.028629856850715747
+        ],
+        "D25_default": [
+          0.0,
+          0.028629856850715747
+        ],
+        "M1c_kept_rate": [
+          -0.016078982071766418,
+          0.003839539711443012
+        ]
+      },
+      "stored_gap_ci95": [
+        0.0,
+        0.028629856850715747
+      ],
+      "source_keys": {
+        "refine": "cells.v8n_pyrosdis_s3407__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.v8n_pyrosdis_s3407__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfire_s1337__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "v8s_dfire_s1337",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.21657642648896294,
+        "D25_default": 0.25425742574257426,
+        "M1c_kept_rate": 0.2881011515014676,
+        "ORC_target_calval": 0.3056646102075154,
+        "M1a_quantile_pooled": 0.3057996485061512
+      },
+      "threshold": {
+        "M0_t_src": 0.318437,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.032302,
+        "ORC_target_calval": 0.067544,
+        "M1a_quantile_pooled": 0.079250872959625
+      },
+      "gap_oracle_minus_t_src": 0.08908818371855245,
+      "regret": {
+        "D25_default": 0.051407184464941136,
+        "M1c_kept_rate": 0.017563458706047808,
+        "M1a_quantile_pooled": -0.0001350382986358145
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.19384092795931623,
+          0.23817841004441773
+        ],
+        "D25_default": [
+          0.2315734317656293,
+          0.27570587197230073
+        ],
+        "M1c_kept_rate": [
+          0.2719955332624376,
+          0.3039693598831328
+        ],
+        "ORC_target_calval": [
+          0.2872607953754507,
+          0.32406367292013977
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.07011215219293353,
+          0.10977927407800922
+        ],
+        "D25_default": [
+          0.033735732198881554,
+          0.06906821534823904
+        ],
+        "M1c_kept_rate": [
+          0.008255145483867776,
+          0.027042959253715033
+        ]
+      },
+      "stored_gap_ci95": [
+        0.07011215219293353,
+        0.10977927407800922
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfire_s1337__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfire_s1337__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfire_s1337__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "v8s_dfire_s1337",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.25783132530120484,
+        "D25_default": 0.26258205689277897,
+        "M1c_kept_rate": 0.25650916104146576,
+        "ORC_target_calval": 0.2615558060879369,
+        "M1a_quantile_pooled": 0.2024866785079929
+      },
+      "threshold": {
+        "M0_t_src": 0.318437,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.189116,
+        "ORC_target_calval": 0.26777,
+        "M1a_quantile_pooled": 0.07038338349284297
+      },
+      "gap_oracle_minus_t_src": 0.003724480786732043,
+      "regret": {
+        "D25_default": -0.0010262508048420882,
+        "M1c_kept_rate": 0.005046645046471121,
+        "M1a_quantile_pooled": 0.05906912757994398
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.21354020365168538,
+          0.30578612693572976
+        ],
+        "D25_default": [
+          0.2228750204946462,
+          0.3051293945129843
+        ],
+        "M1c_kept_rate": [
+          0.21764367037137436,
+          0.29732676024955434
+        ],
+        "ORC_target_calval": [
+          0.21919431429897746,
+          0.3059527573942893
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.009642069467795273,
+          0.017017751532205208
+        ],
+        "D25_default": [
+          -0.009934083228930237,
+          0.006072008978427392
+        ],
+        "M1c_kept_rate": [
+          -0.011659993157511215,
+          0.020370562037905115
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.009642069467795273,
+        0.017017751532205208
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfire_s1337__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfire_s1337__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfire_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "v8s_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.215962441314554,
+        "D25_default": 0.2760233918128655,
+        "M1c_kept_rate": 0.3230732522071105,
+        "ORC_target_calval": 0.32907447803053913,
+        "M1a_quantile_pooled": 0.32515955660060464
+      },
+      "threshold": {
+        "M0_t_src": 0.371965,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.032323,
+        "ORC_target_calval": 0.089899,
+        "M1a_quantile_pooled": 0.12384381451695352
+      },
+      "gap_oracle_minus_t_src": 0.11311203671598513,
+      "regret": {
+        "D25_default": 0.053051086217673626,
+        "M1c_kept_rate": 0.0060012258234286575,
+        "M1a_quantile_pooled": 0.0039149214299344925
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1934064036788371,
+          0.23695577423888065
+        ],
+        "D25_default": [
+          0.252629315666022,
+          0.297542334567555
+        ],
+        "M1c_kept_rate": [
+          0.3066226711926668,
+          0.3395906921260444
+        ],
+        "ORC_target_calval": [
+          0.30861840944895114,
+          0.34886716030750364
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.09511478114487343,
+          0.13055366006603908
+        ],
+        "D25_default": [
+          0.03916063571375783,
+          0.06732767257974574
+        ],
+        "M1c_kept_rate": [
+          -0.0067498590258009234,
+          0.018661909500393113
+        ]
+      },
+      "stored_gap_ci95": [
+        0.09511478114487343,
+        0.13055366006603908
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfire_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfire_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfire_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "v8s_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.2312579415501906,
+        "D25_default": 0.24858757062146894,
+        "M1c_kept_rate": 0.2528263103802672,
+        "ORC_target_calval": 0.25413223140495866,
+        "M1a_quantile_pooled": 0.21880998080614203
+      },
+      "threshold": {
+        "M0_t_src": 0.371965,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.194665,
+        "ORC_target_calval": 0.196173,
+        "M1a_quantile_pooled": 0.06025367016527519
+      },
+      "gap_oracle_minus_t_src": 0.022874289854768054,
+      "regret": {
+        "D25_default": 0.005544660783489724,
+        "M1c_kept_rate": 0.0013059210246914588,
+        "M1a_quantile_pooled": 0.035322250598816635
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1927702429831056,
+          0.27248215496357586
+        ],
+        "D25_default": [
+          0.21411750393588092,
+          0.28640131186642814
+        ],
+        "M1c_kept_rate": [
+          0.21825029394473838,
+          0.29132231404958675
+        ],
+        "ORC_target_calval": [
+          0.21955839873048932,
+          0.2925917669618465
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.0018498844480596382,
+          0.04674919899246916
+        ],
+        "D25_default": [
+          -0.007938474319598638,
+          0.01967160290529544
+        ],
+        "M1c_kept_rate": [
+          0.00023013394925733497,
+          0.0027942891275948368
+        ]
+      },
+      "stored_gap_ci95": [
+        0.0018498844480596382,
+        0.04674919899246916
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfire_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfire_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfiredd_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "v8s_dfiredd_s3407",
+      "family": "yolo",
+      "train_set": "dfiredd",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.16926315789473684,
+        "D25_default": 0.18907060231352213,
+        "M1c_kept_rate": 0.20604660119391488,
+        "ORC_target_calval": 0.2312362030905077,
+        "M1a_quantile_pooled": 0.22789002981119577
+      },
+      "threshold": {
+        "M0_t_src": 0.338768,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.011171,
+        "ORC_target_calval": 0.040866,
+        "M1a_quantile_pooled": 0.09205768055893675
+      },
+      "gap_oracle_minus_t_src": 0.061973045195770876,
+      "regret": {
+        "D25_default": 0.042165600776985585,
+        "M1c_kept_rate": 0.025189601896592834,
+        "M1a_quantile_pooled": 0.0033461732793119425
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.14817760446677677,
+          0.18980181200740392
+        ],
+        "D25_default": [
+          0.16739793121696175,
+          0.20986108950449817
+        ],
+        "M1c_kept_rate": [
+          0.19161988267204946,
+          0.21962773894452364
+        ],
+        "ORC_target_calval": [
+          0.2138073808998148,
+          0.24760134804988118
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.04404839588863047,
+          0.07850980040950566
+        ],
+        "D25_default": [
+          0.026785287711062047,
+          0.05801252540830986
+        ],
+        "M1c_kept_rate": [
+          0.014786081124372885,
+          0.035597155351089385
+        ]
+      },
+      "stored_gap_ci95": [
+        0.04404839588863047,
+        0.07850980040950566
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfiredd_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfiredd_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfiredd_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "v8s_dfiredd_s3407",
+      "family": "yolo",
+      "train_set": "dfiredd",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.23333333333333334,
+        "D25_default": 0.24206815511163338,
+        "M1c_kept_rate": 0.24825174825174826,
+        "ORC_target_calval": 0.24296962879640044,
+        "M1a_quantile_pooled": 0.24154589371980678
+      },
+      "threshold": {
+        "M0_t_src": 0.338768,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.093921,
+        "ORC_target_calval": 0.222463,
+        "M1a_quantile_pooled": 0.07365839962997241
+      },
+      "gap_oracle_minus_t_src": 0.009636295463067102,
+      "regret": {
+        "D25_default": 0.0009014736847670624,
+        "M1c_kept_rate": -0.005282119455347817,
+        "M1a_quantile_pooled": 0.0014237350765936574
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1933773005012623,
+          0.27694267515923565
+        ],
+        "D25_default": [
+          0.20274857164205792,
+          0.2833426143024619
+        ],
+        "M1c_kept_rate": [
+          0.21659927660580156,
+          0.28263065986092933
+        ],
+        "ORC_target_calval": [
+          0.2047692384370016,
+          0.28574582150741085
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.007407399884780704,
+          0.02793865827580982
+        ],
+        "D25_default": [
+          -0.007070762365421167,
+          0.010582127684925998
+        ],
+        "M1c_kept_rate": [
+          -0.028206152070389852,
+          0.016598692971812396
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.007407399884780704,
+        0.02793865827580982
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfiredd_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfiredd_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfiresub_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "v8s_dfiresub_s3407",
+      "family": "yolo",
+      "train_set": "dfiresub",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.2273666804464655,
+        "D25_default": 0.27439024390243905,
+        "M1c_kept_rate": 0.30705996131528046,
+        "ORC_target_calval": 0.31727523780300704,
+        "M1a_quantile_pooled": 0.3095484315753188
+      },
+      "threshold": {
+        "M0_t_src": 0.345741,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.045849,
+        "ORC_target_calval": 0.101992,
+        "M1a_quantile_pooled": 0.1598135796947705
+      },
+      "gap_oracle_minus_t_src": 0.08990855735654155,
+      "regret": {
+        "D25_default": 0.04288499390056799,
+        "M1c_kept_rate": 0.010215276487726577,
+        "M1a_quantile_pooled": 0.007726806227688232
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.20544087328580185,
+          0.2480561421405201
+        ],
+        "D25_default": [
+          0.2514415328045399,
+          0.2961595353087361
+        ],
+        "M1c_kept_rate": [
+          0.29014185901785305,
+          0.3221964992235769
+        ],
+        "ORC_target_calval": [
+          0.2976228842498087,
+          0.3354945857466633
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.0721620728381805,
+          0.10737860869589538
+        ],
+        "D25_default": [
+          0.0289111964534957,
+          0.05832036952198971
+        ],
+        "M1c_kept_rate": [
+          -0.0009842471007307074,
+          0.02145380510976957
+        ]
+      },
+      "stored_gap_ci95": [
+        0.0721620728381805,
+        0.10737860869589538
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfiresub_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfiresub_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_dfiresub_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "v8s_dfiresub_s3407",
+      "family": "yolo",
+      "train_set": "dfiresub",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.22013422818791947,
+        "D25_default": 0.24793388429752067,
+        "M1c_kept_rate": 0.2464864864864865,
+        "ORC_target_calval": 0.22651448639157157,
+        "M1a_quantile_pooled": 0.1980874316939891
+      },
+      "threshold": {
+        "M0_t_src": 0.345741,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.188464,
+        "ORC_target_calval": 0.118006,
+        "M1a_quantile_pooled": 0.0717136075174194
+      },
+      "gap_oracle_minus_t_src": 0.006380258203652095,
+      "regret": {
+        "D25_default": -0.0214193979059491,
+        "M1c_kept_rate": -0.019972000094914927,
+        "M1a_quantile_pooled": 0.02842705469758247
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1804020618556701,
+          0.26239747684445863
+        ],
+        "D25_default": [
+          0.2078692044093968,
+          0.2893254716981132
+        ],
+        "M1c_kept_rate": [
+          0.20858967998015382,
+          0.2857142857142857
+        ],
+        "ORC_target_calval": [
+          0.19321863132604822,
+          0.260266779805858
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.0233884152663519,
+          0.03374152241020867
+        ],
+        "D25_default": [
+          -0.042020647058701135,
+          -0.00015738220869814602
+        ],
+        "M1c_kept_rate": [
+          -0.034672112629997455,
+          -0.005088300929222054
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.0233884152663519,
+        0.03374152241020867
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_dfiresub_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.v8s_dfiresub_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "v8s_pyrosdis_s1337",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.08751902587519025,
+        "D25_default": 0.09402985074626866,
+        "M1c_kept_rate": 0.11929595827900913,
+        "ORC_target_calval": 0.13674775928297056,
+        "M1a_quantile_pooled": 0.13648954923193152
+      },
+      "threshold": {
+        "M0_t_src": 0.294579,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.005361,
+        "ORC_target_calval": 0.025515,
+        "M1a_quantile_pooled": 0.023868087084870843
+      },
+      "gap_oracle_minus_t_src": 0.049228733407780306,
+      "regret": {
+        "D25_default": 0.042717908536701904,
+        "M1c_kept_rate": 0.01745180100396143,
+        "M1a_quantile_pooled": 0.0002582100510390428
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.07093237833517683,
+          0.10350324935667099
+        ],
+        "D25_default": [
+          0.07741427034475537,
+          0.11073620385177357
+        ],
+        "M1c_kept_rate": [
+          0.10840700010232138,
+          0.13172617172817172
+        ],
+        "ORC_target_calval": [
+          0.1211649159671933,
+          0.15175212462615575
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.03632784068722299,
+          0.06244660787431098
+        ],
+        "D25_default": [
+          0.03045967043512084,
+          0.05506686894884419
+        ],
+        "M1c_kept_rate": [
+          0.009226348115679208,
+          0.025180175446360878
+        ]
+      },
+      "stored_gap_ci95": [
+        0.03632784068722299,
+        0.06244660787431098
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_pyrosdis_s1337__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.v8s_pyrosdis_s1337__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_pyrosdis_s1337__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "v8s_pyrosdis_s1337",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.00946372239747634,
+        "ORC_target_calval": 0.010327022375215147,
+        "M1a_quantile_pooled": 0.014388489208633093
+      },
+      "threshold": {
+        "M0_t_src": 0.294579,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.002591,
+        "ORC_target_calval": 0.003156,
+        "M1a_quantile_pooled": 0.009895220664206643
+      },
+      "gap_oracle_minus_t_src": 0.010327022375215147,
+      "regret": {
+        "D25_default": 0.010327022375215147,
+        "M1c_kept_rate": 0.0008632999777388062,
+        "M1a_quantile_pooled": -0.0040614668334179455
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.0,
+          0.020774613578989323
+        ],
+        "ORC_target_calval": [
+          0.0,
+          0.02244318181818181
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.0,
+          0.02244318181818181
+        ],
+        "D25_default": [
+          0.0,
+          0.02244318181818181
+        ],
+        "M1c_kept_rate": [
+          0.0,
+          0.001912152859391843
+        ]
+      },
+      "stored_gap_ci95": [
+        0.0,
+        0.02244318181818181
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_pyrosdis_s1337__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.v8s_pyrosdis_s1337__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "v8s_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.08323609490470633,
+        "D25_default": 0.09191036840106342,
+        "M1c_kept_rate": 0.11790878754171301,
+        "ORC_target_calval": 0.13703907539900936,
+        "M1a_quantile_pooled": 0.14161621479336667
+      },
+      "threshold": {
+        "M0_t_src": 0.312367,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.004783,
+        "ORC_target_calval": 0.036486,
+        "M1a_quantile_pooled": 0.02952461544523247
+      },
+      "gap_oracle_minus_t_src": 0.05380298049430303,
+      "regret": {
+        "D25_default": 0.04512870699794594,
+        "M1c_kept_rate": 0.019130287857296355,
+        "M1a_quantile_pooled": -0.004577139394357305
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.06701094359974819,
+          0.09879434653238726
+        ],
+        "D25_default": [
+          0.0749368944962615,
+          0.10794380460852811
+        ],
+        "M1c_kept_rate": [
+          0.10663763230036592,
+          0.12941234196073953
+        ],
+        "ORC_target_calval": [
+          0.12193231501086149,
+          0.15263462382713386
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.04258541159160687,
+          0.06746172691819896
+        ],
+        "D25_default": [
+          0.03461940395760591,
+          0.05739530678112819
+        ],
+        "M1c_kept_rate": [
+          0.009355082079021035,
+          0.02853591326845473
+        ]
+      },
+      "stored_gap_ci95": [
+        0.04258541159160687,
+        0.06746172691819896
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.v8s_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "v8s_pyrosdis_s3407__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "v8s_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.016722408026755852,
+        "ORC_target_calval": 0.02059202059202059,
+        "M1a_quantile_pooled": 0.010840108401084013
+      },
+      "threshold": {
+        "M0_t_src": 0.312367,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.00322,
+        "ORC_target_calval": 0.001658,
+        "M1a_quantile_pooled": 0.01619204728132388
+      },
+      "gap_oracle_minus_t_src": 0.02059202059202059,
+      "regret": {
+        "D25_default": 0.02059202059202059,
+        "M1c_kept_rate": 0.0038696125652647392,
+        "M1a_quantile_pooled": 0.009751912190936579
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.003615188586358459,
+          0.032104254080895116
+        ],
+        "ORC_target_calval": [
+          0.008040235754712967,
+          0.035044902619502445
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.008040235754712967,
+          0.035044902619502445
+        ],
+        "D25_default": [
+          0.008040235754712967,
+          0.035044902619502445
+        ],
+        "M1c_kept_rate": [
+          -0.0046042400556597605,
+          0.014107388668521122
+        ]
+      },
+      "stored_gap_ci95": [
+        0.008040235754712967,
+        0.035044902619502445
+      ],
+      "source_keys": {
+        "refine": "cells.v8s_pyrosdis_s3407__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.v8s_pyrosdis_s3407__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11m_dfire_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "y11m_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.2292887029288703,
+        "D25_default": 0.2699767261442979,
+        "M1c_kept_rate": 0.31448275862068964,
+        "ORC_target_calval": 0.33489187609585036,
+        "M1a_quantile_pooled": 0.31290653885655595
+      },
+      "threshold": {
+        "M0_t_src": 0.350963,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.024105,
+        "ORC_target_calval": 0.071043,
+        "M1a_quantile_pooled": 0.143017265993266
+      },
+      "gap_oracle_minus_t_src": 0.10560317316698006,
+      "regret": {
+        "D25_default": 0.06491514995155245,
+        "M1c_kept_rate": 0.02040911747516072,
+        "M1a_quantile_pooled": 0.02198533723929441
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.20666167675317904,
+          0.25116491893356035
+        ],
+        "D25_default": [
+          0.24804214622379625,
+          0.2918477990410885
+        ],
+        "M1c_kept_rate": [
+          0.29797545094053013,
+          0.33088861146205456
+        ],
+        "ORC_target_calval": [
+          0.315023658915772,
+          0.3536799597533991
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.08704013699998164,
+          0.12444091284599743
+        ],
+        "D25_default": [
+          0.048665369787688824,
+          0.08262121218326307
+        ],
+        "M1c_kept_rate": [
+          0.009400097631587183,
+          0.030838083565102987
+        ]
+      },
+      "stored_gap_ci95": [
+        0.08704013699998164,
+        0.12444091284599743
+      ],
+      "source_keys": {
+        "refine": "cells.y11m_dfire_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.y11m_dfire_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11m_dfire_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "y11m_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.2699228791773779,
+        "D25_default": 0.2751445086705202,
+        "M1c_kept_rate": 0.2732012513034411,
+        "ORC_target_calval": 0.27539503386004516,
+        "M1a_quantile_pooled": 0.22963438101347014
+      },
+      "threshold": {
+        "M0_t_src": 0.350963,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.17441,
+        "ORC_target_calval": 0.221906,
+        "M1a_quantile_pooled": 0.04289734671922471
+      },
+      "gap_oracle_minus_t_src": 0.005472154682667263,
+      "regret": {
+        "D25_default": 0.00025052518952495273,
+        "M1c_kept_rate": 0.0021937825566040736,
+        "M1a_quantile_pooled": 0.04576065284657502
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.22221441947565543,
+          0.3179963864587296
+        ],
+        "D25_default": [
+          0.23114851995011695,
+          0.3197100371747212
+        ],
+        "M1c_kept_rate": [
+          0.2324245425487941,
+          0.3146672689015945
+        ],
+        "ORC_target_calval": [
+          0.23222664124919765,
+          0.3196333725029377
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.012051848588575206,
+          0.02377275926200438
+        ],
+        "D25_default": [
+          -0.005880617875719726,
+          0.007553963217682581
+        ],
+        "M1c_kept_rate": [
+          -0.010155215897932023,
+          0.014794762609995177
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.012051848588575206,
+        0.02377275926200438
+      ],
+      "source_keys": {
+        "refine": "cells.y11m_dfire_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.y11m_dfire_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11n_dfire_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "y11n_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.1513978494623656,
+        "D25_default": 0.18707346447209955,
+        "M1c_kept_rate": 0.23045078196872126,
+        "ORC_target_calval": 0.239674229203025,
+        "M1a_quantile_pooled": 0.24327704815509693
+      },
+      "threshold": {
+        "M0_t_src": 0.33248,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.028089,
+        "ORC_target_calval": 0.065616,
+        "M1a_quantile_pooled": 0.08799886683107275
+      },
+      "gap_oracle_minus_t_src": 0.08827637974065941,
+      "regret": {
+        "D25_default": 0.05260076473092545,
+        "M1c_kept_rate": 0.009223447234303739,
+        "M1a_quantile_pooled": -0.003602818952071929
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.13228768693682005,
+          0.170459989970795
+        ],
+        "D25_default": [
+          0.16739470019181124,
+          0.20684644572475452
+        ],
+        "M1c_kept_rate": [
+          0.21495438078647372,
+          0.24546323135478773
+        ],
+        "ORC_target_calval": [
+          0.22202106835557756,
+          0.2562178770227374
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.07178982176565081,
+          0.10507515233147631
+        ],
+        "D25_default": [
+          0.03717130825647532,
+          0.06728512341002017
+        ],
+        "M1c_kept_rate": [
+          -0.0010062387409228066,
+          0.01812808287445659
+        ]
+      },
+      "stored_gap_ci95": [
+        0.07178982176565081,
+        0.10507515233147631
+      ],
+      "source_keys": {
+        "refine": "cells.y11n_dfire_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.y11n_dfire_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11n_dfire_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "y11n_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.2562814070351759,
+        "D25_default": 0.2565266742338252,
+        "M1c_kept_rate": 0.2584493041749503,
+        "ORC_target_calval": 0.25511197663096397,
+        "M1a_quantile_pooled": 0.23880597014925375
+      },
+      "threshold": {
+        "M0_t_src": 0.33248,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.17229,
+        "ORC_target_calval": 0.163218,
+        "M1a_quantile_pooled": 0.09619901561857798
+      },
+      "gap_oracle_minus_t_src": -0.001169430404211913,
+      "regret": {
+        "D25_default": -0.0014146976028612257,
+        "M1c_kept_rate": -0.003337327543986357,
+        "M1a_quantile_pooled": 0.01630600648171021
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.21147940840006538,
+          0.3026858247798803
+        ],
+        "D25_default": [
+          0.21148023220368187,
+          0.3015211410812022
+        ],
+        "M1c_kept_rate": [
+          0.21913365420903025,
+          0.30030364458677933
+        ],
+        "ORC_target_calval": [
+          0.21543664017421102,
+          0.2959938923795149
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.025861527078607505,
+          0.024998901723975186
+        ],
+        "D25_default": [
+          -0.017941861548106366,
+          0.01757212463459517
+        ],
+        "M1c_kept_rate": [
+          -0.007145117115236474,
+          0.0014253007707989002
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.025861527078607505,
+        0.024998901723975186
+      ],
+      "source_keys": {
+        "refine": "cells.y11n_dfire_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.y11n_dfire_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "y11n_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.08458285274894271,
+        "D25_default": 0.1004802364240857,
+        "M1c_kept_rate": 0.13086150490730644,
+        "ORC_target_calval": 0.14965095986038393,
+        "M1a_quantile_pooled": 0.14859437751004015
+      },
+      "threshold": {
+        "M0_t_src": 0.315704,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.011698,
+        "ORC_target_calval": 0.031927,
+        "M1a_quantile_pooled": 0.0342173009279717
+      },
+      "gap_oracle_minus_t_src": 0.06506810711144122,
+      "regret": {
+        "D25_default": 0.04917072343629823,
+        "M1c_kept_rate": 0.01878945495307749,
+        "M1a_quantile_pooled": 0.0010565823503437821
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.06832929271713378,
+          0.10079687047232687
+        ],
+        "D25_default": [
+          0.08372436554110212,
+          0.11697096668183425
+        ],
+        "M1c_kept_rate": [
+          0.12004152063654884,
+          0.14183322232728635
+        ],
+        "ORC_target_calval": [
+          0.13477706402883372,
+          0.16341638251967625
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.051058028711773784,
+          0.08057585565282419
+        ],
+        "D25_default": [
+          0.03522257024079831,
+          0.06360335877346433
+        ],
+        "M1c_kept_rate": [
+          0.011396712985690647,
+          0.025297003153813575
+        ]
+      },
+      "stored_gap_ci95": [
+        0.051058028711773784,
+        0.08057585565282419
+      ],
+      "source_keys": {
+        "refine": "cells.y11n_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.y11n_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11n_pyrosdis_s3407__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "y11n_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.01524390243902439,
+        "ORC_target_calval": 0.018281535648994516,
+        "M1a_quantile_pooled": 0.015779092702169626
+      },
+      "threshold": {
+        "M0_t_src": 0.315704,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.006633,
+        "ORC_target_calval": 0.00265,
+        "M1a_quantile_pooled": 0.011598994381667822
+      },
+      "gap_oracle_minus_t_src": 0.018281535648994516,
+      "regret": {
+        "D25_default": 0.018281535648994516,
+        "M1c_kept_rate": 0.003037633209970126,
+        "M1a_quantile_pooled": 0.00250244294682489
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.002919495532251724,
+          0.033014768658333
+        ],
+        "ORC_target_calval": [
+          0.007804878048780488,
+          0.030358201996422942
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.007804878048780488,
+          0.030358201996422942
+        ],
+        "D25_default": [
+          0.007804878048780488,
+          0.030358201996422942
+        ],
+        "M1c_kept_rate": [
+          -0.006414401546537294,
+          0.014203991070689452
+        ]
+      },
+      "stored_gap_ci95": [
+        0.007804878048780488,
+        0.030358201996422942
+      ],
+      "source_keys": {
+        "refine": "cells.y11n_pyrosdis_s3407__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.y11n_pyrosdis_s3407__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_dfire_s1337__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "y11s_dfire_s1337",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.1984093763080787,
+        "D25_default": 0.2460952380952381,
+        "M1c_kept_rate": 0.27692307692307694,
+        "ORC_target_calval": 0.28176100628930817,
+        "M1a_quantile_pooled": 0.28186109238031015
+      },
+      "threshold": {
+        "M0_t_src": 0.374815,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.038349,
+        "ORC_target_calval": 0.111552,
+        "M1a_quantile_pooled": 0.14604450536919825
+      },
+      "gap_oracle_minus_t_src": 0.08335162998122947,
+      "regret": {
+        "D25_default": 0.03566576819407008,
+        "M1c_kept_rate": 0.004837929366231231,
+        "M1a_quantile_pooled": -0.00010008609100198296
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.17679670964866995,
+          0.2181622248660136
+        ],
+        "D25_default": [
+          0.22497579745952456,
+          0.26556119226712643
+        ],
+        "M1c_kept_rate": [
+          0.2612698908434933,
+          0.2932512513263708
+        ],
+        "ORC_target_calval": [
+          0.2625011030633587,
+          0.3007693746351673
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.0673813896504415,
+          0.10094122572833646
+        ],
+        "D25_default": [
+          0.022331134434444625,
+          0.04848527850918324
+        ],
+        "M1c_kept_rate": [
+          -0.007137722714653778,
+          0.015268078326056348
+        ]
+      },
+      "stored_gap_ci95": [
+        0.0673813896504415,
+        0.10094122572833646
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_dfire_s1337__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.y11s_dfire_s1337__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_dfire_s1337__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "y11s_dfire_s1337",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.27225130890052357,
+        "D25_default": 0.2887323943661972,
+        "M1c_kept_rate": 0.2875,
+        "ORC_target_calval": 0.28900523560209423,
+        "M1a_quantile_pooled": 0.2545180722891566
+      },
+      "threshold": {
+        "M0_t_src": 0.374815,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.158728,
+        "ORC_target_calval": 0.162026,
+        "M1a_quantile_pooled": 0.061043407639301876
+      },
+      "gap_oracle_minus_t_src": 0.016753926701570665,
+      "regret": {
+        "D25_default": 0.0002728412358970478,
+        "M1c_kept_rate": 0.001505235602094257,
+        "M1a_quantile_pooled": 0.03448716331293761
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.22548498122653318,
+          0.3202239955844813
+        ],
+        "D25_default": [
+          0.2411518032868864,
+          0.3349313125832388
+        ],
+        "M1c_kept_rate": [
+          0.24371175155752128,
+          0.3281939349024196
+        ],
+        "ORC_target_calval": [
+          0.24501563147387848,
+          0.3305399119117138
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.006709401529196301,
+          0.040736045705036195
+        ],
+        "D25_default": [
+          -0.015042786034296988,
+          0.018272380796423664
+        ],
+        "M1c_kept_rate": [
+          0.0003300701367130149,
+          0.0027942946690347773
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.006709401529196301,
+        0.040736045705036195
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_dfire_s1337__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.y11s_dfire_s1337__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_dfire_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "y11s_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.18143100511073254,
+        "D25_default": 0.22953388170779476,
+        "M1c_kept_rate": 0.27617031286756055,
+        "ORC_target_calval": 0.28195804195804197,
+        "M1a_quantile_pooled": 0.27863777089783276
+      },
+      "threshold": {
+        "M0_t_src": 0.35906,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.029599,
+        "ORC_target_calval": 0.055812,
+        "M1a_quantile_pooled": 0.1335808816347846
+      },
+      "gap_oracle_minus_t_src": 0.10052703684730943,
+      "regret": {
+        "D25_default": 0.05242416025024721,
+        "M1c_kept_rate": 0.005787729090481419,
+        "M1a_quantile_pooled": 0.0033202710602092123
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.1615168776554252,
+          0.20167612166212462
+        ],
+        "D25_default": [
+          0.20724909167158406,
+          0.2505748909874
+        ],
+        "M1c_kept_rate": [
+          0.2587830594832001,
+          0.2904247384495505
+        ],
+        "ORC_target_calval": [
+          0.26322899444280345,
+          0.297825446543981
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.08255008668349274,
+          0.12057092426856444
+        ],
+        "D25_default": [
+          0.035808002035749756,
+          0.06963429961580662
+        ],
+        "M1c_kept_rate": [
+          -0.0029184161990360932,
+          0.0148138945415122
+        ]
+      },
+      "stored_gap_ci95": [
+        0.08255008668349274,
+        0.12057092426856444
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_dfire_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.y11s_dfire_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_dfire_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "y11s_dfire_s3407",
+      "family": "yolo",
+      "train_set": "dfire",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.2632258064516129,
+        "D25_default": 0.2601626016260163,
+        "M1c_kept_rate": 0.2762201453790239,
+        "ORC_target_calval": 0.27578947368421053,
+        "M1a_quantile_pooled": 0.23578363384188628
+      },
+      "threshold": {
+        "M0_t_src": 0.35906,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.17441,
+        "ORC_target_calval": 0.183543,
+        "M1a_quantile_pooled": 0.060316023960305436
+      },
+      "gap_oracle_minus_t_src": 0.012563667232597608,
+      "regret": {
+        "D25_default": 0.01562687205819424,
+        "M1c_kept_rate": -0.0004306716948133671,
+        "M1a_quantile_pooled": 0.04000583984232425
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.21744169568386104,
+          0.3114654912876527
+        ],
+        "D25_default": [
+          0.21802772754260907,
+          0.30365224153312564
+        ],
+        "M1c_kept_rate": [
+          0.23655913978494625,
+          0.317129777635692
+        ],
+        "ORC_target_calval": [
+          0.23579296005441502,
+          0.31791447851441024
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.008372391862390284,
+          0.03410572505925457
+        ],
+        "D25_default": [
+          -0.0007243567313706481,
+          0.03127312845215328
+        ],
+        "M1c_kept_rate": [
+          -0.006817377714783769,
+          0.004032654725169605
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.008372391862390284,
+        0.03410572505925457
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_dfire_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.y11s_dfire_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_dfiredd_s3407__to__pyro_sdis_caltest": {
+      "direction": "D-Fire->Pyro-SDIS",
+      "run": "y11s_dfiredd_s3407",
+      "family": "yolo",
+      "train_set": "dfiredd",
+      "target": "pyro_sdis",
+      "target_test": "pyro_sdis_caltest",
+      "n_target_test_images": 2050,
+      "n_target_test_gt": 1948,
+      "f1": {
+        "M0_t_src": 0.14298169136878813,
+        "D25_default": 0.1734570391286809,
+        "M1c_kept_rate": 0.19805982215036377,
+        "ORC_target_calval": 0.21327151550275283,
+        "M1a_quantile_pooled": 0.20283687943262413
+      },
+      "threshold": {
+        "M0_t_src": 0.346008,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.021708,
+        "ORC_target_calval": 0.067009,
+        "M1a_quantile_pooled": 0.143409
+      },
+      "gap_oracle_minus_t_src": 0.0702898241339647,
+      "regret": {
+        "D25_default": 0.03981447637407193,
+        "M1c_kept_rate": 0.01521169335238906,
+        "M1a_quantile_pooled": 0.010434636070128706
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.12451198738928708,
+          0.1622176202489491
+        ],
+        "D25_default": [
+          0.1552953076737419,
+          0.19185821314507015
+        ],
+        "M1c_kept_rate": [
+          0.18484842986015068,
+          0.21129739742049242
+        ],
+        "ORC_target_calval": [
+          0.19783547352236588,
+          0.23063281334221014
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.05501876388187385,
+          0.08765027415346341
+        ],
+        "D25_default": [
+          0.02602699197763893,
+          0.0546965313301491
+        ],
+        "M1c_kept_rate": [
+          0.004649173898302114,
+          0.025829971545743225
+        ]
+      },
+      "stored_gap_ci95": [
+        0.05501876388187385,
+        0.08765027415346341
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_dfiredd_s3407__to__pyro_sdis_caltest.methods.<rule>.f1",
+        "pilot": "cells.y11s_dfiredd_s3407__to__pyro_sdis_caltest.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_dfiredd_s3407__to__thesis_test": {
+      "direction": "D-Fire->thesis",
+      "run": "y11s_dfiredd_s3407",
+      "family": "yolo",
+      "train_set": "dfiredd",
+      "target": "thesis",
+      "target_test": "thesis_test",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 557,
+      "f1": {
+        "M0_t_src": 0.2561576354679803,
+        "D25_default": 0.25942350332594233,
+        "M1c_kept_rate": 0.24915824915824916,
+        "ORC_target_calval": 0.26305609284332687,
+        "M1a_quantile_pooled": 0.23378582202111614
+      },
+      "threshold": {
+        "M0_t_src": 0.346008,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.119272,
+        "ORC_target_calval": 0.168447,
+        "M1a_quantile_pooled": 0.09449654999999992
+      },
+      "gap_oracle_minus_t_src": 0.006898457375346556,
+      "regret": {
+        "D25_default": 0.0036325895173845435,
+        "M1c_kept_rate": 0.01389784368507771,
+        "M1a_quantile_pooled": 0.02927027082221073
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.2143521047063744,
+          0.3020510438381824
+        ],
+        "D25_default": [
+          0.21949044317830982,
+          0.300107574044595
+        ],
+        "M1c_kept_rate": [
+          0.21624882304309384,
+          0.28474833076527994
+        ],
+        "ORC_target_calval": [
+          0.22553116032817364,
+          0.3011476370851371
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          -0.016668705689776506,
+          0.030030811654628856
+        ],
+        "D25_default": [
+          -0.012936311157699413,
+          0.02068408305818547
+        ],
+        "M1c_kept_rate": [
+          0.00036197973089250403,
+          0.025418053148081432
+        ]
+      },
+      "stored_gap_ci95": [
+        -0.016668705689776506,
+        0.030030811654628856
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_dfiredd_s3407__to__thesis_test.methods.<rule>.f1",
+        "pilot": "cells.y11s_dfiredd_s3407__to__thesis_test.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "y11s_pyrosdis_s1337",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.09216589861751152,
+        "D25_default": 0.09906890130353818,
+        "M1c_kept_rate": 0.1370464135021097,
+        "ORC_target_calval": 0.15515818431911968,
+        "M1a_quantile_pooled": 0.15439129334345733
+      },
+      "threshold": {
+        "M0_t_src": 0.317275,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.008034,
+        "ORC_target_calval": 0.04689,
+        "M1a_quantile_pooled": 0.03306469774919611
+      },
+      "gap_oracle_minus_t_src": 0.06299228570160816,
+      "regret": {
+        "D25_default": 0.0560892830155815,
+        "M1c_kept_rate": 0.018111770817009987,
+        "M1a_quantile_pooled": 0.0007668909756623488
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.07655319421446019,
+          0.10852164978802299
+        ],
+        "D25_default": [
+          0.08336175487721098,
+          0.1147182226328478
+        ],
+        "M1c_kept_rate": [
+          0.12534680770426712,
+          0.14951182213702222
+        ],
+        "ORC_target_calval": [
+          0.13810880983838508,
+          0.17098787529801954
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.04905368655131367,
+          0.07682283751652373
+        ],
+        "D25_default": [
+          0.04264766443066364,
+          0.0696158295520964
+        ],
+        "M1c_kept_rate": [
+          0.0067170586133109495,
+          0.027831438633950992
+        ]
+      },
+      "stored_gap_ci95": [
+        0.04905368655131367,
+        0.07682283751652373
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_pyrosdis_s1337__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.y11s_pyrosdis_s1337__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_pyrosdis_s1337__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "y11s_pyrosdis_s1337",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.015174506828528073,
+        "ORC_target_calval": 0.01834862385321101,
+        "M1a_quantile_pooled": 0.005988023952095809
+      },
+      "threshold": {
+        "M0_t_src": 0.317275,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.002126,
+        "ORC_target_calval": 0.003425,
+        "M1a_quantile_pooled": 0.01595717256162912
+      },
+      "gap_oracle_minus_t_src": 0.01834862385321101,
+      "regret": {
+        "D25_default": 0.01834862385321101,
+        "M1c_kept_rate": 0.003174117024682937,
+        "M1a_quantile_pooled": 0.012360599901115201
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.0034602076124567475,
+          0.029462651567147103
+        ],
+        "ORC_target_calval": [
+          0.004210526315789474,
+          0.03548963133640552
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.004210526315789474,
+          0.03548963133640552
+        ],
+        "D25_default": [
+          0.004210526315789474,
+          0.03548963133640552
+        ],
+        "M1c_kept_rate": [
+          0.0007913519214288913,
+          0.0061009672387463965
+        ]
+      },
+      "stored_gap_ci95": [
+        0.004210526315789474,
+        0.03548963133640552
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_pyrosdis_s1337__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.y11s_pyrosdis_s1337__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+      "direction": "Pyro-SDIS->D-Fire (smoke)",
+      "run": "y11s_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "d_fire",
+      "target_test": "d_fire_test_smokeonly",
+      "n_target_test_images": 4306,
+      "n_target_test_gt": 2315,
+      "f1": {
+        "M0_t_src": 0.09216589861751152,
+        "D25_default": 0.09868173258003766,
+        "M1c_kept_rate": 0.1386709367493995,
+        "ORC_target_calval": 0.15632079746261893,
+        "M1a_quantile_pooled": 0.15643615643615644
+      },
+      "threshold": {
+        "M0_t_src": 0.306105,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.005469,
+        "ORC_target_calval": 0.01739,
+        "M1a_quantile_pooled": 0.029941607929515418
+      },
+      "gap_oracle_minus_t_src": 0.0641548988451074,
+      "regret": {
+        "D25_default": 0.05763906488258126,
+        "M1c_kept_rate": 0.017649860713219417,
+        "M1a_quantile_pooled": -0.00011535897353751046
+      },
+      "oracle_f1_ge_floor": true,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.07631872090959424,
+          0.1080263681396274
+        ],
+        "D25_default": [
+          0.08270027817051957,
+          0.11511157175954152
+        ],
+        "M1c_kept_rate": [
+          0.12749181459143777,
+          0.14940422719354798
+        ],
+        "ORC_target_calval": [
+          0.1407295453793437,
+          0.17054628243586978
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.04970891864575589,
+          0.07920527534039361
+        ],
+        "D25_default": [
+          0.043792062811943484,
+          0.07205432664157656
+        ],
+        "M1c_kept_rate": [
+          0.01014927705688445,
+          0.025334616622597336
+        ]
+      },
+      "stored_gap_ci95": [
+        0.04970891864575589,
+        0.07920527534039361
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.y11s_pyrosdis_s3407__to__d_fire_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    },
+    "y11s_pyrosdis_s3407__to__thesis_test_smokeonly": {
+      "direction": "Pyro-SDIS->thesis (smoke)",
+      "run": "y11s_pyrosdis_s3407",
+      "family": "yolo",
+      "train_set": "pyrosdis",
+      "target": "thesis",
+      "target_test": "thesis_test_smokeonly",
+      "n_target_test_images": 628,
+      "n_target_test_gt": 245,
+      "f1": {
+        "M0_t_src": 0.0,
+        "D25_default": 0.0,
+        "M1c_kept_rate": 0.013675213675213675,
+        "ORC_target_calval": 0.010471204188481676,
+        "M1a_quantile_pooled": 0.01379310344827586
+      },
+      "threshold": {
+        "M0_t_src": 0.306105,
+        "D25_default": 0.25,
+        "M1c_kept_rate": 0.004736,
+        "ORC_target_calval": 0.001668,
+        "M1a_quantile_pooled": 0.011796568281938334
+      },
+      "gap_oracle_minus_t_src": 0.010471204188481676,
+      "regret": {
+        "D25_default": 0.010471204188481676,
+        "M1c_kept_rate": -0.003204009486731999,
+        "M1a_quantile_pooled": -0.003321899259794184
+      },
+      "oracle_f1_ge_floor": false,
+      "stored_image_ci95_f1": {
+        "M0_t_src": [
+          0.0,
+          0.0
+        ],
+        "D25_default": [
+          0.0,
+          0.0
+        ],
+        "M1c_kept_rate": [
+          0.003178899139992239,
+          0.028021424947215084
+        ],
+        "ORC_target_calval": [
+          0.002166497369578071,
+          0.02041107206850813
+        ]
+      },
+      "stored_image_ci95_regret_vs_oracle": {
+        "M0_t_src": [
+          0.002166497369578071,
+          0.02041107206850813
+        ],
+        "D25_default": [
+          0.002166497369578071,
+          0.02041107206850813
+        ],
+        "M1c_kept_rate": [
+          -0.009798596079457527,
+          0.003770103841768828
+        ]
+      },
+      "stored_gap_ci95": [
+        0.002166497369578071,
+        0.02041107206850813
+      ],
+      "source_keys": {
+        "refine": "cells.y11s_pyrosdis_s3407__to__thesis_test_smokeonly.methods.<rule>.f1",
+        "pilot": "cells.y11s_pyrosdis_s3407__to__thesis_test_smokeonly.methods.M1a_quantile_pooled.box.f1"
+      }
+    }
+  },
+  "reproduction_checks": {
+    "pilot_vs_refine_f1_agree_1e-9": true,
+    "overall_all_mean_regret_equals_refine_summary_1e-9": true,
+    "overall_all_M1a_mean_regret_equals_pilot_summary_1e-9": true
+  },
+  "seconds": 0.11
+}

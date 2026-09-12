@@ -53,7 +53,7 @@ def keep_cell(cell):
 def run_label(run):
     m = re.match(r"^(v8|y11|rtdetr)([nsmlx])_(dfire|pyrosdis|dfiredd|dfiresub)_s(\d+)(_[a-z0-9]+)?$", run)
     fam, size, src, seed, tag = m.groups()
-    src_l = {"dfire": "D-Fire", "pyrosdis": "Pyro-SDIS", "dfiredd": "D-Fire dedup", "dfiresub": "D-Fire sub"}[src]
+    src_l = {"dfire": "D-Fire", "pyrosdis": "Pyro-SDIS", "dfiredd": "D-Fire de-duplicated", "dfiresub": "D-Fire leaky subset"}[src]
     return f"{FAM[fam][0]}-{size} / {src_l}" + (f" ({tag[1:]})" if tag else ""), fam
 
 
@@ -94,7 +94,7 @@ def fig1(summary):
                 ax.text(j, i, T[i][j], ha="center", va="center", fontsize=6.5, color="#ffffff" if M[i, j] > 22 else INK)
     ax.set_xticks(range(len(targets))); ax.set_xticklabels([TARGET_LABEL[t] for t in targets])
     ax.set_yticks(range(len(runs))); ax.set_yticklabels([run_label(r)[0] for r in runs])
-    ax.tick_params(length=0); ax.set_title("Native LaECE$_0$ (%) with 95 % image-bootstrap CI", loc="left", color=INK)
+    ax.tick_params(length=0); ax.set_title("Native LaECE (%) with 95 % image-bootstrap CI", loc="left", color=INK)
     for s in ax.spines.values(): s.set_visible(False)
     ax.text(0, -0.03, "\u2020 LRP-FN > 0.95: the model detects almost nothing in this domain,\nso LaECE is largely the confidence of false positives",
             transform=ax.transAxes, ha="left", va="top", fontsize=6.5, color=INK2, linespacing=1.3)
@@ -105,7 +105,7 @@ def fig1(summary):
 
 def fig2(decomp):
     keys = ["thr=source|map=none", "thr=source|map=source:platt", "thr=source|map=target:platt", "thr=target|map=none", "thr=target|map=target:platt"]
-    labels = ["source thr, no map", "source thr, source Platt", "source thr, target Platt", "target thr, no map", "target thr, target Platt"]
+    labels = ["source threshold, no map", "source threshold, source Platt", "source threshold, target Platt", "target threshold, no map", "target threshold, target Platt"]
     cells = [c for c in decomp["cells"] if keep_cell(c)]
     fig, ax = plt.subplots(figsize=(7.0, 0.32 * len(cells) + 1.6))
     y = np.arange(len(cells)); h = 0.15
@@ -113,7 +113,7 @@ def fig2(decomp):
         vals = [(decomp["cells"][c]["results"][key]["LaECE_0"] or 0) * 100 for c in cells]
         ax.barh(y + (k - 2) * h, vals, height=h * 0.9, color=col, label=lab, linewidth=0)
     ax.set_yticks(y); ax.set_yticklabels([f"{run_label(c.split('__to__')[0])[0]} → {TARGET_LABEL.get(c.split('__to__')[1].replace('__repair',''), c.split('__to__')[1])}" for c in cells])
-    ax.invert_yaxis(); ax.set_xlabel("LaECE$_0$ (%) on the target test split"); ax.xaxis.grid(True, color=GRID, linewidth=0.6); ax.set_axisbelow(True)
+    ax.invert_yaxis(); ax.set_xlabel("LaECE (%) on the target test split"); ax.xaxis.grid(True, color=GRID, linewidth=0.6); ax.set_axisbelow(True)
     ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.45, -0.12), fontsize=7, title="threshold origin, confidence map", title_fontsize=7)
     ax.set_title("Where the miscalibration under shift comes from: operating threshold vs confidence map", loc="left", color=INK)
     save(fig, "fig2_decomposition", ["threshold_decomposition.json: cells.<cell>.results.<condition>.LaECE_0"])
@@ -125,9 +125,9 @@ def fig3(leak):
     fig, axes = plt.subplots(1, 2, figsize=(7.4, 2.6), gridspec_kw={"wspace": 0.28})
     x = np.arange(len(runs)); w = 0.36
 
-    def tick(r):   # "RT-DETR-l s3407": model + seed, rotated 45 deg so ten labels do not over-print
+    def tick(r):   # "RT-DETR-l, seed 3407": model + training seed, rotated 45 deg so ten labels do not over-print
         m = re.match(r"^(v8|y11|rtdetr)([nsmlx])_dfire_s(\d+)", r.split("__to__")[0])
-        return f"{FAM[m.group(1)][0]}-{m.group(2)} s{m.group(3)}"
+        return f"{FAM[m.group(1)][0]}-{m.group(2)}, seed {m.group(3)}"
     ax = axes[0]
     ax.bar(x - w / 2, [cells[r]["mAP50_leaky"] for r in runs], w * 0.95, color=ORD[1], label="leaky test images (train near-duplicates)", linewidth=0)
     ax.bar(x + w / 2, [cells[r]["mAP50_clean"] for r in runs], w * 0.95, color=ORD[3], label="clean test images", linewidth=0)
@@ -136,7 +136,7 @@ def fig3(leak):
     ax = axes[1]
     ax.bar(x - w / 2, [cells[r]["LaECE_0_full_test"]["identity"] * 100 for r in runs], w * 0.95, color=ORD[1], label="official test (leaky)", linewidth=0)
     ax.bar(x + w / 2, [cells[r]["LaECE_0"]["identity"] * 100 for r in runs], w * 0.95, color=ORD[3], label="clean test", linewidth=0)
-    ax.set_ylabel("native LaECE$_0$ (%)")
+    ax.set_ylabel("native LaECE (%)")
     ax.set_ylim(0, 20); ax.set_yticks([0, 5, 10, 15, 20]); ax.set_title("b. Calibration on D-Fire test", loc="left", color=INK); ax.legend(frameon=False, fontsize=6.5, loc="upper center", bbox_to_anchor=(0.5, -0.36), ncol=1)
     for a in axes:
         a.yaxis.grid(True, color=GRID, linewidth=0.6); a.set_axisbelow(True)
@@ -193,7 +193,7 @@ def fig5(ci_dir):
             ax.scatter([r[2]], [yy], color=col, s=18, zorder=3, edgecolors="#ffffff", linewidths=0.8, label=lab if i == 0 else None)
     ax.axvline(0, color=INK2, linewidth=0.8, zorder=1)
     ax.set_yticks(range(len(cells))); ax.set_yticklabels([f"{run_label(c.split('__to__')[0])[0]} → {TARGET_LABEL.get(c.split('__to__')[1], c.split('__to__')[1])}" for c in cells]); ax.invert_yaxis()
-    ax.set_xlabel("change in LaECE$_0$ (points) from source-fitted post-hoc calibration, 95 % paired bootstrap CI")
+    ax.set_xlabel("change in LaECE (points) from source-fitted post-hoc calibration, 95 % paired bootstrap CI")
     ax.xaxis.grid(True, color=GRID, linewidth=0.6); ax.set_axisbelow(True); ax.legend(frameon=False, fontsize=7, loc="lower left")
     ax.set_title("Source-fitted post-hoc calibration: paired effect vs no calibration", loc="left", color=INK)
     save(fig, "fig5_paired_posthoc", ["calibration_ci/<cell>.json: paired_vs_identity.<cal>.LaECE_0.{point_diff,ci95}"])

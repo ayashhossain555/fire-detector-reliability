@@ -14,13 +14,23 @@ naming the artefact + key each panel reads (figures_index_eaai.json, with the ke
                             oracle, 44 cells ordered by W1(per-image max score);
                             (b) unlabelled-adaptation-set size curve (kept-rate rule);
                             (c) QQ plot of TRUE-detection scores, source vs target calval, logit axes,
-                            with the pilot's M3 logit shift.
+                            with the shared logit shift fitted by the prior-shift mixture (pilot artefact).
+  fig9_reliability          2 x 2 detection reliability diagrams (LaECE_0 bins, 25 equal-width, IoU-weighted
+                            precision, toolbox tau = 0 matching) for YOLOv8-s and RT-DETR-l trained on D-Fire,
+                            in-domain (D-Fire test) vs shifted (Pyro-SDIS), at the source LRP-optimal threshold,
+                            with the source-fitted Platt map (refitted with the toolbox, verified against the
+                            stored operating thresholds) and a count histogram per bin
 Sources: threshold_decomposition.json, calibration_ci/<cell>.json, label_free_threshold_refine.json,
 label_free_threshold_pilot.json, detections/*.bbox.json + coco_gt/*.json (panel c, recomputed here
-with operating_points.match via label_free_threshold_pilot).
+with operating_points.match via label_free_threshold_pilot; fig9 recomputed with the pinned toolbox
+CalibrationCOCO exactly as calib_metrics.evaluate does), calibration/<cell>.json (fig9 thresholds),
+matrix_summary.json (fig9 LaECE_0 assertion).
 """
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"   # figures never need the GPU; fig9 imports the toolbox (torch) for the Platt refit
 import json
 import sys
+import warnings
 from pathlib import Path
 
 import matplotlib
@@ -72,12 +82,12 @@ CORE_DECOMP = [  # (row, col) -> cell; columns = source -> target pairing, rows 
      "y11s_dfire_s3407__to__thesis_test", "rtdetrl_dfire_s3407__to__thesis_test"],
 ]
 DEC_ROWS = [("source", "thr=source"), ("target", "thr=target")]
-DEC_COLS = [("none", "map=none"), ("src\nPlatt", "map=source:platt"), ("tgt\nPlatt", "map=target:platt")]
+DEC_COLS = [("none", "map=none"), ("source\nPlatt", "map=source:platt"), ("target\nPlatt", "map=target:platt")]
 
 
 def fig2_core(decomp):
     cells = decomp["cells"]
-    fig, axes = plt.subplots(2, 5, figsize=(7.5, 3.9), gridspec_kw={"wspace": 0.42, "hspace": 0.85})
+    fig, axes = plt.subplots(2, 5, figsize=(7.5, 3.9), gridspec_kw={"wspace": 0.30, "hspace": 0.85})
     cmap = matplotlib.colors.LinearSegmentedColormap.from_list("seqblue", SEQ)
     vmax = 45.0
     kv = {}
@@ -102,7 +112,7 @@ def fig2_core(decomp):
             dl = f"Δthr {-d_thr:+.1f} · Δmap {-d_map:+.1f}".replace("-", "−")
             ax.set_title(f"{model}\n{src} → {TARGET_LABEL[tgt]}\n{dl}", fontsize=6.0, loc="left", color=INK, pad=3, linespacing=1.25)
             ax.set_xticks(range(3)); ax.set_yticks(range(2))
-            ax.set_xticklabels([c[0] for c in DEC_COLS] if i == 1 else [], fontsize=6.3)
+            ax.set_xticklabels([c[0] for c in DEC_COLS] if i == 1 else [], fontsize=6.0)
             ax.set_yticklabels([r_[0] for r_ in DEC_ROWS] if j == 0 else [], fontsize=6.3)
             ax.tick_params(length=0)
             for s in ax.spines.values():
@@ -113,13 +123,13 @@ def fig2_core(decomp):
                         "delta_threshold_axis": round(d_thr, 1), "delta_map_axis_source_platt": round(d_map, 1)}
     axes[1, 0].set_ylabel("threshold origin", fontsize=7)
     axes[1, 2].set_xlabel("confidence map", fontsize=7)
-    fig.suptitle("LaECE$_0$ (%) on the target test split: threshold origin × confidence map, seed 3407 core cells", x=0.125, ha="left", fontsize=9, color=INK, y=1.0)
-    fig.text(0.125, -0.005, "Δthr = change in LaECE$_0$ from re-selecting the threshold on the target (no map);  "
+    fig.suptitle("LaECE (%) on the target test split: threshold origin × confidence map, seed 3407 core cells", x=0.125, ha="left", fontsize=9, color=INK, y=1.0)
+    fig.text(0.125, -0.005, "Δthr = change in LaECE from re-selecting the threshold on the target (no map);  "
              "Δmap = change from a source-fitted Platt map at the source threshold.",
              fontsize=6.2, color=INK2, ha="left", va="top")
     sm = matplotlib.cm.ScalarMappable(cmap=cmap, norm=matplotlib.colors.Normalize(0, vmax))
     cb = fig.colorbar(sm, ax=axes.ravel().tolist(), fraction=0.018, pad=0.03, aspect=30)
-    cb.set_label("LaECE$_0$ (%)", fontsize=7); cb.ax.tick_params(labelsize=6.5, color=GRID); cb.outline.set_visible(False)
+    cb.set_label("LaECE (%)", fontsize=7); cb.ax.tick_params(labelsize=6.5, color=GRID); cb.outline.set_visible(False)
     save(fig, "fig2_decomposition_core", ["threshold_decomposition.json: cells.<cell>.results.<thr=...|map=...>.LaECE_0 (x100)"], kv)
 
 
@@ -163,7 +173,7 @@ def fig5_core(ci_dir):
         gy += len(cells) + 1.0
     ax.set_ylim(gy - 1.5, -1.0)   # inverted: first row at the top, headings inside the group gaps
     ax.set_yticks([r[0] for r in rows]); ax.set_yticklabels(ylab, fontsize=6.8)
-    ax.set_xlabel("Δ LaECE$_0$ (points), calibrator − identity; 95 % paired image-bootstrap CI\n(negative = post-hoc calibration helps)", fontsize=7)
+    ax.set_xlabel("Δ LaECE (points), calibrator − identity; 95 % paired image-bootstrap CI\n(negative = post-hoc calibration helps)", fontsize=7)
     ax.xaxis.grid(True, color=GRID, linewidth=0.6); ax.set_axisbelow(True)
     ax.legend(frameon=False, fontsize=6.5, loc="upper center", bbox_to_anchor=(0.35, -0.14), ncol=3, title="calibrator (fitted on the source calibration split)", title_fontsize=6.5)
     ax.set_title("Source-fitted post-hoc calibration, paired effect", loc="left", color=INK)
@@ -301,9 +311,9 @@ def fig8(refine, pil):
     ax.set_xlabel("true-detection score quantile,\nsource calibration split (logit axis)", fontsize=7)
     ax.set_ylabel("same quantile,\ntarget calibration split", fontsize=7)
     ax.grid(True, color=GRID, linewidth=0.6); ax.set_axisbelow(True)
-    txt = "dashed = pilot M3 fitted logit shift $\\hat\\delta$\n" + "\n".join(
+    txt = "dashed = shared logit shift fitted by the prior-shift mixture\nmedian true-detection score, source → target:\n" + "\n".join(
         f"{lab.split(' / ')[0]}: $\\hat\\delta$ = {kv['c'][cell]['M3_beta_mle_shift_delta_logit']:+.2f}; "
-        f"median TP {kv['c'][cell]['median_tp_score_source']:.2f} → {kv['c'][cell]['median_tp_score_target']:.2f}"
+        f"{kv['c'][cell]['median_tp_score_source']:.2f} → {kv['c'][cell]['median_tp_score_target']:.2f}"
         for cell, lab, _, _ in QQ_CELLS)
     ax.text(0.03, 0.97, txt, transform=ax.transAxes, fontsize=6.0, va="top", color=INK2, linespacing=1.3)
     ax.legend(frameon=False, fontsize=6.5, loc="lower right")
@@ -316,11 +326,186 @@ def fig8(refine, pil):
          kv)
 
 
+# ----------------------------------------------------------------------------- fig9 reliability
+REL_RUNS = [("v8s_dfire_s3407", "YOLOv8-s"), ("rtdetrl_dfire_s3407", "RT-DETR-l")]
+REL_TGTS = [("d_fire_test", "D-Fire test (in-domain)"), ("pyro_sdis_caltest", "Pyro-SDIS (shifted)")]
+REL_BINS = np.linspace(0.0, 1.0, 26)
+CAT_NAME = {1: "fire", 2: "smoke"}
+CAT_STYLE = {1: (INK3, "--"), 2: (INK, "--")}
+
+
+def _laece_bins(scores, tps, fps, ious):
+    """Per-class LaECE_0 bin statistics exactly as the toolbox's compute_single_errors: 25 equal-width bins,
+    bin 1 closed at both ends and the rest (lo, hi]; bin precision = sum of matched IoU / n_det; bin error =
+    |precision - mean score|; bin weight = n_det / total. Returns (precision, mean score, weight, count, total)."""
+    valid = tps | fps
+    tot = int(valid.sum())
+    prec, ms, w, n = np.full(25, np.nan), np.full(25, np.nan), np.zeros(25), np.zeros(25, int)
+    for i in range(25):
+        inb = (REL_BINS[i] <= scores) & (scores <= REL_BINS[i + 1]) if i == 0 else (REL_BINS[i] < scores) & (scores <= REL_BINS[i + 1])
+        d = inb & valid
+        n[i] = int(d.sum())
+        if n[i] == 0:
+            continue
+        prec[i] = ious[inb & tps].sum() / n[i]
+        ms[i] = scores[d].mean()
+        w[i] = n[i] / tot
+    return prec, ms, w, n, tot
+
+
+def _laece_iou05_pooled(kept, tgt):
+    """Reconciliation only: the IoU >= 0.5 greedy matcher of operating_points (pooled over classes, TP weighted by
+    its IoU) binned the same way. NOT the artefact definition (LaECE_0 = toolbox matching at tau = 0, per class)."""
+    ids, gtb, gcls = pilot.op.load_gt(tgt)
+    byimg = {}
+    for x in kept:
+        byimg.setdefault(x["image_id"], []).append((x["category_id"], x["bbox"], x["score"]))
+    sc, io = [], []
+    for iid in ids:
+        g = [(c, b) for c, b in gtb.get(iid, []) if c in gcls]
+        used = [False] * len(g)
+        for c, b, s in sorted([x for x in byimg.get(iid, []) if x[0] in gcls], key=lambda x: -x[2]):
+            best, bj = 0.0, -1
+            for j, (gc, gb) in enumerate(g):
+                if used[j] or gc != c:
+                    continue
+                v = pilot.op.iou_xywh(b, gb)
+                if v > best:
+                    best, bj = v, j
+            if best >= pilot.op.IOU:
+                used[bj] = True
+            sc.append(s); io.append(best if best >= pilot.op.IOU else 0.0)
+    sc, io = np.array(sc), np.array(io)
+    e = 0.0
+    for i in range(25):
+        inb = (REL_BINS[i] <= sc) & (sc <= REL_BINS[i + 1]) if i == 0 else (REL_BINS[i] < sc) & (sc <= REL_BINS[i + 1])
+        if inb.sum():
+            e += inb.sum() / len(sc) * abs(io[inb].mean() - sc[inb].mean())
+    return float(e), int(len(sc))
+
+
+def fig9_reliability(summary, decomp):
+    import contextlib, io
+    from detection_calibration.coco_calibration import CalibrationCOCO
+    from detection_calibration.DetectionCalibration import DetectionCalibration
+    from detection_calibration.utils import threshold_detections
+    from pycocotools.coco import COCO
+
+    def quiet(fn, *a, **k):
+        with contextlib.redirect_stdout(io.StringIO()):
+            return fn(*a, **k)
+
+    val_gt = str(HERE / "coco_gt" / "d_fire_calval.json")
+    dcls = list(COCO(val_gt).cats.keys())          # toolbox class order for the per-class thresholds (sorted ids)
+    fig = plt.figure(figsize=(7.2, 7.0))
+    outer = fig.add_gridspec(2, 2, hspace=0.55, wspace=0.22, left=0.08, right=0.99, top=0.95, bottom=0.17)
+    kv = {}
+    xg = np.linspace(0.001, 0.999, 400)
+    for i, (run, model) in enumerate(REL_RUNS):
+        cal_art = {t: json.loads((HERE / "calibration" / f"{run}__to__{t}.json").read_text(encoding="utf-8")) for t, _ in REL_TGTS}
+        # source LRP-optimal thresholds: threshold_decomposition (cross cell) must equal calibration/<cell>.json identity thresholds
+        thr_raw = decomp[f"{run}__to__pyro_sdis_caltest"]["results"]["thr=source|map=none"]["thr_raw"]
+        thr = np.array([thr_raw[str(c)] for c in dcls])
+        for t, _ in REL_TGTS:
+            assert np.allclose(thr, cal_art[t]["results"]["identity"]["thresholds"]["operating"]), (run, t)
+        # source-fitted Platt map: refit with the toolbox exactly as run_calibration.py (fit on the D-Fire calval);
+        # verified below against the operating thresholds stored in calibration/<cell>.json
+        cm = DetectionCalibration(val_gt, str(HERE / "coco_gt" / "d_fire_test.json"))
+        pmodel, pthr = quiet(cm.fit, str(HERE / "detections" / f"{run}__d_fire_calval.bbox.json"), calibrator_type="platt_scaling")
+        stored = cal_art["d_fire_test"]["results"]["platt_scaling"]["thresholds"]
+        assert np.allclose(np.atleast_1d(pthr[0]), stored["pre"]) and np.allclose(np.atleast_1d(pthr[1]), stored["operating"], atol=1e-6), (run, pthr, stored)
+        platt = {int(dcls[k]): {"a_scale": float(abs(m.scale.detach()).item()), "b_shift": float(m.shift.detach().item())} for k, m in pmodel.items()}
+        for j, (tgt, tlab) in enumerate(REL_TGTS):
+            cell = f"{run}__to__{tgt}"
+            test_gt = str(HERE / "coco_gt" / f"{tgt}.json")
+            dets = json.loads((HERE / "detections" / f"{run}__{tgt}.bbox.json").read_text(encoding="utf-8"))
+            kept = threshold_detections(threshold_detections(dets, thr, dcls), thr, dcls)   # identity transform: pre + operating
+            ev = CalibrationCOCO(test_gt, test_gt, "bbox", 25, 0.0, False, False, 100)      # = calib_metrics.evaluate, first evaluator
+            ev.cocoDt = quiet(COCO(test_gt).loadRes, kept)
+            quiet(ev.evaluate); quiet(ev.prepare_input); quiet(ev.compute_single_errors)
+            la_toolbox = float(ev.accumulate_errors())
+            per_cls, cls_err = {}, []
+            for k, ci in ev.calibration_info.items():
+                if "tps" not in ci:
+                    continue
+                prec, ms, w, n, tot = _laece_bins(ci["scores"], ci["tps"], ci["fps"], ci["iou"])
+                assert np.allclose(np.nan_to_num(prec), np.nan_to_num(ev.prec_iou[k])) and np.allclose(w, ev.weights_per_bin[k])
+                e_cls = float(np.nansum(w * np.abs(prec - ms)))
+                cls_err.append(e_cls if e_cls != 0 else np.nan)
+                per_cls[int(ev.params.catIds[k])] = {"precision_iou": prec, "mean_score": ms, "weight": w, "count": n, "n_det": tot,
+                                                    "n_tp": int(ci["tps"].sum()), "n_fp": int(ci["fps"].sum()), "LaECE_0_class": e_cls}
+            la_drawn = float(np.nanmean(cls_err))
+            la_matrix = summary[cell]["metrics"]["identity"]["LaECE_0"]
+            assert abs(la_drawn - la_matrix) < 0.005 and abs(la_toolbox - la_matrix) < 1e-9, (cell, la_drawn, la_toolbox, la_matrix)
+            la_iou05, n_iou05 = _laece_iou05_pooled(kept, tgt)
+            print(f"[fig9] {cell}: LaECE_0 drawn {la_drawn:.5f} | toolbox rerun {la_toolbox:.5f} | matrix_summary {la_matrix:.5f} | "
+                  f"IoU-0.5 pooled variant {la_iou05:.5f}; kept {len(kept)}")
+            # class-averaged bins (the toolbox's own reliability diagram, cl = -1) --------------------------------
+            P = np.array([v["precision_iou"] for v in per_cls.values()]); M = np.array([v["mean_score"] for v in per_cls.values()])
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", RuntimeWarning)   # all-NaN bins (empty in every class)
+                bar = np.nanmean(P, axis=0); dot = np.nanmean(M, axis=0)
+            cnt = np.sum([v["count"] for v in per_cls.values()], axis=0)
+            inner = outer[i, j].subgridspec(2, 1, height_ratios=[1, 0.32], hspace=0.10)
+            ax = fig.add_subplot(inner[0]); axh = fig.add_subplot(inner[1], sharex=ax)
+            col = FAM[fam_of(run)][1]
+            ctr = (REL_BINS[:-1] + REL_BINS[1:]) / 2
+            ok = ~np.isnan(bar)
+            ax.bar(ctr[ok], bar[ok], width=0.04 * 0.9, color=col, alpha=0.75, linewidth=0, zorder=2, label="IoU-weighted precision of the bin (identity map)")
+            ax.plot([0, 1], [0, 1], color=INK2, linewidth=0.8, zorder=3, label="perfect calibration (identity)")
+            ax.scatter(dot[ok], bar[ok], s=7, color=INK, zorder=5, label="bin mean confidence vs its precision (the gap LaECE sums)")
+            for c in per_cls:
+                a, b = platt[c]["a_scale"], platt[c]["b_shift"]
+                lc, ls = CAT_STYLE[c]
+                ax.plot(xg, expit(a * logit(xg) + b), ls, color=lc, linewidth=1.0, zorder=4, label=f"source-fitted Platt map, {CAT_NAME[c]} class")
+                ax.axvline(thr[dcls.index(c)], color=lc, linewidth=0.6, linestyle=":", zorder=1,
+                           label=f"source LRP-optimal threshold, {CAT_NAME[c]} class" if (i, j) == (0, 0) else None)
+            ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_xticks([0, 0.25, 0.5, 0.75, 1]); ax.set_yticks([0, 0.25, 0.5, 0.75, 1])
+            ax.tick_params(labelsize=7, labelbottom=False); ax.grid(True, color=GRID, linewidth=0.5); ax.set_axisbelow(True)
+            letter = "abcd"[2 * i + j]
+            ax.set_title(f"{letter}. {model} → {tlab}\nLaECE {la_drawn * 100:.1f} %  ·  {len(kept):,} detections above the source threshold",
+                         loc="left", fontsize=8, color=INK, linespacing=1.3)
+            if j == 0:
+                ax.set_ylabel("IoU-weighted precision", fontsize=7); axh.set_ylabel("count", fontsize=7)
+            axh.bar(ctr, np.maximum(cnt, 0), width=0.04 * 0.9, color=col, alpha=0.75, linewidth=0, zorder=2)
+            axh.set_yscale("log"); axh.set_ylim(0.8, max(10, cnt.max() * 3)); axh.tick_params(labelsize=7); axh.minorticks_off()
+            axh.yaxis.grid(True, color=GRID, linewidth=0.5); axh.set_axisbelow(True)
+            axh.set_xlabel("predicted confidence, 25 equal-width bins", fontsize=7)
+            kv[cell] = {"run": run, "target": tgt, "source_thresholds_by_class": {CAT_NAME[c]: float(thr[dcls.index(c)]) for c in dcls},
+                        "n_detections_kept": int(len(kept)), "n_evaluated_by_class": {CAT_NAME[c]: v["n_det"] for c, v in per_cls.items()},
+                        "LaECE_0_drawn_bins": round(la_drawn, 6), "LaECE_0_toolbox_rerun": round(la_toolbox, 6), "LaECE_0_matrix_summary": round(la_matrix, 6),
+                        "LaECE_0_iou05_pooled_reconciliation_only": round(la_iou05, 6), "n_iou05_matcher": n_iou05,
+                        "bars_class_mean_precision_iou": [None if np.isnan(v) else round(float(v), 4) for v in bar],
+                        "dots_class_mean_score": [None if np.isnan(v) else round(float(v), 4) for v in dot],
+                        "counts_per_bin": [int(v) for v in cnt],
+                        "per_class": {CAT_NAME[c]: {"precision_iou": [None if np.isnan(x) else round(float(x), 4) for x in v["precision_iou"]],
+                                                    "mean_score": [None if np.isnan(x) else round(float(x), 4) for x in v["mean_score"]],
+                                                    "weight": [round(float(x), 5) for x in v["weight"]], "count": [int(x) for x in v["count"]],
+                                                    "n_det": v["n_det"], "n_tp_tau0": v["n_tp"], "n_fp_tau0": v["n_fp"], "LaECE_0_class": round(v["LaECE_0_class"], 6)}
+                                      for c, v in per_cls.items()},
+                        "platt_source_fitted": {CAT_NAME[c]: platt[c] for c in per_cls},
+                        "platt_refit_check": {"refit_operating_thresholds": [float(v) for v in np.atleast_1d(pthr[1])], "stored_operating_thresholds": stored["operating"]}}
+    h, l = fig.axes[0].get_legend_handles_labels()
+    fig.legend(h, l, frameon=False, fontsize=7, loc="lower center", bbox_to_anchor=(0.5, 0.005), ncol=2, handlelength=2.2, columnspacing=1.5)
+    save(fig, "fig9_reliability",
+         ["detections/<run>__<split>.bbox.json + coco_gt/<split>.json, thresholded at the source LRP-optimal thresholds "
+          "(threshold_decomposition.json cells.<run>__to__pyro_sdis_caltest.results.thr=source|map=none.thr_raw == "
+          "calibration/<cell>.json results.identity.thresholds.operating) and binned with the pinned toolbox CalibrationCOCO "
+          "(bbox, 25 bins, tau = 0, maxDets 100) exactly as calib_metrics.evaluate; bars = class mean of the per-class bin IoU-precision",
+          "matrix_summary.json: cells.<cell>.metrics.identity.LaECE_0 (asserted equal to the drawn-bin value within 0.005; toolbox rerun equal to 1e-9)",
+          "Platt map: refitted with DetectionCalibration.fit(<run>__d_fire_calval.bbox.json, platt_scaling) as run_calibration.py does "
+          "(parameters are not stored in the artefacts); refit verified against calibration/<cell>.json results.platt_scaling.thresholds.operating",
+          "reconciliation only: LaECE_0_iou05_pooled = operating_points-style IoU >= 0.5 greedy matcher, pooled classes (NOT the artefact definition)"],
+         kv)
+
+
 def main():
     fig2_core(json.loads((HERE / "threshold_decomposition.json").read_text(encoding="utf-8")))
     fig5_core(HERE / "calibration_ci")
     fig8(json.loads((HERE / "label_free_threshold_refine.json").read_text(encoding="utf-8")),
          json.loads((HERE / "label_free_threshold_pilot.json").read_text(encoding="utf-8")))
+    fig9_reliability(json.loads((HERE / "matrix_summary.json").read_text(encoding="utf-8"))["cells"],
+                     json.loads((HERE / "threshold_decomposition.json").read_text(encoding="utf-8"))["cells"])
     (OUT / "figures_index_eaai.json").write_text(json.dumps(index, indent=1), encoding="utf-8")
     print("index ->", OUT / "figures_index_eaai.json")
 
