@@ -1,0 +1,26 @@
+{
+ "fig1_transfer_matrix": [
+  "matrix_summary.json: cells.<run>__to__<target>.metrics.identity.LaECE_0",
+  "calibration_ci/*.json: results.identity.LaECE_0.ci95",
+  "dagger marks (lrp_fn > 0.95): matrix_summary.json cells.<cell>.metrics.identity.lrp_fn -> rtdetrl_pyrosdis_s3407__to__thesis_test, v8m_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8m_pyrosdis_s3407__to__thesis_test, v8n_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8n_pyrosdis_s3407__to__thesis_test, v8s_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8s_pyrosdis_s3407__to__thesis_test, y11m_pyrosdis_s3407__to__thesis_test, y11n_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, y11n_pyrosdis_s3407__to__thesis_test, y11s_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, y11s_pyrosdis_s3407__to__thesis_test"
+ ],
+ "fig2_decomposition": [
+  "threshold_decomposition.json: cells.<cell>.results.<condition>.LaECE_0"
+ ],
+ "fig3_leakage": [
+  "dfire_leakage.json: cells.<run>__to__d_fire_test_dedup.{mAP50_leaky,mAP50_clean,LaECE_0,LaECE_0_full_test}"
+ ],
+ "fig4_operating_points": [
+  "operating_points.json: cells.<cell>.target.image_level_at_t_src.{sensitivity,false_alarm_rate}"
+ ],
+ "fig5_paired_posthoc": [
+  "calibration_ci/<cell>.json: paired_vs_identity.<cal>.LaECE_0.{point_diff,ci95}"
+ ],
+ "fig6_figlib": [
+  "figlib_scores/<run>.json + coco_gt/figlib_all.json (ROC)",
+  "figlib_ttd.json: runs.<run>.at_matched_far.<far>.camera_disjoint.ttd_min_median"
+ ],
+ "fig7_dedup_training": [
+  "dedup_training_comparison.json: runs.<run>.{mAP50_d_fire_test_dedup,mAP50_d_fire_test}"
+ ]
+}

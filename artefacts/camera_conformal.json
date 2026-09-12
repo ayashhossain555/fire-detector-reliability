@@ -1,0 +1,4228 @@
+{
+ "seed": 3407,
+ "n_images": 4099,
+ "n_positive": 3345,
+ "n_cameras": 24,
+ "folds": [
+  {
+   "cameras": [
+    "brison-200",
+    "marguerite-339"
+   ],
+   "n_images": 1032
+  },
+  {
+   "cameras": [
+    "brison-20",
+    "croix-augas-8",
+    "ferion-142",
+    "courmettes-275",
+    "croix-augas-59",
+    "marguerite-185",
+    "croix-augas-212"
+   ],
+   "n_images": 1029
+  },
+  {
+   "cameras": [
+    "courmettes-160",
+    "valbonne-138",
+    "brison-110",
+    "marguerite-282",
+    "cabanelle-125",
+    "serre-de-barre-350",
+    "croix-augas-265"
+   ],
+   "n_images": 1015
+  },
+  {
+   "cameras": [
+    "courmettes-212",
+    "brison-290",
+    "cabanelle-327",
+    "valbonne-349",
+    "marguerite-29",
+    "croix-augas-161",
+    "cabanelle-244",
+    "brison-226"
+   ],
+   "n_images": 1023
+  }
+ ],
+ "alphas": [
+  0.05,
+  0.1,
+  0.2
+ ],
+ "runs": {
+  "v8s_pyrosdis_s3407": {
+   "conformal_alarm": {
+    "per_alpha": {
+     "0.05": {
+      "target_sensitivity": 0.95,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9409953945460191,
+        "min": 0.844542447629548,
+        "max": 0.987220447284345
+       },
+       "false_alarm_rate": {
+        "mean": 0.704114663659729,
+        "min": 0.6570605187319885,
+        "max": 0.8072916666666666
+       },
+       "folds": [
+        {
+         "sensitivity": 0.987220447284345,
+         "false_alarm_rate": 0.6881720430107527,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.029526,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.844542447629548,
+         "false_alarm_rate": 0.6639344262295082,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.125812,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9647630619684082,
+         "false_alarm_rate": 0.8072916666666666,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.043735,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.9674556213017751,
+         "false_alarm_rate": 0.6570605187319885,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.043735,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9507156546541996,
+        "min": 0.9246171967020024,
+        "max": 0.9720194647201946
+       },
+       "false_alarm_rate": {
+        "mean": 0.7081950570745026,
+        "min": 0.6310160427807486,
+        "max": 0.7688442211055276
+       }
+      }
+     },
+     "0.1": {
+      "target_sensitivity": 0.9,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9032086074911236,
+        "min": 0.7938257993384785,
+        "max": 0.966986155484558
+       },
+       "false_alarm_rate": {
+        "mean": 0.5741256840919702,
+        "min": 0.49855907780979825,
+        "max": 0.6927083333333334
+       },
+       "folds": [
+        {
+         "sensitivity": 0.966986155484558,
+         "false_alarm_rate": 0.5806451612903226,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.13379,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.7938257993384785,
+         "false_alarm_rate": 0.5245901639344263,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.254267,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9185905224787363,
+         "false_alarm_rate": 0.6927083333333334,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.170287,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.9334319526627219,
+         "false_alarm_rate": 0.49855907780979825,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.167317,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9010198489484743,
+        "min": 0.8766467065868263,
+        "max": 0.9225268176400476
+       },
+       "false_alarm_rate": {
+        "mean": 0.5523078033887499,
+        "min": 0.4739583333333333,
+        "max": 0.6214689265536724
+       }
+      }
+     },
+     "0.2": {
+      "target_sensitivity": 0.8,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.8002403036447512,
+        "min": 0.7023153252480706,
+        "max": 0.8796592119275826
+       },
+       "false_alarm_rate": {
+        "mean": 0.40845412018213073,
+        "min": 0.2910662824207493,
+        "max": 0.546875
+       },
+       "folds": [
+        {
+         "sensitivity": 0.8796592119275826,
+         "false_alarm_rate": 0.45161290322580644,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.339671,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.7023153252480706,
+         "false_alarm_rate": 0.3442622950819672,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.407957,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.8201701093560145,
+         "false_alarm_rate": 0.546875,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.366701,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.7988165680473372,
+         "false_alarm_rate": 0.2910662824207493,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.373064,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.7991892308050679,
+        "min": 0.7601918465227818,
+        "max": 0.8286755771567437
+       },
+       "false_alarm_rate": {
+        "mean": 0.38134748498365934,
+        "min": 0.3096446700507614,
+        "max": 0.453551912568306
+       }
+      }
+     }
+    },
+    "per_camera_at_alpha0.10": {
+     "brison-200": {
+      "sensitivity": 0.9700214132762313,
+      "false_alarm_rate": 0.6883116883116883,
+      "n_pos": 934,
+      "n_neg": 77,
+      "t": 0.13379
+     },
+     "marguerite-339": {
+      "sensitivity": 0.4,
+      "false_alarm_rate": 0.0625,
+      "n_pos": 5,
+      "n_neg": 16,
+      "t": 0.13379
+     },
+     "brison-20": {
+      "sensitivity": 0.8832,
+      "false_alarm_rate": 0.4945054945054945,
+      "n_pos": 625,
+      "n_neg": 91,
+      "t": 0.254267
+     },
+     "courmettes-275": {
+      "sensitivity": 0.8888888888888888,
+      "false_alarm_rate": 0.6875,
+      "n_pos": 18,
+      "n_neg": 16,
+      "t": 0.254267
+     },
+     "croix-augas-212": {
+      "sensitivity": 0.7777777777777778,
+      "false_alarm_rate": 0.16666666666666666,
+      "n_pos": 9,
+      "n_neg": 6,
+      "t": 0.254267
+     },
+     "croix-augas-59": {
+      "sensitivity": 0.9411764705882353,
+      "false_alarm_rate": null,
+      "n_pos": 34,
+      "n_neg": 0,
+      "t": 0.254267
+     },
+     "croix-augas-8": {
+      "sensitivity": 0.2692307692307692,
+      "false_alarm_rate": null,
+      "n_pos": 130,
+      "n_neg": 0,
+      "t": 0.254267
+     },
+     "ferion-142": {
+      "sensitivity": 0.8115942028985508,
+      "false_alarm_rate": 0.7777777777777778,
+      "n_pos": 69,
+      "n_neg": 9,
+      "t": 0.254267
+     },
+     "marguerite-185": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 22,
+      "n_neg": 0,
+      "t": 0.254267
+     },
+     "brison-110": {
+      "sensitivity": 0.96875,
+      "false_alarm_rate": 0.5,
+      "n_pos": 160,
+      "n_neg": 12,
+      "t": 0.170287
+     },
+     "cabanelle-125": {
+      "sensitivity": 0.9473684210526315,
+      "false_alarm_rate": 1.0,
+      "n_pos": 19,
+      "n_neg": 25,
+      "t": 0.170287
+     },
+     "courmettes-160": {
+      "sensitivity": 0.9556313993174061,
+      "false_alarm_rate": 0.7570093457943925,
+      "n_pos": 293,
+      "n_neg": 107,
+      "t": 0.170287
+     },
+     "croix-augas-265": {
+      "sensitivity": 0.9444444444444444,
+      "false_alarm_rate": 0.7142857142857143,
+      "n_pos": 18,
+      "n_neg": 7,
+      "t": 0.170287
+     },
+     "marguerite-282": {
+      "sensitivity": 0.6176470588235294,
+      "false_alarm_rate": 0.3333333333333333,
+      "n_pos": 102,
+      "n_neg": 6,
+      "t": 0.170287
+     },
+     "serre-de-barre-350": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.0,
+      "n_pos": 24,
+      "n_neg": 1,
+      "t": 0.170287
+     },
+     "valbonne-138": {
+      "sensitivity": 0.961352657004831,
+      "false_alarm_rate": 0.4117647058823529,
+      "n_pos": 207,
+      "n_neg": 34,
+      "t": 0.170287
+     },
+     "brison-226": {
+      "sensitivity": 0.8,
+      "false_alarm_rate": 0.25,
+      "n_pos": 5,
+      "n_neg": 4,
+      "t": 0.167317
+     },
+     "brison-290": {
+      "sensitivity": 0.9411764705882353,
+      "false_alarm_rate": 0.5348837209302325,
+      "n_pos": 204,
+      "n_neg": 86,
+      "t": 0.167317
+     },
+     "cabanelle-244": {
+      "sensitivity": 0.8181818181818182,
+      "false_alarm_rate": 0.1,
+      "n_pos": 11,
+      "n_neg": 10,
+      "t": 0.167317
+     },
+     "cabanelle-327": {
+      "sensitivity": 0.8859649122807017,
+      "false_alarm_rate": 0.7358490566037735,
+      "n_pos": 114,
+      "n_neg": 106,
+      "t": 0.167317
+     },
+     "courmettes-212": {
+      "sensitivity": 0.9571428571428572,
+      "false_alarm_rate": 0.3,
+      "n_pos": 210,
+      "n_neg": 130,
+      "t": 0.167317
+     },
+     "croix-augas-161": {
+      "sensitivity": 0.9047619047619048,
+      "false_alarm_rate": 0.75,
+      "n_pos": 21,
+      "n_neg": 4,
+      "t": 0.167317
+     },
+     "marguerite-29": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 49,
+      "n_neg": 1,
+      "t": 0.167317
+     },
+     "valbonne-349": {
+      "sensitivity": 0.9032258064516129,
+      "false_alarm_rate": 0.6666666666666666,
+      "n_pos": 62,
+      "n_neg": 6,
+      "t": 0.167317
+     }
+    }
+   },
+   "posthoc_calibration": {
+    "folds": {
+     "camera_disjoint": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.032450141403577173,
+        "D_ECE": 0.13727717280701754,
+        "lrp": 0.4682558084167926
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.031591581070784705,
+        "D_ECE": 0.13691455064042907,
+        "lrp": 0.4682558084167926
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.04573442096934864,
+        "D_ECE": 0.14936685576839662,
+        "lrp": 0.4682558084167926
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.034110921384864254,
+        "D_ECE": 0.149990066945392,
+        "lrp": 0.4682558084167926
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.0385948868003471,
+        "D_ECE": 0.12475772846889957,
+        "lrp": 0.5217013966818799
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.04038098365346292,
+        "D_ECE": 0.12449319193116345,
+        "lrp": 0.5217013966818799
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.04684328779892313,
+        "D_ECE": 0.13525444076291077,
+        "lrp": 0.5217013966818799
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.03987945408859768,
+        "D_ECE": 0.13617951590943952,
+        "lrp": 0.5217013966818799
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.032716963333545825,
+        "D_ECE": 0.1018867775467776,
+        "lrp": 0.5022515495164919
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.037094917703227884,
+        "D_ECE": 0.09368039174531335,
+        "lrp": 0.5022515495164919
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.04633561391690745,
+        "D_ECE": 0.09815232028225078,
+        "lrp": 0.5022515495164919
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.041169352862224916,
+        "D_ECE": 0.09660190470240297,
+        "lrp": 0.5022515495164919
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.06289802108822452,
+        "D_ECE": 0.07108170431472079,
+        "lrp": 0.49499444524168396
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.06036136893711044,
+        "D_ECE": 0.06846026157360673,
+        "lrp": 0.49499444524168396
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.06271136213038854,
+        "D_ECE": 0.07306923429619255,
+        "lrp": 0.49499444524168396
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.062461383926262166,
+        "D_ECE": 0.07135323845042515,
+        "lrp": 0.49499444524168396
+       }
+      }
+     ],
+     "random_split": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.03419956794910604,
+        "D_ECE": 0.10890516403785486,
+        "lrp": 0.504051446718912
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.03679473589199716,
+        "D_ECE": 0.10580047980922001,
+        "lrp": 0.504051446718912
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03264974303145683,
+        "D_ECE": 0.11215872072379063,
+        "lrp": 0.504051446718912
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.028395094839801037,
+        "D_ECE": 0.11080378582582914,
+        "lrp": 0.5050042975009498
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.026704493236665853,
+        "D_ECE": 0.11235275026123302,
+        "lrp": 0.49559719882611136
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.026705164121406104,
+        "D_ECE": 0.11235361990694455,
+        "lrp": 0.49559719882611136
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.0360118136421532,
+        "D_ECE": 0.11884292713587087,
+        "lrp": 0.49559719882611136
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.024514904077841484,
+        "D_ECE": 0.11816281815516433,
+        "lrp": 0.49539513579468525
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.024478957549766475,
+        "D_ECE": 0.11359019766206156,
+        "lrp": 0.495015706390308
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.02991140514237497,
+        "D_ECE": 0.11050563585303914,
+        "lrp": 0.495015706390308
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.030959954663238847,
+        "D_ECE": 0.11774562029223824,
+        "lrp": 0.495015706390308
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.023683899680649052,
+        "D_ECE": 0.11713221665401792,
+        "lrp": 0.49525142669797023
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.023199954785917316,
+        "D_ECE": 0.12742693254817988,
+        "lrp": 0.484629417243611
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.028211047064355493,
+        "D_ECE": 0.12408976468558909,
+        "lrp": 0.484629417243611
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.024854103511798602,
+        "D_ECE": 0.13463514232082402,
+        "lrp": 0.484629417243611
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02421364169024793,
+        "D_ECE": 0.13572988899399513,
+        "lrp": 0.48462941724361097
+       }
+      }
+     ]
+    },
+    "mean_over_folds": {
+     "camera_disjoint": {
+      "identity": {
+       "LaECE_0": 0.04166500315642366,
+       "D_ECE": 0.10875084578435387
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.04235721284114649,
+       "D_ECE": 0.10588709897262814
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.050406171203891945,
+       "D_ECE": 0.11396071277743769
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.044405278065487254,
+       "D_ECE": 0.11353118150191491
+      }
+     },
+     "random_split": {
+      "identity": {
+       "LaECE_0": 0.02714574338036392,
+       "D_ECE": 0.11556876112733233
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.030405588055033433,
+       "D_ECE": 0.11318737506369819
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.031118903712161874,
+       "D_ECE": 0.12084560261818093
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.025201885072134875,
+       "D_ECE": 0.12045717740725163
+      }
+     }
+    }
+   }
+  },
+  "y11s_pyrosdis_s3407": {
+   "conformal_alarm": {
+    "per_alpha": {
+     "0.05": {
+      "target_sensitivity": 0.95,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9385215026044057,
+        "min": 0.7960308710033076,
+        "max": 0.9936102236421726
+       },
+       "false_alarm_rate": {
+        "mean": 0.7415691197046174,
+        "min": 0.7096774193548387,
+        "max": 0.8177083333333334
+       },
+       "folds": [
+        {
+         "sensitivity": 0.9936102236421726,
+         "false_alarm_rate": 0.7096774193548387,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.021935,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.7960308710033076,
+         "false_alarm_rate": 0.7213114754098361,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.122814,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9866342648845686,
+         "false_alarm_rate": 0.8177083333333334,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.028048,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.977810650887574,
+         "false_alarm_rate": 0.7175792507204611,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.032547,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9520636226695126,
+        "min": 0.9325,
+        "max": 0.973397823458283
+       },
+       "false_alarm_rate": {
+        "mean": 0.748961639900082,
+        "min": 0.6741573033707865,
+        "max": 0.8225806451612904
+       }
+      }
+     },
+     "0.1": {
+      "target_sensitivity": 0.9,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.8972118218116574,
+        "min": 0.7331863285556781,
+        "max": 0.972310969116081
+       },
+       "false_alarm_rate": {
+        "mean": 0.6233362573887584,
+        "min": 0.5327868852459017,
+        "max": 0.7447916666666666
+       },
+       "folds": [
+        {
+         "sensitivity": 0.972310969116081,
+         "false_alarm_rate": 0.6451612903225806,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.103361,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.7331863285556781,
+         "false_alarm_rate": 0.5327868852459017,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.260576,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.951397326852977,
+         "false_alarm_rate": 0.7447916666666666,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.115145,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.9319526627218935,
+         "false_alarm_rate": 0.5706051873198847,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.127599,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9013882048228107,
+        "min": 0.8757396449704142,
+        "max": 0.9246411483253588
+       },
+       "false_alarm_rate": {
+        "mean": 0.6064167316620536,
+        "min": 0.5170731707317073,
+        "max": 0.6855670103092784
+       }
+      }
+     },
+     "0.2": {
+      "target_sensitivity": 0.8,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.8044644509781063,
+        "min": 0.6361631753031973,
+        "max": 0.8796592119275826
+       },
+       "false_alarm_rate": {
+        "mean": 0.4499599296696369,
+        "min": 0.3400576368876081,
+        "max": 0.59375
+       },
+       "folds": [
+        {
+         "sensitivity": 0.8796592119275826,
+         "false_alarm_rate": 0.5053763440860215,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.317626,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.6361631753031973,
+         "false_alarm_rate": 0.36065573770491804,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.418653,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.8736330498177399,
+         "false_alarm_rate": 0.59375,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.325567,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.8284023668639053,
+         "false_alarm_rate": 0.3400576368876081,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.346624,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.7996876412335393,
+        "min": 0.7561837455830389,
+        "max": 0.824009324009324
+       },
+       "false_alarm_rate": {
+        "mean": 0.4264055428281267,
+        "min": 0.3490566037735849,
+        "max": 0.5083798882681564
+       }
+      }
+     }
+    },
+    "per_camera_at_alpha0.10": {
+     "brison-200": {
+      "sensitivity": 0.9753747323340471,
+      "false_alarm_rate": 0.7662337662337663,
+      "n_pos": 934,
+      "n_neg": 77,
+      "t": 0.103361
+     },
+     "marguerite-339": {
+      "sensitivity": 0.4,
+      "false_alarm_rate": 0.0625,
+      "n_pos": 5,
+      "n_neg": 16,
+      "t": 0.103361
+     },
+     "brison-20": {
+      "sensitivity": 0.8576,
+      "false_alarm_rate": 0.4945054945054945,
+      "n_pos": 625,
+      "n_neg": 91,
+      "t": 0.260576
+     },
+     "courmettes-275": {
+      "sensitivity": 0.9444444444444444,
+      "false_alarm_rate": 0.625,
+      "n_pos": 18,
+      "n_neg": 16,
+      "t": 0.260576
+     },
+     "croix-augas-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 9,
+      "n_neg": 6,
+      "t": 0.260576
+     },
+     "croix-augas-59": {
+      "sensitivity": 0.5882352941176471,
+      "false_alarm_rate": null,
+      "n_pos": 34,
+      "n_neg": 0,
+      "t": 0.260576
+     },
+     "croix-augas-8": {
+      "sensitivity": 0.05384615384615385,
+      "false_alarm_rate": null,
+      "n_pos": 130,
+      "n_neg": 0,
+      "t": 0.260576
+     },
+     "ferion-142": {
+      "sensitivity": 0.782608695652174,
+      "false_alarm_rate": 0.4444444444444444,
+      "n_pos": 69,
+      "n_neg": 9,
+      "t": 0.260576
+     },
+     "marguerite-185": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 22,
+      "n_neg": 0,
+      "t": 0.260576
+     },
+     "brison-110": {
+      "sensitivity": 0.95,
+      "false_alarm_rate": 0.4166666666666667,
+      "n_pos": 160,
+      "n_neg": 12,
+      "t": 0.115145
+     },
+     "cabanelle-125": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 19,
+      "n_neg": 25,
+      "t": 0.115145
+     },
+     "courmettes-160": {
+      "sensitivity": 0.9795221843003413,
+      "false_alarm_rate": 0.8504672897196262,
+      "n_pos": 293,
+      "n_neg": 107,
+      "t": 0.115145
+     },
+     "croix-augas-265": {
+      "sensitivity": 0.9444444444444444,
+      "false_alarm_rate": 0.42857142857142855,
+      "n_pos": 18,
+      "n_neg": 7,
+      "t": 0.115145
+     },
+     "marguerite-282": {
+      "sensitivity": 0.8333333333333334,
+      "false_alarm_rate": 0.3333333333333333,
+      "n_pos": 102,
+      "n_neg": 6,
+      "t": 0.115145
+     },
+     "serre-de-barre-350": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 24,
+      "n_neg": 1,
+      "t": 0.115145
+     },
+     "valbonne-138": {
+      "sensitivity": 0.961352657004831,
+      "false_alarm_rate": 0.47058823529411764,
+      "n_pos": 207,
+      "n_neg": 34,
+      "t": 0.115145
+     },
+     "brison-226": {
+      "sensitivity": 0.8,
+      "false_alarm_rate": 0.25,
+      "n_pos": 5,
+      "n_neg": 4,
+      "t": 0.127599
+     },
+     "brison-290": {
+      "sensitivity": 0.9509803921568627,
+      "false_alarm_rate": 0.6162790697674418,
+      "n_pos": 204,
+      "n_neg": 86,
+      "t": 0.127599
+     },
+     "cabanelle-244": {
+      "sensitivity": 0.9090909090909091,
+      "false_alarm_rate": 0.2,
+      "n_pos": 11,
+      "n_neg": 10,
+      "t": 0.127599
+     },
+     "cabanelle-327": {
+      "sensitivity": 0.9035087719298246,
+      "false_alarm_rate": 0.7735849056603774,
+      "n_pos": 114,
+      "n_neg": 106,
+      "t": 0.127599
+     },
+     "courmettes-212": {
+      "sensitivity": 0.9380952380952381,
+      "false_alarm_rate": 0.4230769230769231,
+      "n_pos": 210,
+      "n_neg": 130,
+      "t": 0.127599
+     },
+     "croix-augas-161": {
+      "sensitivity": 0.8571428571428571,
+      "false_alarm_rate": 0.5,
+      "n_pos": 21,
+      "n_neg": 4,
+      "t": 0.127599
+     },
+     "marguerite-29": {
+      "sensitivity": 0.9591836734693877,
+      "false_alarm_rate": 1.0,
+      "n_pos": 49,
+      "n_neg": 1,
+      "t": 0.127599
+     },
+     "valbonne-349": {
+      "sensitivity": 0.9193548387096774,
+      "false_alarm_rate": 0.3333333333333333,
+      "n_pos": 62,
+      "n_neg": 6,
+      "t": 0.127599
+     }
+    }
+   },
+   "posthoc_calibration": {
+    "folds": {
+     "camera_disjoint": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.03058386817957478,
+        "D_ECE": 0.14312572710280372,
+        "lrp": 0.48866552597177015
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.03194732625738303,
+        "D_ECE": 0.1403055069077474,
+        "lrp": 0.48866552597177015
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.02672625150694775,
+        "D_ECE": 0.13681337657062792,
+        "lrp": 0.48866552597177015
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.03804952734265342,
+        "D_ECE": 0.14037493972772064,
+        "lrp": 0.4889969550853244
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.056378158952340204,
+        "D_ECE": 0.13596654969325148,
+        "lrp": 0.5516844301062507
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.05632305360588334,
+        "D_ECE": 0.1348242322394045,
+        "lrp": 0.5516844301062507
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.05593797158361144,
+        "D_ECE": 0.13428645829115343,
+        "lrp": 0.5516844301062507
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.03724867809343835,
+        "D_ECE": 0.13560642762187977,
+        "lrp": 0.5512859273774563
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.03698588589471698,
+        "D_ECE": 0.12046278409090906,
+        "lrp": 0.47664206767601697
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.041336544525877546,
+        "D_ECE": 0.11135414178964041,
+        "lrp": 0.47664206767601697
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03825474739460104,
+        "D_ECE": 0.10683787480997307,
+        "lrp": 0.47664206767601697
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.03843989358145346,
+        "D_ECE": 0.1094924690603896,
+        "lrp": 0.47664206767601697
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.04292747719748183,
+        "D_ECE": 0.08765877199504338,
+        "lrp": 0.49375172174417
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.0412078555094402,
+        "D_ECE": 0.08066687112341248,
+        "lrp": 0.49375172174417
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.04763336738404128,
+        "D_ECE": 0.07784126464579677,
+        "lrp": 0.49375172174417
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.05166021358769217,
+        "D_ECE": 0.06975554659497879,
+        "lrp": 0.49375172174417
+       }
+      }
+     ],
+     "random_split": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.03108656475084184,
+        "D_ECE": 0.12899749732620325,
+        "lrp": 0.5042838623255311
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.036842615930865796,
+        "D_ECE": 0.12440258467892,
+        "lrp": 0.5042838623255311
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03619269583513815,
+        "D_ECE": 0.12425393177999712,
+        "lrp": 0.5042838623255311
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.0326339036776022,
+        "D_ECE": 0.12232779154641109,
+        "lrp": 0.504283862325531
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.04790037810315473,
+        "D_ECE": 0.12331013598326362,
+        "lrp": 0.4984950529250866
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.053818238225883434,
+        "D_ECE": 0.12199399037038704,
+        "lrp": 0.4984950529250866
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.059999328570788116,
+        "D_ECE": 0.11696705078878945,
+        "lrp": 0.4984950529250866
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02972065858190448,
+        "D_ECE": 0.11612275340078772,
+        "lrp": 0.4984950529250865
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.034590316397391865,
+        "D_ECE": 0.13565602547770697,
+        "lrp": 0.4918469563006601
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.032558608487368426,
+        "D_ECE": 0.132258296009973,
+        "lrp": 0.4918469563006601
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03218203910172599,
+        "D_ECE": 0.13070597683594026,
+        "lrp": 0.4918469563006601
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02383916286815802,
+        "D_ECE": 0.1315287074046509,
+        "lrp": 0.4918469563006601
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.032547120701407806,
+        "D_ECE": 0.13853375721925137,
+        "lrp": 0.49779002824859586
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.026560667148590796,
+        "D_ECE": 0.13551780477014788,
+        "lrp": 0.49779002824859586
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03172110146745315,
+        "D_ECE": 0.1335545782134892,
+        "lrp": 0.49779002824859586
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02618749364355336,
+        "D_ECE": 0.13406024857484006,
+        "lrp": 0.497790028248596
+       }
+      }
+     ]
+    },
+    "mean_over_folds": {
+     "camera_disjoint": {
+      "identity": {
+       "LaECE_0": 0.04171884755602845,
+       "D_ECE": 0.1218034582205019
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.04270369497464603,
+       "D_ECE": 0.1167876880150512
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.04213808446730038,
+       "D_ECE": 0.1139447435793878
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.04134957815130935,
+       "D_ECE": 0.11380734575124221
+      }
+     },
+     "random_split": {
+      "identity": {
+       "LaECE_0": 0.036531094988199064,
+       "D_ECE": 0.13162435400160633
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.03744503244817712,
+       "D_ECE": 0.12854316895735698
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.04002379124377635,
+       "D_ECE": 0.126370384404554
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.028095304692804517,
+       "D_ECE": 0.12600987523167245
+      }
+     }
+    }
+   }
+  },
+  "rtdetrl_pyrosdis_s3407": {
+   "conformal_alarm": {
+    "per_alpha": {
+     "0.05": {
+      "target_sensitivity": 0.95,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9473511253157254,
+        "min": 0.9113001215066828,
+        "max": 0.9744408945686901
+       },
+       "false_alarm_rate": {
+        "mean": 0.7713557108860617,
+        "min": 0.6512968299711815,
+        "max": 0.9262295081967213
+       },
+       "folds": [
+        {
+         "sensitivity": 0.9744408945686901,
+         "false_alarm_rate": 0.7526881720430108,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.333518,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.9702315325248071,
+         "false_alarm_rate": 0.9262295081967213,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.335456,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9113001215066828,
+         "false_alarm_rate": 0.7552083333333334,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.356309,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.9334319526627219,
+         "false_alarm_rate": 0.6512968299711815,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.345791,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9499133082148521,
+        "min": 0.9223300970873787,
+        "max": 0.9711538461538461
+       },
+       "false_alarm_rate": {
+        "mean": 0.7397707785410949,
+        "min": 0.6774193548387096,
+        "max": 0.8156424581005587
+       }
+      }
+     },
+     "0.1": {
+      "target_sensitivity": 0.9,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.8987843583088808,
+        "min": 0.8602673147023087,
+        "max": 0.9318423855165069
+       },
+       "false_alarm_rate": {
+        "mean": 0.6593170276782535,
+        "min": 0.49279538904899134,
+        "max": 0.8114754098360656
+       },
+       "folds": [
+        {
+         "sensitivity": 0.9318423855165069,
+         "false_alarm_rate": 0.6559139784946236,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.394693,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.918412348401323,
+         "false_alarm_rate": 0.8114754098360656,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.399758,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.8602673147023087,
+         "false_alarm_rate": 0.6770833333333334,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.413385,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.8846153846153846,
+         "false_alarm_rate": 0.49279538904899134,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.407114,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.8998138515346532,
+        "min": 0.8710843373493976,
+        "max": 0.9261025029797377
+       },
+       "false_alarm_rate": {
+        "mean": 0.6129389249032636,
+        "min": 0.5544041450777202,
+        "max": 0.6715686274509803
+       }
+      }
+     },
+     "0.2": {
+      "target_sensitivity": 0.8,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.7936865760342184,
+        "min": 0.7559171597633136,
+        "max": 0.8456449834619625
+       },
+       "false_alarm_rate": {
+        "mean": 0.511265161845305,
+        "min": 0.3659942363112392,
+        "max": 0.6229508196721312
+       },
+       "folds": [
+        {
+         "sensitivity": 0.8040468583599574,
+         "false_alarm_rate": 0.46236559139784944,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.46566,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.8456449834619625,
+         "false_alarm_rate": 0.6229508196721312,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.460683,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.7691373025516404,
+         "false_alarm_rate": 0.59375,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.469837,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.7559171597633136,
+         "false_alarm_rate": 0.3659942363112392,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.470271,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.8016261205116981,
+        "min": 0.7651245551601423,
+        "max": 0.839811542991755
+       },
+       "false_alarm_rate": {
+        "mean": 0.48505236427735515,
+        "min": 0.42328042328042326,
+        "max": 0.5688622754491018
+       }
+      }
+     }
+    },
+    "per_camera_at_alpha0.10": {
+     "brison-200": {
+      "sensitivity": 0.9314775160599572,
+      "false_alarm_rate": 0.7402597402597403,
+      "n_pos": 934,
+      "n_neg": 77,
+      "t": 0.394693
+     },
+     "marguerite-339": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.25,
+      "n_pos": 5,
+      "n_neg": 16,
+      "t": 0.394693
+     },
+     "brison-20": {
+      "sensitivity": 0.944,
+      "false_alarm_rate": 0.7912087912087912,
+      "n_pos": 625,
+      "n_neg": 91,
+      "t": 0.399758
+     },
+     "courmettes-275": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.8125,
+      "n_pos": 18,
+      "n_neg": 16,
+      "t": 0.399758
+     },
+     "croix-augas-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 9,
+      "n_neg": 6,
+      "t": 0.399758
+     },
+     "croix-augas-59": {
+      "sensitivity": 0.5294117647058824,
+      "false_alarm_rate": null,
+      "n_pos": 34,
+      "n_neg": 0,
+      "t": 0.399758
+     },
+     "croix-augas-8": {
+      "sensitivity": 0.9538461538461539,
+      "false_alarm_rate": null,
+      "n_pos": 130,
+      "n_neg": 0,
+      "t": 0.399758
+     },
+     "ferion-142": {
+      "sensitivity": 0.7971014492753623,
+      "false_alarm_rate": 0.8888888888888888,
+      "n_pos": 69,
+      "n_neg": 9,
+      "t": 0.399758
+     },
+     "marguerite-185": {
+      "sensitivity": 0.8636363636363636,
+      "false_alarm_rate": null,
+      "n_pos": 22,
+      "n_neg": 0,
+      "t": 0.399758
+     },
+     "brison-110": {
+      "sensitivity": 0.91875,
+      "false_alarm_rate": 0.5,
+      "n_pos": 160,
+      "n_neg": 12,
+      "t": 0.413385
+     },
+     "cabanelle-125": {
+      "sensitivity": 0.8947368421052632,
+      "false_alarm_rate": 1.0,
+      "n_pos": 19,
+      "n_neg": 25,
+      "t": 0.413385
+     },
+     "courmettes-160": {
+      "sensitivity": 0.9658703071672355,
+      "false_alarm_rate": 0.8411214953271028,
+      "n_pos": 293,
+      "n_neg": 107,
+      "t": 0.413385
+     },
+     "croix-augas-265": {
+      "sensitivity": 0.5,
+      "false_alarm_rate": 0.2857142857142857,
+      "n_pos": 18,
+      "n_neg": 7,
+      "t": 0.413385
+     },
+     "marguerite-282": {
+      "sensitivity": 0.7352941176470589,
+      "false_alarm_rate": 0.16666666666666666,
+      "n_pos": 102,
+      "n_neg": 6,
+      "t": 0.413385
+     },
+     "serre-de-barre-350": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.0,
+      "n_pos": 24,
+      "n_neg": 1,
+      "t": 0.413385
+     },
+     "valbonne-138": {
+      "sensitivity": 0.7391304347826086,
+      "false_alarm_rate": 0.17647058823529413,
+      "n_pos": 207,
+      "n_neg": 34,
+      "t": 0.413385
+     },
+     "brison-226": {
+      "sensitivity": 0.8,
+      "false_alarm_rate": 0.25,
+      "n_pos": 5,
+      "n_neg": 4,
+      "t": 0.407114
+     },
+     "brison-290": {
+      "sensitivity": 0.8676470588235294,
+      "false_alarm_rate": 0.5232558139534884,
+      "n_pos": 204,
+      "n_neg": 86,
+      "t": 0.407114
+     },
+     "cabanelle-244": {
+      "sensitivity": 0.09090909090909091,
+      "false_alarm_rate": 0.1,
+      "n_pos": 11,
+      "n_neg": 10,
+      "t": 0.407114
+     },
+     "cabanelle-327": {
+      "sensitivity": 0.8421052631578947,
+      "false_alarm_rate": 0.7169811320754716,
+      "n_pos": 114,
+      "n_neg": 106,
+      "t": 0.407114
+     },
+     "courmettes-212": {
+      "sensitivity": 0.9476190476190476,
+      "false_alarm_rate": 0.33076923076923076,
+      "n_pos": 210,
+      "n_neg": 130,
+      "t": 0.407114
+     },
+     "croix-augas-161": {
+      "sensitivity": 0.7619047619047619,
+      "false_alarm_rate": 0.25,
+      "n_pos": 21,
+      "n_neg": 4,
+      "t": 0.407114
+     },
+     "marguerite-29": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 49,
+      "n_neg": 1,
+      "t": 0.407114
+     },
+     "valbonne-349": {
+      "sensitivity": 0.9032258064516129,
+      "false_alarm_rate": 0.5,
+      "n_pos": 62,
+      "n_neg": 6,
+      "t": 0.407114
+     }
+    }
+   },
+   "posthoc_calibration": {
+    "folds": {
+     "camera_disjoint": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.047454891070690966,
+        "D_ECE": 0.10087215817223195,
+        "lrp": 0.5575470460163318
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.04684390529243104,
+        "D_ECE": 0.10103994888606403,
+        "lrp": 0.5575470460163318
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.045214746279231416,
+        "D_ECE": 0.1740844506292711,
+        "lrp": 0.5575470460163318
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.05134092412155816,
+        "D_ECE": 0.1724434546945681,
+        "lrp": 0.5580655573114567
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.11251001831833773,
+        "D_ECE": 0.10243717826825131,
+        "lrp": 0.5443501371573086
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.11570117487762689,
+        "D_ECE": 0.108032553228729,
+        "lrp": 0.5443501371573086
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.07814715150963869,
+        "D_ECE": 0.10775348727829633,
+        "lrp": 0.5443501371573086
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.07250368993326083,
+        "D_ECE": 0.1122268318399177,
+        "lrp": 0.5443501371573086
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.05742755515653264,
+        "D_ECE": 0.08604877546777547,
+        "lrp": 0.5882449919439932
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.06566253985030546,
+        "D_ECE": 0.08825309467578811,
+        "lrp": 0.5882449919439932
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.06075294554989238,
+        "D_ECE": 0.1518053316108038,
+        "lrp": 0.5882449919439932
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.05637033054922523,
+        "D_ECE": 0.15641103883120075,
+        "lrp": 0.5907654816845214
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.10546495490598004,
+        "D_ECE": 0.0814608902857143,
+        "lrp": 0.5893150116194271
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.10361895231041479,
+        "D_ECE": 0.07760025796055332,
+        "lrp": 0.5893150116194271
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.061325409618418605,
+        "D_ECE": 0.1023400884086931,
+        "lrp": 0.5893150116194271
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.055164506277146745,
+        "D_ECE": 0.0978186584129053,
+        "lrp": 0.5893150116194271
+       }
+      }
+     ],
+     "random_split": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.07126376982746624,
+        "D_ECE": 0.07803583695652173,
+        "lrp": 0.5631988061070351
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.07543053130041052,
+        "D_ECE": 0.07026077870363541,
+        "lrp": 0.5631988061070351
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.043716476580797956,
+        "D_ECE": 0.14272162352745715,
+        "lrp": 0.5631988061070351
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.027747616872919847,
+        "D_ECE": 0.14440304158063175,
+        "lrp": 0.5631988061070351
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.07873759006520487,
+        "D_ECE": 0.07339232285714284,
+        "lrp": 0.5751390854562524
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.07740461276439442,
+        "D_ECE": 0.0725340620560758,
+        "lrp": 0.5751390854562524
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.030861208641561978,
+        "D_ECE": 0.11788687016492234,
+        "lrp": 0.5751390854562524
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.025570684251598197,
+        "D_ECE": 0.11858577124853555,
+        "lrp": 0.5751390854562525
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.0666098404833864,
+        "D_ECE": 0.08643678973843062,
+        "lrp": 0.5732599481756594
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.0694807467752206,
+        "D_ECE": 0.08356851112575803,
+        "lrp": 0.5732599481756594
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.02822375883201366,
+        "D_ECE": 0.14491227446199062,
+        "lrp": 0.5732599481756594
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02946279226081663,
+        "D_ECE": 0.14137523702324728,
+        "lrp": 0.5764073400004134
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.06602681822766829,
+        "D_ECE": 0.08214206906614784,
+        "lrp": 0.5636392146420914
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.06948272140928022,
+        "D_ECE": 0.07948003167428062,
+        "lrp": 0.5636392146420914
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.034921811280632944,
+        "D_ECE": 0.1283243552082052,
+        "lrp": 0.5636392146420914
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02596614478550164,
+        "D_ECE": 0.12903795816885308,
+        "lrp": 0.5642783355197285
+       }
+      }
+     ]
+    },
+    "mean_over_folds": {
+     "camera_disjoint": {
+      "identity": {
+       "LaECE_0": 0.08071435486288533,
+       "D_ECE": 0.09270475054849325
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.08295664308269454,
+       "D_ECE": 0.09373146368778361
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.06136006323929527,
+       "D_ECE": 0.1339958394817661
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.05884486272029774,
+       "D_ECE": 0.13472499594464796
+      }
+     },
+     "random_split": {
+      "identity": {
+       "LaECE_0": 0.07065950465093146,
+       "D_ECE": 0.08000175465456076
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.07294965306232645,
+       "D_ECE": 0.07646084588993747
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.03443081383375164,
+       "D_ECE": 0.13346128084064382
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.02718680954270908,
+       "D_ECE": 0.13335050200531692
+      }
+     }
+    }
+   }
+  },
+  "rtdetrl_pyrosdis_s3407_p60": {
+   "conformal_alarm": {
+    "per_alpha": {
+     "0.05": {
+      "target_sensitivity": 0.95,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9441177627072496,
+        "min": 0.8335170893054025,
+        "max": 0.9946751863684771
+       },
+       "false_alarm_rate": {
+        "mean": 0.6720395738624385,
+        "min": 0.4344262295081967,
+        "max": 0.8125
+       },
+       "folds": [
+        {
+         "sensitivity": 0.9946751863684771,
+         "false_alarm_rate": 0.7956989247311828,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.060262,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.8335170893054025,
+         "false_alarm_rate": 0.4344262295081967,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.23159,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9793438639125152,
+         "false_alarm_rate": 0.8125,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.07359,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.9689349112426036,
+         "false_alarm_rate": 0.6455331412103746,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.080154,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9515037711710977,
+        "min": 0.9257907542579076,
+        "max": 0.9669811320754716
+       },
+       "false_alarm_rate": {
+        "mean": 0.6993310796749572,
+        "min": 0.6290322580645161,
+        "max": 0.772972972972973
+       }
+      }
+     },
+     "0.1": {
+      "target_sensitivity": 0.9,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9051947873323996,
+        "min": 0.7993384785005513,
+        "max": 0.9605963791267306
+       },
+       "false_alarm_rate": {
+        "mean": 0.5071322040870833,
+        "min": 0.30327868852459017,
+        "max": 0.703125
+       },
+       "folds": [
+        {
+         "sensitivity": 0.9605963791267306,
+         "false_alarm_rate": 0.6129032258064516,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.237736,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.7993384785005513,
+         "false_alarm_rate": 0.30327868852459017,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.338001,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9392466585662211,
+         "false_alarm_rate": 0.703125,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.255755,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.9215976331360947,
+         "false_alarm_rate": 0.4092219020172911,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.270123,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9019121159562292,
+        "min": 0.8746987951807229,
+        "max": 0.930622009569378
+       },
+       "false_alarm_rate": {
+        "mean": 0.49234859033485756,
+        "min": 0.4260355029585799,
+        "max": 0.555
+       }
+      }
+     },
+     "0.2": {
+      "target_sensitivity": 0.8,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.8034392211312641,
+        "min": 0.7464167585446527,
+        "max": 0.8690095846645367
+       },
+       "false_alarm_rate": {
+        "mean": 0.35763004597400294,
+        "min": 0.207492795389049,
+        "max": 0.5260416666666666
+       },
+       "folds": [
+        {
+         "sensitivity": 0.8690095846645367,
+         "false_alarm_rate": 0.4838709677419355,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.413249,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.7464167585446527,
+         "false_alarm_rate": 0.21311475409836064,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.446168,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.7995139732685298,
+         "false_alarm_rate": 0.5260416666666666,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.434138,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.7988165680473372,
+         "false_alarm_rate": 0.207492795389049,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.434475,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.7999855736027848,
+        "min": 0.7664670658682635,
+        "max": 0.829683698296837
+       },
+       "false_alarm_rate": {
+        "mean": 0.3193203842039357,
+        "min": 0.25268817204301075,
+        "max": 0.3825136612021858
+       }
+      }
+     }
+    },
+    "per_camera_at_alpha0.10": {
+     "brison-200": {
+      "sensitivity": 0.9635974304068522,
+      "false_alarm_rate": 0.7402597402597403,
+      "n_pos": 934,
+      "n_neg": 77,
+      "t": 0.237736
+     },
+     "marguerite-339": {
+      "sensitivity": 0.4,
+      "false_alarm_rate": 0.0,
+      "n_pos": 5,
+      "n_neg": 16,
+      "t": 0.237736
+     },
+     "brison-20": {
+      "sensitivity": 0.8704,
+      "false_alarm_rate": 0.25274725274725274,
+      "n_pos": 625,
+      "n_neg": 91,
+      "t": 0.338001
+     },
+     "courmettes-275": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.375,
+      "n_pos": 18,
+      "n_neg": 16,
+      "t": 0.338001
+     },
+     "croix-augas-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.5,
+      "n_pos": 9,
+      "n_neg": 6,
+      "t": 0.338001
+     },
+     "croix-augas-59": {
+      "sensitivity": 0.9411764705882353,
+      "false_alarm_rate": null,
+      "n_pos": 34,
+      "n_neg": 0,
+      "t": 0.338001
+     },
+     "croix-augas-8": {
+      "sensitivity": 0.2846153846153846,
+      "false_alarm_rate": null,
+      "n_pos": 130,
+      "n_neg": 0,
+      "t": 0.338001
+     },
+     "ferion-142": {
+      "sensitivity": 0.9130434782608695,
+      "false_alarm_rate": 0.5555555555555556,
+      "n_pos": 69,
+      "n_neg": 9,
+      "t": 0.338001
+     },
+     "marguerite-185": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 22,
+      "n_neg": 0,
+      "t": 0.338001
+     },
+     "brison-110": {
+      "sensitivity": 0.98125,
+      "false_alarm_rate": 0.5,
+      "n_pos": 160,
+      "n_neg": 12,
+      "t": 0.255755
+     },
+     "cabanelle-125": {
+      "sensitivity": 0.8947368421052632,
+      "false_alarm_rate": 1.0,
+      "n_pos": 19,
+      "n_neg": 25,
+      "t": 0.255755
+     },
+     "courmettes-160": {
+      "sensitivity": 0.962457337883959,
+      "false_alarm_rate": 0.794392523364486,
+      "n_pos": 293,
+      "n_neg": 107,
+      "t": 0.255755
+     },
+     "croix-augas-265": {
+      "sensitivity": 0.9444444444444444,
+      "false_alarm_rate": 0.7142857142857143,
+      "n_pos": 18,
+      "n_neg": 7,
+      "t": 0.255755
+     },
+     "marguerite-282": {
+      "sensitivity": 0.7941176470588235,
+      "false_alarm_rate": 0.6666666666666666,
+      "n_pos": 102,
+      "n_neg": 6,
+      "t": 0.255755
+     },
+     "serre-de-barre-350": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.0,
+      "n_pos": 24,
+      "n_neg": 1,
+      "t": 0.255755
+     },
+     "valbonne-138": {
+      "sensitivity": 0.9420289855072463,
+      "false_alarm_rate": 0.29411764705882354,
+      "n_pos": 207,
+      "n_neg": 34,
+      "t": 0.255755
+     },
+     "brison-226": {
+      "sensitivity": 0.8,
+      "false_alarm_rate": 0.0,
+      "n_pos": 5,
+      "n_neg": 4,
+      "t": 0.270123
+     },
+     "brison-290": {
+      "sensitivity": 0.9068627450980392,
+      "false_alarm_rate": 0.3488372093023256,
+      "n_pos": 204,
+      "n_neg": 86,
+      "t": 0.270123
+     },
+     "cabanelle-244": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.4,
+      "n_pos": 11,
+      "n_neg": 10,
+      "t": 0.270123
+     },
+     "cabanelle-327": {
+      "sensitivity": 0.9210526315789473,
+      "false_alarm_rate": 0.7264150943396226,
+      "n_pos": 114,
+      "n_neg": 106,
+      "t": 0.270123
+     },
+     "courmettes-212": {
+      "sensitivity": 0.9142857142857143,
+      "false_alarm_rate": 0.2,
+      "n_pos": 210,
+      "n_neg": 130,
+      "t": 0.270123
+     },
+     "croix-augas-161": {
+      "sensitivity": 0.9047619047619048,
+      "false_alarm_rate": 0.5,
+      "n_pos": 21,
+      "n_neg": 4,
+      "t": 0.270123
+     },
+     "marguerite-29": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 49,
+      "n_neg": 1,
+      "t": 0.270123
+     },
+     "valbonne-349": {
+      "sensitivity": 0.9354838709677419,
+      "false_alarm_rate": 0.3333333333333333,
+      "n_pos": 62,
+      "n_neg": 6,
+      "t": 0.270123
+     }
+    }
+   },
+   "posthoc_calibration": {
+    "folds": {
+     "camera_disjoint": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.039262559457494975,
+        "D_ECE": 0.1596351141804788,
+        "lrp": 0.4906071426229968
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.030950936796608194,
+        "D_ECE": 0.14470925704473106,
+        "lrp": 0.4906071426229968
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.02584058260204683,
+        "D_ECE": 0.1360551677673431,
+        "lrp": 0.4906071426229968
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.025416284637460068,
+        "D_ECE": 0.13240752368667266,
+        "lrp": 0.49060714262299676
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.0646112271103096,
+        "D_ECE": 0.18398631829268292,
+        "lrp": 0.484258953390337
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.052764326733727496,
+        "D_ECE": 0.17212711533273087,
+        "lrp": 0.484258953390337
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.05138533173643207,
+        "D_ECE": 0.16770421072220695,
+        "lrp": 0.484258953390337
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.04637626172996969,
+        "D_ECE": 0.16663647288123862,
+        "lrp": 0.484258953390337
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.04394558471624532,
+        "D_ECE": 0.1354393549351944,
+        "lrp": 0.5044933700561537
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.07059576085424363,
+        "D_ECE": 0.10814901386422693,
+        "lrp": 0.5044933700561537
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.07323038777948751,
+        "D_ECE": 0.11555144928242761,
+        "lrp": 0.5044933700561537
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.07231486902473391,
+        "D_ECE": 0.11411639397446917,
+        "lrp": 0.5044933700561537
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.07191971647671078,
+        "D_ECE": 0.14746805135135133,
+        "lrp": 0.4622725824920062
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.0597281012949924,
+        "D_ECE": 0.13462072062221056,
+        "lrp": 0.4622725824920062
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.061587682775553446,
+        "D_ECE": 0.132226157861178,
+        "lrp": 0.4622725824920062
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.05508898100522047,
+        "D_ECE": 0.14813204455090537,
+        "lrp": 0.4622725824920062
+       }
+      }
+     ],
+     "random_split": [
+      {
+       "fold": 0,
+       "n_cal": 3067,
+       "n_test": 1032,
+       "identity": {
+        "LaECE_0": 0.052841423036912624,
+        "D_ECE": 0.1661479048152296,
+        "lrp": 0.4904032453106334
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.03942568500022068,
+        "D_ECE": 0.14818185135275985,
+        "lrp": 0.4904032453106334
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03918353189078373,
+        "D_ECE": 0.14696469247520866,
+        "lrp": 0.4904032453106334
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.031941144763444375,
+        "D_ECE": 0.14667218960594908,
+        "lrp": 0.4904032453106335
+       }
+      },
+      {
+       "fold": 1,
+       "n_cal": 3070,
+       "n_test": 1029,
+       "identity": {
+        "LaECE_0": 0.05044002143171172,
+        "D_ECE": 0.14589809071504803,
+        "lrp": 0.4915389753290785
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.04058376385661623,
+        "D_ECE": 0.12224000625642298,
+        "lrp": 0.4915389753290785
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.04223377027761878,
+        "D_ECE": 0.12039476879530353,
+        "lrp": 0.4915389753290785
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02313501157651076,
+        "D_ECE": 0.11520878717012202,
+        "lrp": 0.4915389753290785
+       }
+      },
+      {
+       "fold": 2,
+       "n_cal": 3084,
+       "n_test": 1015,
+       "identity": {
+        "LaECE_0": 0.0348404817288932,
+        "D_ECE": 0.15552394623655916,
+        "lrp": 0.493864336407074
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.032004098783196766,
+        "D_ECE": 0.13534654989831385,
+        "lrp": 0.493864336407074
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03324778288118995,
+        "D_ECE": 0.13544155631896157,
+        "lrp": 0.493864336407074
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.025290305332333025,
+        "D_ECE": 0.13632071941856164,
+        "lrp": 0.4938643364070739
+       }
+      },
+      {
+       "fold": 3,
+       "n_cal": 3076,
+       "n_test": 1023,
+       "identity": {
+        "LaECE_0": 0.05082093352200149,
+        "D_ECE": 0.1646610287234042,
+        "lrp": 0.47654714168569456
+       },
+       "temperature_scaling": {
+        "LaECE_0": 0.03364589586945967,
+        "D_ECE": 0.14707816491813752,
+        "lrp": 0.47654714168569456
+       },
+       "platt_scaling": {
+        "LaECE_0": 0.03198720160569132,
+        "D_ECE": 0.14805956479657473,
+        "lrp": 0.47654714168569456
+       },
+       "isotonic_regression": {
+        "LaECE_0": 0.02649889583646949,
+        "D_ECE": 0.14600664816815398,
+        "lrp": 0.47654714168569456
+       }
+      }
+     ]
+    },
+    "mean_over_folds": {
+     "camera_disjoint": {
+      "identity": {
+       "LaECE_0": 0.05493477194019017,
+       "D_ECE": 0.15663220968992686
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.05350978141989293,
+       "D_ECE": 0.13990152671597486
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.05301099622337996,
+       "D_ECE": 0.13788424640828892
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.04979909909934604,
+       "D_ECE": 0.14032310877332144
+      }
+     },
+     "random_split": {
+      "identity": {
+       "LaECE_0": 0.047235714929879755,
+       "D_ECE": 0.15805774262256023
+      },
+      "temperature_scaling": {
+       "LaECE_0": 0.03641486087737334,
+       "D_ECE": 0.13821164310640854
+      },
+      "platt_scaling": {
+       "LaECE_0": 0.03666307166382095,
+       "D_ECE": 0.1377151455965121
+      },
+      "isotonic_regression": {
+       "LaECE_0": 0.02671633937718941,
+       "D_ECE": 0.1360520860906967
+      }
+     }
+    }
+   }
+  },
+  "v8s_dfire_s3407": {
+   "conformal_alarm": {
+    "per_alpha": {
+     "0.05": {
+      "target_sensitivity": 0.95,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "folds": [
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.0,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.0,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.0,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.0,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       }
+      }
+     },
+     "0.1": {
+      "target_sensitivity": 0.9,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "folds": [
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.0,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.0,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.0,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.0,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       }
+      }
+     },
+     "0.2": {
+      "target_sensitivity": 0.8,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.8564962726304579,
+        "min": 0.42598509052183176,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 0.8225806451612903,
+        "min": 0.2903225806451613,
+        "max": 1.0
+       },
+       "folds": [
+        {
+         "sensitivity": 0.42598509052183176,
+         "false_alarm_rate": 0.2903225806451613,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.00323,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.0,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.0,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.0,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.8128229833961351,
+        "min": 0.7643540669856459,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 0.8209181787691658,
+        "min": 0.7135135135135136,
+        "max": 1.0
+       }
+      }
+     }
+    },
+    "per_camera_at_alpha0.10": {
+     "brison-200": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 934,
+      "n_neg": 77,
+      "t": 0.0
+     },
+     "marguerite-339": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 5,
+      "n_neg": 16,
+      "t": 0.0
+     },
+     "brison-20": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 625,
+      "n_neg": 91,
+      "t": 0.0
+     },
+     "courmettes-275": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 18,
+      "n_neg": 16,
+      "t": 0.0
+     },
+     "croix-augas-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 9,
+      "n_neg": 6,
+      "t": 0.0
+     },
+     "croix-augas-59": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 34,
+      "n_neg": 0,
+      "t": 0.0
+     },
+     "croix-augas-8": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 130,
+      "n_neg": 0,
+      "t": 0.0
+     },
+     "ferion-142": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 69,
+      "n_neg": 9,
+      "t": 0.0
+     },
+     "marguerite-185": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 22,
+      "n_neg": 0,
+      "t": 0.0
+     },
+     "brison-110": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 160,
+      "n_neg": 12,
+      "t": 0.0
+     },
+     "cabanelle-125": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 19,
+      "n_neg": 25,
+      "t": 0.0
+     },
+     "courmettes-160": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 293,
+      "n_neg": 107,
+      "t": 0.0
+     },
+     "croix-augas-265": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 18,
+      "n_neg": 7,
+      "t": 0.0
+     },
+     "marguerite-282": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 102,
+      "n_neg": 6,
+      "t": 0.0
+     },
+     "serre-de-barre-350": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 24,
+      "n_neg": 1,
+      "t": 0.0
+     },
+     "valbonne-138": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 207,
+      "n_neg": 34,
+      "t": 0.0
+     },
+     "brison-226": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 5,
+      "n_neg": 4,
+      "t": 0.0
+     },
+     "brison-290": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 204,
+      "n_neg": 86,
+      "t": 0.0
+     },
+     "cabanelle-244": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 11,
+      "n_neg": 10,
+      "t": 0.0
+     },
+     "cabanelle-327": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 114,
+      "n_neg": 106,
+      "t": 0.0
+     },
+     "courmettes-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 210,
+      "n_neg": 130,
+      "t": 0.0
+     },
+     "croix-augas-161": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 21,
+      "n_neg": 4,
+      "t": 0.0
+     },
+     "marguerite-29": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 49,
+      "n_neg": 1,
+      "t": 0.0
+     },
+     "valbonne-349": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 62,
+      "n_neg": 6,
+      "t": 0.0
+     }
+    }
+   }
+  },
+  "y11s_dfire_s3407": {
+   "conformal_alarm": {
+    "per_alpha": {
+     "0.05": {
+      "target_sensitivity": 0.95,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "folds": [
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.0,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.0,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.0,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.0,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       }
+      }
+     },
+     "0.1": {
+      "target_sensitivity": 0.9,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9068157614483493,
+        "min": 0.6272630457933972,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 0.8978494623655914,
+        "min": 0.5913978494623656,
+        "max": 1.0
+       },
+       "folds": [
+        {
+         "sensitivity": 0.6272630457933972,
+         "false_alarm_rate": 0.5913978494623656,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.001083,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.0,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.0,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.0,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
+       }
+      }
+     },
+     "0.2": {
+      "target_sensitivity": 0.8,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.7994014942517303,
+        "min": 0.4536741214057508,
+        "max": 1.0
+       },
+       "false_alarm_rate": {
+        "mean": 0.7477820886012209,
+        "min": 0.3870967741935484,
+        "max": 1.0
+       },
+       "folds": [
+        {
+         "sensitivity": 0.4536741214057508,
+         "false_alarm_rate": 0.3870967741935484,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.00375,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 1.0,
+         "false_alarm_rate": 1.0,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.0,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.8578371810449574,
+         "false_alarm_rate": 0.7135416666666666,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.001207,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.886094674556213,
+         "false_alarm_rate": 0.8904899135446686,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.001183,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.8023605332520256,
+        "min": 0.7453646477132262,
+        "max": 0.8319623971797885
+       },
+       "false_alarm_rate": {
+        "mean": 0.7824694900669478,
+        "min": 0.7231638418079096,
+        "max": 0.8481675392670157
+       }
+      }
+     }
+    },
+    "per_camera_at_alpha0.10": {
+     "brison-200": {
+      "sensitivity": 0.6263383297644539,
+      "false_alarm_rate": 0.6103896103896104,
+      "n_pos": 934,
+      "n_neg": 77,
+      "t": 0.001083
+     },
+     "marguerite-339": {
+      "sensitivity": 0.8,
+      "false_alarm_rate": 0.5,
+      "n_pos": 5,
+      "n_neg": 16,
+      "t": 0.001083
+     },
+     "brison-20": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 625,
+      "n_neg": 91,
+      "t": 0.0
+     },
+     "courmettes-275": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 18,
+      "n_neg": 16,
+      "t": 0.0
+     },
+     "croix-augas-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 9,
+      "n_neg": 6,
+      "t": 0.0
+     },
+     "croix-augas-59": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 34,
+      "n_neg": 0,
+      "t": 0.0
+     },
+     "croix-augas-8": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 130,
+      "n_neg": 0,
+      "t": 0.0
+     },
+     "ferion-142": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 69,
+      "n_neg": 9,
+      "t": 0.0
+     },
+     "marguerite-185": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 22,
+      "n_neg": 0,
+      "t": 0.0
+     },
+     "brison-110": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 160,
+      "n_neg": 12,
+      "t": 0.0
+     },
+     "cabanelle-125": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 19,
+      "n_neg": 25,
+      "t": 0.0
+     },
+     "courmettes-160": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 293,
+      "n_neg": 107,
+      "t": 0.0
+     },
+     "croix-augas-265": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 18,
+      "n_neg": 7,
+      "t": 0.0
+     },
+     "marguerite-282": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 102,
+      "n_neg": 6,
+      "t": 0.0
+     },
+     "serre-de-barre-350": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 24,
+      "n_neg": 1,
+      "t": 0.0
+     },
+     "valbonne-138": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 207,
+      "n_neg": 34,
+      "t": 0.0
+     },
+     "brison-226": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 5,
+      "n_neg": 4,
+      "t": 0.0
+     },
+     "brison-290": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 204,
+      "n_neg": 86,
+      "t": 0.0
+     },
+     "cabanelle-244": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 11,
+      "n_neg": 10,
+      "t": 0.0
+     },
+     "cabanelle-327": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 114,
+      "n_neg": 106,
+      "t": 0.0
+     },
+     "courmettes-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 210,
+      "n_neg": 130,
+      "t": 0.0
+     },
+     "croix-augas-161": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 21,
+      "n_neg": 4,
+      "t": 0.0
+     },
+     "marguerite-29": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 49,
+      "n_neg": 1,
+      "t": 0.0
+     },
+     "valbonne-349": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 62,
+      "n_neg": 6,
+      "t": 0.0
+     }
+    }
+   }
+  },
+  "rtdetrl_dfire_s3407": {
+   "conformal_alarm": {
+    "per_alpha": {
+     "0.05": {
+      "target_sensitivity": 0.95,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.9448509309592967,
+        "min": 0.9023668639053254,
+        "max": 0.9834619625137817
+       },
+       "false_alarm_rate": {
+        "mean": 0.8429448985372848,
+        "min": 0.7204301075268817,
+        "max": 0.9590163934426229
+       },
+       "folds": [
+        {
+         "sensitivity": 0.9361022364217252,
+         "false_alarm_rate": 0.7204301075268817,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.019974,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.9834619625137817,
+         "false_alarm_rate": 0.9590163934426229,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.017727,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9574726609963548,
+         "false_alarm_rate": 0.8854166666666666,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.019003,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.9023668639053254,
+         "false_alarm_rate": 0.8069164265129684,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.020871,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9492626584769873,
+        "min": 0.9294117647058824,
+        "max": 0.9711055276381909
+       },
+       "false_alarm_rate": {
+        "mean": 0.8485696614816984,
+        "min": 0.7869822485207101,
+        "max": 0.91005291005291
+       }
+      }
+     },
+     "0.1": {
+      "target_sensitivity": 0.9,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.8907545600867972,
+        "min": 0.820021299254526,
+        "max": 0.9547960308710033
+       },
+       "false_alarm_rate": {
+        "mean": 0.7290710607935562,
+        "min": 0.5053763440860215,
+        "max": 0.860655737704918
+       },
+       "folds": [
+        {
+         "sensitivity": 0.820021299254526,
+         "false_alarm_rate": 0.5053763440860215,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.028854,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.9547960308710033,
+         "false_alarm_rate": 0.860655737704918,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.023986,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.9331713244228432,
+         "false_alarm_rate": 0.8125,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.0248,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.8550295857988166,
+         "false_alarm_rate": 0.7377521613832853,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.026968,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.9004991059409466,
+        "min": 0.8736330498177399,
+        "max": 0.9269461077844311
+       },
+       "false_alarm_rate": {
+        "mean": 0.7565070809113528,
+        "min": 0.6767676767676768,
+        "max": 0.8235294117647058
+       }
+      }
+     },
+     "0.2": {
+      "target_sensitivity": 0.8,
+      "camera_disjoint": {
+       "sensitivity": {
+        "mean": 0.7856049347717807,
+        "min": 0.6080937167199149,
+        "max": 0.8941565600882029
+       },
+       "false_alarm_rate": {
+        "mean": 0.5789185565276849,
+        "min": 0.21505376344086022,
+        "max": 0.8114754098360656
+       },
+       "folds": [
+        {
+         "sensitivity": 0.6080937167199149,
+         "false_alarm_rate": 0.21505376344086022,
+         "n_pos": 939,
+         "n_neg": 93,
+         "t": 0.048916,
+         "fold": 0,
+         "test_cameras": [
+          "brison-200",
+          "marguerite-339"
+         ]
+        },
+        {
+         "sensitivity": 0.8941565600882029,
+         "false_alarm_rate": 0.8114754098360656,
+         "n_pos": 907,
+         "n_neg": 122,
+         "t": 0.035489,
+         "fold": 1,
+         "test_cameras": [
+          "brison-20",
+          "courmettes-275",
+          "croix-augas-212",
+          "croix-augas-59",
+          "croix-augas-8",
+          "ferion-142",
+          "marguerite-185"
+         ]
+        },
+        {
+         "sensitivity": 0.8724179829890644,
+         "false_alarm_rate": 0.6666666666666666,
+         "n_pos": 823,
+         "n_neg": 192,
+         "t": 0.036567,
+         "fold": 2,
+         "test_cameras": [
+          "brison-110",
+          "cabanelle-125",
+          "courmettes-160",
+          "croix-augas-265",
+          "marguerite-282",
+          "serre-de-barre-350",
+          "valbonne-138"
+         ]
+        },
+        {
+         "sensitivity": 0.7677514792899408,
+         "false_alarm_rate": 0.622478386167147,
+         "n_pos": 676,
+         "n_neg": 347,
+         "t": 0.04027,
+         "fold": 3,
+         "test_cameras": [
+          "brison-226",
+          "brison-290",
+          "cabanelle-244",
+          "cabanelle-327",
+          "courmettes-212",
+          "croix-augas-161",
+          "marguerite-29",
+          "valbonne-349"
+         ]
+        }
+       ]
+      },
+      "random_split": {
+       "sensitivity": {
+        "mean": 0.7969291401671453,
+        "min": 0.7692307692307693,
+        "max": 0.8312807881773399
+       },
+       "false_alarm_rate": {
+        "mean": 0.6274260031251039,
+        "min": 0.5373134328358209,
+        "max": 0.6945812807881774
+       }
+      }
+     }
+    },
+    "per_camera_at_alpha0.10": {
+     "brison-200": {
+      "sensitivity": 0.8233404710920771,
+      "false_alarm_rate": 0.5064935064935064,
+      "n_pos": 934,
+      "n_neg": 77,
+      "t": 0.028854
+     },
+     "marguerite-339": {
+      "sensitivity": 0.2,
+      "false_alarm_rate": 0.5,
+      "n_pos": 5,
+      "n_neg": 16,
+      "t": 0.028854
+     },
+     "brison-20": {
+      "sensitivity": 0.968,
+      "false_alarm_rate": 0.967032967032967,
+      "n_pos": 625,
+      "n_neg": 91,
+      "t": 0.023986
+     },
+     "courmettes-275": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 0.3125,
+      "n_pos": 18,
+      "n_neg": 16,
+      "t": 0.023986
+     },
+     "croix-augas-212": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 9,
+      "n_neg": 6,
+      "t": 0.023986
+     },
+     "croix-augas-59": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 34,
+      "n_neg": 0,
+      "t": 0.023986
+     },
+     "croix-augas-8": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": null,
+      "n_pos": 130,
+      "n_neg": 0,
+      "t": 0.023986
+     },
+     "ferion-142": {
+      "sensitivity": 0.7101449275362319,
+      "false_alarm_rate": 0.6666666666666666,
+      "n_pos": 69,
+      "n_neg": 9,
+      "t": 0.023986
+     },
+     "marguerite-185": {
+      "sensitivity": 0.9545454545454546,
+      "false_alarm_rate": null,
+      "n_pos": 22,
+      "n_neg": 0,
+      "t": 0.023986
+     },
+     "brison-110": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 160,
+      "n_neg": 12,
+      "t": 0.0248
+     },
+     "cabanelle-125": {
+      "sensitivity": 0.9473684210526315,
+      "false_alarm_rate": 1.0,
+      "n_pos": 19,
+      "n_neg": 25,
+      "t": 0.0248
+     },
+     "courmettes-160": {
+      "sensitivity": 0.9146757679180887,
+      "false_alarm_rate": 0.8411214953271028,
+      "n_pos": 293,
+      "n_neg": 107,
+      "t": 0.0248
+     },
+     "croix-augas-265": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 18,
+      "n_neg": 7,
+      "t": 0.0248
+     },
+     "marguerite-282": {
+      "sensitivity": 0.7843137254901961,
+      "false_alarm_rate": 0.0,
+      "n_pos": 102,
+      "n_neg": 6,
+      "t": 0.0248
+     },
+     "serre-de-barre-350": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 24,
+      "n_neg": 1,
+      "t": 0.0248
+     },
+     "valbonne-138": {
+      "sensitivity": 0.966183574879227,
+      "false_alarm_rate": 0.6176470588235294,
+      "n_pos": 207,
+      "n_neg": 34,
+      "t": 0.0248
+     },
+     "brison-226": {
+      "sensitivity": 1.0,
+      "false_alarm_rate": 1.0,
+      "n_pos": 5,
+      "n_neg": 4,
+      "t": 0.026968
+     },
+     "brison-290": {
+      "sensitivity": 0.8774509803921569,
+      "false_alarm_rate": 0.872093023255814,
+      "n_pos": 204,
+      "n_neg": 86,
+      "t": 0.026968
+     },
+     "cabanelle-244": {
+      "sensitivity": 0.8181818181818182,
+      "false_alarm_rate": 0.7,
+      "n_pos": 11,
+      "n_neg": 10,
+      "t": 0.026968
+     },
+     "cabanelle-327": {
+      "sensitivity": 0.9298245614035088,
+      "false_alarm_rate": 0.9716981132075472,
+      "n_pos": 114,
+      "n_neg": 106,
+      "t": 0.026968
+     },
+     "courmettes-212": {
+      "sensitivity": 0.8666666666666667,
+      "false_alarm_rate": 0.45384615384615384,
+      "n_pos": 210,
+      "n_neg": 130,
+      "t": 0.026968
+     },
+     "croix-augas-161": {
+      "sensitivity": 0.9523809523809523,
+      "false_alarm_rate": 0.75,
+      "n_pos": 21,
+      "n_neg": 4,
+      "t": 0.026968
+     },
+     "marguerite-29": {
+      "sensitivity": 0.32653061224489793,
+      "false_alarm_rate": 1.0,
+      "n_pos": 49,
+      "n_neg": 1,
+      "t": 0.026968
+     },
+     "valbonne-349": {
+      "sensitivity": 0.9838709677419355,
+      "false_alarm_rate": 0.6666666666666666,
+      "n_pos": 62,
+      "n_neg": 6,
+      "t": 0.026968
+     }
+    }
+   }
+  }
+ }
+}

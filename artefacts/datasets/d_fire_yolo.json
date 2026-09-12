@@ -1,0 +1,29 @@
+{
+  "name": "d-fire",
+  "layout": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\data\\d_fire_yolo",
+  "splits": {
+    "test": {
+      "n_images": 4306,
+      "n_boxes_by_class": {
+        "0": 2315,
+        "1": 2878
+      }
+    },
+    "train": {
+      "n_images": 15499,
+      "n_boxes_by_class": {
+        "1": 11814,
+        "0": 9550
+      }
+    },
+    "val": {
+      "n_images": 1722,
+      "derived": "10% of official train, seed 3407"
+    }
+  },
+  "class_names": [
+    "smoke",
+    "fire"
+  ],
+  "notes": "Mirror badsaarow/d-fire VERIFIED EXACT vs official README: quadrants 1164/5867/4658/9838, boxes fire 14692 smoke 11865, total 21527. Official has train/test only; val = seeded 10% of train (random.Random(3407)), 1722 imgs, moved 2026-09-01; test untouched."
+}

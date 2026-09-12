@@ -1,0 +1,17 @@
+{
+  "source": "datasets/pyro_sdis_image_meta.json",
+  "n_images": {
+    "train": 29537,
+    "val": 4099
+  },
+  "n_cameras": {
+    "train": 39,
+    "val": 24
+  },
+  "n_val_cameras_also_in_train": 23,
+  "val_cameras_not_in_train": [
+    "brison-226"
+  ],
+  "val_frames_on_shared_cameras": 4090,
+  "frac_val_frames_on_shared_cameras": 0.9978043425225664
+}

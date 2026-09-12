@@ -1,0 +1,17 @@
+{
+  "run": "rtdetrl_dfire_s3407",
+  "model": "rtdetr-l.pt",
+  "dataset": "d_fire_yolo",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 56,
+  "best_val_mAP50": 0.7886,
+  "best_val_mAP50_95": 0.46666,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "best_pt_sha256": "46fd2e0b07ab9ce5d1869581b08206e8cc70d4f311a38fc69f2dcb2377c7f2d9"
+}

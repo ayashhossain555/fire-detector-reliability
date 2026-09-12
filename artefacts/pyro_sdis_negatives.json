@@ -1,0 +1,125 @@
+{
+ "val_images": 4099,
+ "val_negatives": 754,
+ "val_negative_frac": 0.1839,
+ "negatives_time_to_nearest_positive_same_camera": {
+  "<=2min": 415,
+  "<=10min": 156,
+  "<=60min": 177,
+  ">60min_or_no_positive_on_camera": 6
+ },
+ "median_gap_s": 90.0,
+ "negatives_sharing_camera_hour_with_positives": 685,
+ "cameras_with_negatives": 21,
+ "per_camera": {
+  "courmettes-212": {
+   "negatives": 130,
+   "images": 340,
+   "neg_frac": 0.382
+  },
+  "courmettes-160": {
+   "negatives": 107,
+   "images": 400,
+   "neg_frac": 0.268
+  },
+  "cabanelle-327": {
+   "negatives": 106,
+   "images": 220,
+   "neg_frac": 0.482
+  },
+  "brison-20": {
+   "negatives": 91,
+   "images": 716,
+   "neg_frac": 0.127
+  },
+  "brison-290": {
+   "negatives": 86,
+   "images": 290,
+   "neg_frac": 0.297
+  },
+  "brison-200": {
+   "negatives": 77,
+   "images": 1011,
+   "neg_frac": 0.076
+  },
+  "valbonne-138": {
+   "negatives": 34,
+   "images": 241,
+   "neg_frac": 0.141
+  },
+  "cabanelle-125": {
+   "negatives": 25,
+   "images": 44,
+   "neg_frac": 0.568
+  },
+  "courmettes-275": {
+   "negatives": 16,
+   "images": 34,
+   "neg_frac": 0.471
+  },
+  "marguerite-339": {
+   "negatives": 16,
+   "images": 21,
+   "neg_frac": 0.762
+  },
+  "brison-110": {
+   "negatives": 12,
+   "images": 172,
+   "neg_frac": 0.07
+  },
+  "cabanelle-244": {
+   "negatives": 10,
+   "images": 21,
+   "neg_frac": 0.476
+  },
+  "ferion-142": {
+   "negatives": 9,
+   "images": 78,
+   "neg_frac": 0.115
+  },
+  "croix-augas-265": {
+   "negatives": 7,
+   "images": 25,
+   "neg_frac": 0.28
+  },
+  "valbonne-349": {
+   "negatives": 6,
+   "images": 68,
+   "neg_frac": 0.088
+  },
+  "marguerite-282": {
+   "negatives": 6,
+   "images": 108,
+   "neg_frac": 0.056
+  },
+  "croix-augas-212": {
+   "negatives": 6,
+   "images": 15,
+   "neg_frac": 0.4
+  },
+  "brison-226": {
+   "negatives": 4,
+   "images": 9,
+   "neg_frac": 0.444
+  },
+  "croix-augas-161": {
+   "negatives": 4,
+   "images": 25,
+   "neg_frac": 0.16
+  },
+  "marguerite-29": {
+   "negatives": 1,
+   "images": 50,
+   "neg_frac": 0.02
+  },
+  "serre-de-barre-350": {
+   "negatives": 1,
+   "images": 25,
+   "neg_frac": 0.04
+  }
+ },
+ "train_images": 29537,
+ "train_negatives": 4745,
+ "train_negative_frac": 0.1606,
+ "reading": "Negatives are overwhelmingly frames of the same smoke events adjacent to the annotated window (pre-onset / faint-smoke), not independent confounder scenes; an image-level false-alarm rate on them measures the annotation boundary, not quiet-camera false alarms."
+}

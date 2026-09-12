@@ -1,0 +1,296 @@
+{
+ "gap_s": 600,
+ "n_events": 163,
+ "n_events_with_smoke": 152,
+ "events_frames_median": 13.0,
+ "runs": {
+  "v8s_pyrosdis_s3407": {
+   "t_src": 0.312367,
+   "alarm_rate_by_frame_type": {
+    "pre_onset_<=2min": {
+     "alarms": 32,
+     "frames": 76,
+     "rate": 0.4211
+    },
+    "annotated": {
+     "alarms": 2807,
+     "frames": 3345,
+     "rate": 0.8392
+    },
+    "post_window": {
+     "alarms": 76,
+     "frames": 209,
+     "rate": 0.3636
+    },
+    "inside_window_unannotated": {
+     "alarms": 153,
+     "frames": 255,
+     "rate": 0.6
+    },
+    "pre_onset_2-10min": {
+     "alarms": 29,
+     "frames": 65,
+     "rate": 0.4462
+    },
+    "event_without_any_annotation": {
+     "alarms": 28,
+     "frames": 95,
+     "rate": 0.2947
+    },
+    "pre_onset_>10min": {
+     "alarms": 20,
+     "frames": 54,
+     "rate": 0.3704
+    }
+   },
+   "events_with_smoke": 152,
+   "events_missed": 5,
+   "lead_time_min": {
+    "median": 0.0,
+    "frac_alarm_before_annotated_onset": 0.12244897959183673,
+    "p10": -0.03999999999999998,
+    "p90": 0.21333333333333354
+   }
+  },
+  "y11s_pyrosdis_s3407": {
+   "t_src": 0.306105,
+   "alarm_rate_by_frame_type": {
+    "pre_onset_<=2min": {
+     "alarms": 27,
+     "frames": 76,
+     "rate": 0.3553
+    },
+    "annotated": {
+     "alarms": 2784,
+     "frames": 3345,
+     "rate": 0.8323
+    },
+    "post_window": {
+     "alarms": 76,
+     "frames": 209,
+     "rate": 0.3636
+    },
+    "inside_window_unannotated": {
+     "alarms": 160,
+     "frames": 255,
+     "rate": 0.6275
+    },
+    "pre_onset_2-10min": {
+     "alarms": 35,
+     "frames": 65,
+     "rate": 0.5385
+    },
+    "event_without_any_annotation": {
+     "alarms": 33,
+     "frames": 95,
+     "rate": 0.3474
+    },
+    "pre_onset_>10min": {
+     "alarms": 19,
+     "frames": 54,
+     "rate": 0.3519
+    }
+   },
+   "events_with_smoke": 152,
+   "events_missed": 5,
+   "lead_time_min": {
+    "median": 0.0,
+    "frac_alarm_before_annotated_onset": 0.10884353741496598,
+    "p10": -0.02333333333333331,
+    "p90": 0.2200000000000003
+   }
+  },
+  "rtdetrl_pyrosdis_s3407": {
+   "t_src": 0.411,
+   "alarm_rate_by_frame_type": {
+    "pre_onset_<=2min": {
+     "alarms": 38,
+     "frames": 76,
+     "rate": 0.5
+    },
+    "annotated": {
+     "alarms": 2989,
+     "frames": 3345,
+     "rate": 0.8936
+    },
+    "post_window": {
+     "alarms": 135,
+     "frames": 209,
+     "rate": 0.6459
+    },
+    "inside_window_unannotated": {
+     "alarms": 179,
+     "frames": 255,
+     "rate": 0.702
+    },
+    "pre_onset_2-10min": {
+     "alarms": 37,
+     "frames": 65,
+     "rate": 0.5692
+    },
+    "event_without_any_annotation": {
+     "alarms": 44,
+     "frames": 95,
+     "rate": 0.4632
+    },
+    "pre_onset_>10min": {
+     "alarms": 21,
+     "frames": 54,
+     "rate": 0.3889
+    }
+   },
+   "events_with_smoke": 152,
+   "events_missed": 6,
+   "lead_time_min": {
+    "median": 0.0,
+    "frac_alarm_before_annotated_onset": 0.1643835616438356,
+    "p10": -0.23333333333333334,
+    "p90": 0.08333333333333333
+   }
+  },
+  "v8s_dfire_s3407": {
+   "t_src": 0.371965,
+   "alarm_rate_by_frame_type": {
+    "pre_onset_<=2min": {
+     "alarms": 8,
+     "frames": 76,
+     "rate": 0.1053
+    },
+    "annotated": {
+     "alarms": 662,
+     "frames": 3345,
+     "rate": 0.1979
+    },
+    "post_window": {
+     "alarms": 16,
+     "frames": 209,
+     "rate": 0.0766
+    },
+    "inside_window_unannotated": {
+     "alarms": 35,
+     "frames": 255,
+     "rate": 0.1373
+    },
+    "pre_onset_2-10min": {
+     "alarms": 9,
+     "frames": 65,
+     "rate": 0.1385
+    },
+    "event_without_any_annotation": {
+     "alarms": 2,
+     "frames": 95,
+     "rate": 0.0211
+    },
+    "pre_onset_>10min": {
+     "alarms": 4,
+     "frames": 54,
+     "rate": 0.0741
+    }
+   },
+   "events_with_smoke": 152,
+   "events_missed": 93,
+   "lead_time_min": {
+    "median": 0.5,
+    "frac_alarm_before_annotated_onset": 0.06779661016949153,
+    "p10": 0.0,
+    "p90": 9.000000000000007
+   }
+  },
+  "y11s_dfire_s3407": {
+   "t_src": 0.35906,
+   "alarm_rate_by_frame_type": {
+    "pre_onset_<=2min": {
+     "alarms": 6,
+     "frames": 76,
+     "rate": 0.0789
+    },
+    "annotated": {
+     "alarms": 657,
+     "frames": 3345,
+     "rate": 0.1964
+    },
+    "post_window": {
+     "alarms": 32,
+     "frames": 209,
+     "rate": 0.1531
+    },
+    "inside_window_unannotated": {
+     "alarms": 28,
+     "frames": 255,
+     "rate": 0.1098
+    },
+    "pre_onset_2-10min": {
+     "alarms": 9,
+     "frames": 65,
+     "rate": 0.1385
+    },
+    "event_without_any_annotation": {
+     "alarms": 8,
+     "frames": 95,
+     "rate": 0.0842
+    },
+    "pre_onset_>10min": {
+     "alarms": 3,
+     "frames": 54,
+     "rate": 0.0556
+    }
+   },
+   "events_with_smoke": 152,
+   "events_missed": 92,
+   "lead_time_min": {
+    "median": 1.4333333333333331,
+    "frac_alarm_before_annotated_onset": 0.05,
+    "p10": 0.0,
+    "p90": 8.681666666666668
+   }
+  },
+  "rtdetrl_dfire_s3407": {
+   "t_src": 0.592275,
+   "alarm_rate_by_frame_type": {
+    "pre_onset_<=2min": {
+     "alarms": 5,
+     "frames": 76,
+     "rate": 0.0658
+    },
+    "annotated": {
+     "alarms": 936,
+     "frames": 3345,
+     "rate": 0.2798
+    },
+    "post_window": {
+     "alarms": 43,
+     "frames": 209,
+     "rate": 0.2057
+    },
+    "inside_window_unannotated": {
+     "alarms": 43,
+     "frames": 255,
+     "rate": 0.1686
+    },
+    "pre_onset_2-10min": {
+     "alarms": 8,
+     "frames": 65,
+     "rate": 0.1231
+    },
+    "event_without_any_annotation": {
+     "alarms": 5,
+     "frames": 95,
+     "rate": 0.0526
+    },
+    "pre_onset_>10min": {
+     "alarms": 3,
+     "frames": 54,
+     "rate": 0.0556
+    }
+   },
+   "events_with_smoke": 152,
+   "events_missed": 78,
+   "lead_time_min": {
+    "median": 0.65,
+    "frac_alarm_before_annotated_onset": 0.04054054054054054,
+    "p10": 0.0,
+    "p90": 9.931666666666668
+   }
+  }
+ }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "pyro-sdis",
+  "layout": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\data\\pyro_sdis_yolo",
+  "splits": {
+    "train": {
+      "n_images": 29537,
+      "n_boxes_by_class": {
+        "smoke(0)": 28167
+      }
+    },
+    "val": {
+      "n_images": 4099,
+      "n_boxes_by_class": {
+        "smoke(0)": 3942
+      }
+    }
+  },
+  "class_names": [
+    "smoke"
+  ],
+  "notes": "parquet annotations were 1-indexed; remapped to 0=smoke per official data.yaml (nc=1). Total boxes 32,109 vs card 31,975 (delta +134, ~0.4%; recount at audit)."
+}

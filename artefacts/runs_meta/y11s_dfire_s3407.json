@@ -1,0 +1,18 @@
+{
+  "run": "y11s_dfire_s3407",
+  "model": "yolo11s.pt",
+  "dataset": "d_fire_yolo",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 47,
+  "best_val_mAP50": 0.79775,
+  "best_val_mAP50_95": 0.48196,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "note": "machine shutdown at epoch 38 (2026-09-01); resumed detached 2026-09-02",
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "best_pt_sha256": "c1d16f7aac4963667fb8c2c67242d50f7d41c72eb858666493b7cdca38dc7607"
+}

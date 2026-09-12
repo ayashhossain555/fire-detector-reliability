@@ -1,0 +1,18 @@
+{
+  "run": "v8s_pyrosdis_s3407",
+  "model": "yolov8s.pt",
+  "dataset": "pyro_sdis_yolo (HF pyronear/pyro-sdis, canonical)",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 59,
+  "best_val_mAP50": 0.73548,
+  "best_val_mAP50_95": 0.47281,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "note": "runs 1-5 failed pre-epoch (commit limit); run 6 + detached resume from epoch 6",
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "best_pt_sha256": "96a4a5f9e2b8f31237c013a30708f051d12b132ff516b33a25609622d2ca77c9"
+}

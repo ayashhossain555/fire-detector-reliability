@@ -1,0 +1,636 @@
+{
+ "fig2_decomposition_core": {
+  "sources": [
+   "threshold_decomposition.json: cells.<cell>.results.<thr=...|map=...>.LaECE_0 (x100)"
+  ],
+  "key_values": {
+   "v8s_dfire_s3407__to__pyro_sdis_caltest": {
+    "thr=source|map=none": 5.6,
+    "thr=source|map=source:platt": 4.8,
+    "thr=source|map=target:platt": 4.0,
+    "thr=target|map=none": 3.4,
+    "thr=target|map=source:platt": 6.1,
+    "thr=target|map=target:platt": 3.9,
+    "delta_threshold_axis": 2.2,
+    "delta_map_axis_source_platt": 0.8
+   },
+   "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+    "thr=source|map=none": 20.2,
+    "thr=source|map=source:platt": 19.6,
+    "thr=source|map=target:platt": 4.4,
+    "thr=target|map=none": 6.6,
+    "thr=target|map=source:platt": 7.0,
+    "thr=target|map=target:platt": 1.8,
+    "delta_threshold_axis": 13.7,
+    "delta_map_axis_source_platt": 0.6
+   },
+   "v8s_pyrosdis_s3407__to__thesis_test_smokeonly": {
+    "thr=source|map=none": 44.8,
+    "thr=source|map=source:platt": 43.8,
+    "thr=source|map=target:platt": 8.3,
+    "thr=target|map=none": 3.0,
+    "thr=target|map=source:platt": 2.6,
+    "thr=target|map=target:platt": 2.1,
+    "delta_threshold_axis": 41.8,
+    "delta_map_axis_source_platt": 1.0
+   },
+   "v8s_dfire_s3407__to__thesis_test": {
+    "thr=source|map=none": 21.3,
+    "thr=source|map=source:platt": 19.2,
+    "thr=source|map=target:platt": 10.8,
+    "thr=target|map=none": 18.3,
+    "thr=target|map=source:platt": 14.1,
+    "thr=target|map=target:platt": 8.0,
+    "delta_threshold_axis": 3.1,
+    "delta_map_axis_source_platt": 2.1
+   },
+   "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": {
+    "thr=source|map=none": 26.8,
+    "thr=source|map=source:platt": 9.2,
+    "thr=source|map=target:platt": 6.9,
+    "thr=target|map=none": 20.5,
+    "thr=target|map=source:platt": 4.7,
+    "thr=target|map=target:platt": 4.1,
+    "delta_threshold_axis": 6.4,
+    "delta_map_axis_source_platt": 17.7
+   },
+   "y11s_dfire_s3407__to__pyro_sdis_caltest": {
+    "thr=source|map=none": 12.5,
+    "thr=source|map=source:platt": 12.0,
+    "thr=source|map=target:platt": 4.7,
+    "thr=target|map=none": 5.3,
+    "thr=target|map=source:platt": 5.8,
+    "thr=target|map=target:platt": 2.4,
+    "delta_threshold_axis": 7.3,
+    "delta_map_axis_source_platt": 0.5
+   },
+   "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+    "thr=source|map=none": 20.4,
+    "thr=source|map=source:platt": 21.4,
+    "thr=source|map=target:platt": 5.0,
+    "thr=target|map=none": 6.5,
+    "thr=target|map=source:platt": 7.0,
+    "thr=target|map=target:platt": 2.5,
+    "delta_threshold_axis": 13.9,
+    "delta_map_axis_source_platt": -1.0
+   },
+   "y11s_pyrosdis_s3407__to__thesis_test_smokeonly": {
+    "thr=source|map=none": 39.5,
+    "thr=source|map=source:platt": 40.1,
+    "thr=source|map=target:platt": 0.5,
+    "thr=target|map=none": 3.0,
+    "thr=target|map=source:platt": 2.9,
+    "thr=target|map=target:platt": 1.5,
+    "delta_threshold_axis": 36.5,
+    "delta_map_axis_source_platt": -0.6
+   },
+   "y11s_dfire_s3407__to__thesis_test": {
+    "thr=source|map=none": 16.8,
+    "thr=source|map=source:platt": 14.7,
+    "thr=source|map=target:platt": 9.5,
+    "thr=target|map=none": 15.2,
+    "thr=target|map=source:platt": 12.2,
+    "thr=target|map=target:platt": 8.7,
+    "delta_threshold_axis": 1.6,
+    "delta_map_axis_source_platt": 2.2
+   },
+   "rtdetrl_dfire_s3407__to__thesis_test": {
+    "thr=source|map=none": 40.6,
+    "thr=source|map=source:platt": 24.4,
+    "thr=source|map=target:platt": 9.2,
+    "thr=target|map=none": 40.3,
+    "thr=target|map=source:platt": 20.4,
+    "thr=target|map=target:platt": 9.8,
+    "delta_threshold_axis": 0.3,
+    "delta_map_axis_source_platt": 16.2
+   }
+  }
+ },
+ "fig5_paired_posthoc_core": {
+  "sources": [
+   "calibration_ci/<cell>.json: paired_vs_identity.<cal>.LaECE_0.{point_diff,ci95} (x100)"
+  ],
+  "key_values": {
+   "rtdetrl_dfire_s3407__to__d_fire_test": {
+    "temperature_scaling": {
+     "point_diff_pts": -7.86,
+     "ci95_pts": [
+      -8.4,
+      -7.07
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -11.34,
+     "ci95_pts": [
+      -11.96,
+      -9.78
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -11.07,
+     "ci95_pts": [
+      -11.9,
+      -9.66
+     ]
+    }
+   },
+   "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": {
+    "temperature_scaling": {
+     "point_diff_pts": -8.69,
+     "ci95_pts": [
+      -8.88,
+      -8.51
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -17.67,
+     "ci95_pts": [
+      -17.82,
+      -15.2
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -12.0,
+     "ci95_pts": [
+      -14.96,
+      -8.5
+     ]
+    }
+   },
+   "rtdetrl_dfire_s3407__to__thesis_test": {
+    "temperature_scaling": {
+     "point_diff_pts": -9.31,
+     "ci95_pts": [
+      -9.59,
+      -8.63
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -16.16,
+     "ci95_pts": [
+      -16.77,
+      -13.48
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -17.44,
+     "ci95_pts": [
+      -18.62,
+      -15.54
+     ]
+    }
+   },
+   "v8s_dfire_s3407__to__d_fire_test": {
+    "temperature_scaling": {
+     "point_diff_pts": 0.41,
+     "ci95_pts": [
+      -0.31,
+      0.74
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": 0.08,
+     "ci95_pts": [
+      -0.8,
+      0.72
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -0.28,
+     "ci95_pts": [
+      -1.36,
+      0.4
+     ]
+    }
+   },
+   "v8s_dfire_s3407__to__pyro_sdis_caltest": {
+    "temperature_scaling": {
+     "point_diff_pts": 0.2,
+     "ci95_pts": [
+      -0.71,
+      1.59
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -0.84,
+     "ci95_pts": [
+      -1.98,
+      1.98
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": 2.61,
+     "ci95_pts": [
+      -1.24,
+      4.69
+     ]
+    }
+   },
+   "v8s_dfire_s3407__to__thesis_test": {
+    "temperature_scaling": {
+     "point_diff_pts": 0.4,
+     "ci95_pts": [
+      -0.55,
+      2.24
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -2.13,
+     "ci95_pts": [
+      -3.08,
+      -0.5
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -3.01,
+     "ci95_pts": [
+      -4.63,
+      -1.58
+     ]
+    }
+   },
+   "y11s_dfire_s3407__to__d_fire_test": {
+    "temperature_scaling": {
+     "point_diff_pts": 0.08,
+     "ci95_pts": [
+      -0.56,
+      0.37
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -0.91,
+     "ci95_pts": [
+      -1.53,
+      -0.39
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -1.49,
+     "ci95_pts": [
+      -2.13,
+      -0.79
+     ]
+    }
+   },
+   "y11s_dfire_s3407__to__pyro_sdis_caltest": {
+    "temperature_scaling": {
+     "point_diff_pts": 0.09,
+     "ci95_pts": [
+      -0.51,
+      1.0
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -0.49,
+     "ci95_pts": [
+      -1.94,
+      0.59
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -0.95,
+     "ci95_pts": [
+      -2.57,
+      0.24
+     ]
+    }
+   },
+   "y11s_dfire_s3407__to__thesis_test": {
+    "temperature_scaling": {
+     "point_diff_pts": -0.2,
+     "ci95_pts": [
+      -1.04,
+      1.63
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -2.17,
+     "ci95_pts": [
+      -2.38,
+      0.09
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -2.23,
+     "ci95_pts": [
+      -3.43,
+      -0.62
+     ]
+    }
+   },
+   "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+    "temperature_scaling": {
+     "point_diff_pts": 0.06,
+     "ci95_pts": [
+      -0.16,
+      0.44
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": -0.61,
+     "ci95_pts": [
+      -1.0,
+      0.13
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": -0.75,
+     "ci95_pts": [
+      -1.08,
+      1.18
+     ]
+    }
+   },
+   "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly": {
+    "temperature_scaling": {
+     "point_diff_pts": 0.01,
+     "ci95_pts": [
+      -1.41,
+      0.52
+     ]
+    },
+    "platt_scaling": {
+     "point_diff_pts": 1.01,
+     "ci95_pts": [
+      0.65,
+      1.7
+     ]
+    },
+    "isotonic_regression": {
+     "point_diff_pts": 0.29,
+     "ci95_pts": [
+      -1.07,
+      1.46
+     ]
+    }
+   }
+  }
+ },
+ "fig8_labelfree": {
+  "sources": [
+   "label_free_threshold_refine.json: cells.<cell>.methods.{M0_t_src,M1c_kept_rate,ORC_target_calval}.f1; summary.groups.all.*.{f1_mean,regret_mean}",
+   "label_free_threshold_pilot.json: cells.<cell>.shift_diagnostics.wasserstein_imgmax (ordering); cells.<cell>.mixture.beta_mle_shift.delta_logit (panel c)",
+   "label_free_threshold_refine.json: summary.unlabelled_data_curve.<n>.M1c_kept_rate.{all,yolo,rtdetr}.{regret_mean,regret_p90}",
+   "panel c recomputed: detections/<run>__{d_fire_calval,pyro_sdis_calval}.bbox.json + coco_gt/*.json via operating_points.match (IoU 0.5), TP scores, 1-99 % quantiles"
+  ],
+  "key_values": {
+   "a": {
+    "n_cells": 44,
+    "W1_imgmax_min_max": [
+     0.078,
+     0.506
+    ],
+    "f1_mean_all": {
+     "M0_t_src": 0.159,
+     "M1c_kept_rate": 0.19,
+     "ORC_target_calval": 0.2
+    },
+    "regret_mean_all": {
+     "M0_t_src": 0.0406,
+     "M1c_kept_rate": 0.0091
+    },
+    "n_cells_kept_rate_beats_t_src": 37,
+    "n_cells_kept_rate_worse_than_t_src": 6,
+    "order": [
+     "rtdetrl_dfire_s3407__to__thesis_test",
+     "rtdetrl_dfire_s1337__to__thesis_test",
+     "y11n_dfire_s3407__to__thesis_test",
+     "v8n_dfire_s3407__to__thesis_test",
+     "y11m_dfire_s3407__to__thesis_test",
+     "v8s_dfire_s1337__to__thesis_test",
+     "y11s_dfire_s3407__to__thesis_test",
+     "v8m_dfire_s3407__to__thesis_test",
+     "v8s_dfire_s3407__to__thesis_test",
+     "y11s_dfire_s1337__to__thesis_test",
+     "v8s_dfiresub_s3407__to__thesis_test",
+     "rtdetrl_dfire_s1337__to__pyro_sdis_caltest",
+     "y11s_dfiredd_s3407__to__thesis_test",
+     "rtdetrl_dfire_s3407__to__pyro_sdis_caltest",
+     "v8s_dfiredd_s3407__to__thesis_test",
+     "v8s_dfiresub_s3407__to__pyro_sdis_caltest",
+     "v8m_dfire_s3407__to__pyro_sdis_caltest",
+     "y11s_dfire_s1337__to__pyro_sdis_caltest",
+     "v8n_dfire_s3407__to__pyro_sdis_caltest",
+     "y11s_dfire_s3407__to__pyro_sdis_caltest",
+     "v8s_dfire_s1337__to__pyro_sdis_caltest",
+     "v8s_dfire_s3407__to__pyro_sdis_caltest",
+     "y11m_dfire_s3407__to__pyro_sdis_caltest",
+     "y11n_dfire_s3407__to__pyro_sdis_caltest",
+     "y11s_dfiredd_s3407__to__pyro_sdis_caltest",
+     "rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly",
+     "rtdetrl_pyrosdis_s1337__to__d_fire_test_smokeonly",
+     "v8s_dfiredd_s3407__to__pyro_sdis_caltest",
+     "rtdetrl_pyrosdis_s1337__to__thesis_test_smokeonly",
+     "rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly",
+     "y11s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+     "y11n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+     "rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly",
+     "y11s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+     "v8s_pyrosdis_s1337__to__d_fire_test_smokeonly",
+     "v8n_pyrosdis_s3407__to__d_fire_test_smokeonly",
+     "v8s_pyrosdis_s3407__to__d_fire_test_smokeonly",
+     "rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly",
+     "y11n_pyrosdis_s3407__to__thesis_test_smokeonly",
+     "y11s_pyrosdis_s1337__to__thesis_test_smokeonly",
+     "y11s_pyrosdis_s3407__to__thesis_test_smokeonly",
+     "v8n_pyrosdis_s3407__to__thesis_test_smokeonly",
+     "v8s_pyrosdis_s1337__to__thesis_test_smokeonly",
+     "v8s_pyrosdis_s3407__to__thesis_test_smokeonly"
+    ],
+    "family_order": [
+     "rtdetr",
+     "rtdetr",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "rtdetr",
+     "yolo",
+     "rtdetr",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "rtdetr",
+     "rtdetr",
+     "yolo",
+     "rtdetr",
+     "rtdetr",
+     "yolo",
+     "yolo",
+     "rtdetr",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "rtdetr",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo",
+     "yolo"
+    ]
+   },
+   "b": {
+    "all": {
+     "n": [
+      25,
+      50,
+      100,
+      200,
+      500,
+      1000
+     ],
+     "regret_mean": [
+      0.0115,
+      0.0118,
+      0.0103,
+      0.0094,
+      0.0089,
+      0.0172
+     ],
+     "regret_p90": [
+      0.0331,
+      0.0346,
+      0.0289,
+      0.0249,
+      0.0243,
+      0.0282
+     ],
+     "n_cells": [
+      44,
+      44,
+      44,
+      44,
+      44,
+      22
+     ]
+    },
+    "yolo": {
+     "n": [
+      25,
+      50,
+      100,
+      200,
+      500,
+      1000
+     ],
+     "regret_mean": [
+      0.0093,
+      0.0098,
+      0.008,
+      0.0073,
+      0.0067,
+      0.0144
+     ],
+     "regret_p90": [
+      0.0293,
+      0.0308,
+      0.0242,
+      0.021,
+      0.02,
+      0.0213
+     ],
+     "n_cells": [
+      34,
+      34,
+      34,
+      34,
+      34,
+      17
+     ]
+    },
+    "rtdetr": {
+     "n": [
+      25,
+      50,
+      100,
+      200,
+      500,
+      1000
+     ],
+     "regret_mean": [
+      0.0188,
+      0.0184,
+      0.0179,
+      0.0167,
+      0.0165,
+      0.0266
+     ],
+     "regret_p90": [
+      0.0539,
+      0.0431,
+      0.0411,
+      0.0367,
+      0.0348,
+      0.0358
+     ],
+     "n_cells": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      5
+     ]
+    },
+    "full_calval_regret_mean_all": 0.0091
+   },
+   "c": {
+    "v8s_dfire_s3407__to__pyro_sdis_caltest": {
+     "n_tp_source_calval": 2087,
+     "n_gt_source": 2212,
+     "n_dets_source": 29345,
+     "n_tp_target_calval": 1051,
+     "n_gt_target": 1994,
+     "n_dets_target": 15577,
+     "median_tp_score_source": 0.646,
+     "median_tp_score_target": 0.1,
+     "median_logit_shift_observed": -2.794,
+     "M3_beta_mle_shift_delta_logit": -1.5799999999999998,
+     "M3_delta_at_grid_edge": false,
+     "classes_source": [
+      1,
+      2
+     ],
+     "classes_target": [
+      2
+     ]
+    },
+    "rtdetrl_dfire_s3407__to__pyro_sdis_caltest": {
+     "n_tp_source_calval": 2137,
+     "n_gt_source": 2212,
+     "n_dets_source": 516600,
+     "n_tp_target_calval": 1412,
+     "n_gt_target": 1994,
+     "n_dets_target": 428624,
+     "median_tp_score_source": 0.794,
+     "median_tp_score_target": 0.135,
+     "median_logit_shift_observed": -3.207,
+     "M3_beta_mle_shift_delta_logit": -0.48,
+     "M3_delta_at_grid_edge": false,
+     "classes_source": [
+      1,
+      2
+     ],
+     "classes_target": [
+      2
+     ]
+    }
+   }
+  }
+ }
+}

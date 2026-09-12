@@ -1,0 +1,54 @@
+This repository contains material under more than one licence. The licence of
+each part is stated below; the MIT text applies to the scripts.
+
+1. SCRIPTS (scripts/) and repository metadata (README.md, CITATION.cff,
+   requirements.txt, .gitignore) -- MIT License
+
+MIT License
+
+Copyright (c) 2026 Ayash Hossain Chowdhury
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+2. ARTEFACTS, FIGURES, SPLIT LISTS AND DOCUMENTATION (artefacts/, splits/,
+   docs/) -- Creative Commons Attribution 4.0 International (CC BY 4.0),
+   https://creativecommons.org/licenses/by/4.0/
+   Copyright (c) 2026 Ayash Hossain Chowdhury. Attribute by citing the paper
+   (see CITATION.cff).
+
+3. TOOLBOX PATCH (toolbox_patch/detection_calibration_bf59c92.patch)
+   This patch is a derivative work of fiveai/detection_calibration
+   (https://github.com/fiveai/detection_calibration, commit bf59c92), which is
+   licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+   International (CC BY-NC-SA 4.0). The patch is therefore released under the
+   same CC BY-NC-SA 4.0 licence, https://creativecommons.org/licenses/by-nc-sa/4.0/.
+   The toolbox itself is not redistributed here.
+
+4. DATASETS -- NOT REDISTRIBUTED
+   No dataset images or original annotation files are included. The derived
+   ground-truth JSONs in artefacts/coco_gt/ and the split lists in splits/
+   contain only image file names, image sizes and box coordinates re-encoded
+   from the public annotations. Obtain each dataset from its source under its
+   own terms:
+   - D-Fire: CC0 1.0 (github.com/gaia-solutions-on-demand/DFireDataset)
+   - Pyro-SDIS: Apache-2.0 / CC-BY (Hugging Face pyronear/pyro-sdis)
+   - Roboflow "final-fire-project" (brac-university-uuemy): Public Domain
+   - HPWREN FIgLib: per HPWREN credit terms. FIgLib imagery: High Performance
+     Wireless Research and Education Network (HPWREN), University of
+     California San Diego, https://www.hpwren.ucsd.edu/

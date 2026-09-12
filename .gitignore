@@ -1,0 +1,20 @@
+# Not redistributed here (see README: Zenodo record / dataset licences)
+detections/
+detections_bnadapt/
+runs/
+data/
+*.pt
+*.pth
+*.cache
+
+# Working files
+__pycache__/
+*.pyc
+.venv/
+venv/
+tmp_*/
+*.log
+*.bak
+*.pre-*
+.DS_Store
+Thumbs.db

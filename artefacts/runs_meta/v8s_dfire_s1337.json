@@ -1,0 +1,20 @@
+{
+  "run": "v8s_dfire_s1337",
+  "model": "yolov8s.pt",
+  "dataset": "d_fire_yolo (HF badsaarow/d-fire, verified exact vs official; val=seeded 10% of train)",
+  "seed": 1337,
+  "epochs_run": 53,
+  "best_epoch": 38,
+  "best_val_mAP50": 0.80045,
+  "best_val_mAP50_95": 0.48133,
+  "final_epoch_mAP50": 0.79478,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 19459.0,
+  "best_pt_sha256": "3605b5ee4887c09ac345c2b5b977247fe3cb48e5400d87297de9226cfa7f961a",
+  "written_by": "write_runs_meta.py"
+}

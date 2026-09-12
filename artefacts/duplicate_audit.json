@@ -1,0 +1,757 @@
+{
+  "generated": "2026-09-03T15:07:46",
+  "hash": "pHash 64-bit (imagehash 4.3.2, greyscale)",
+  "thresholds_hamming": [
+    0,
+    4,
+    8
+  ],
+  "counts": {
+    "d_fire/train": 15499,
+    "d_fire/val": 1722,
+    "d_fire/test": 4306,
+    "pyro_sdis/train": 29537,
+    "pyro_sdis/val": 4099,
+    "thesis/train": 3453,
+    "thesis/valid": 590,
+    "thesis/test": 628
+  },
+  "exact_within_split": {
+    "d_fire/train": {
+      "n_images": 15499,
+      "n_images_in_exact_dup_groups": 4344,
+      "n_groups": 1195
+    },
+    "d_fire/val": {
+      "n_images": 1722,
+      "n_images_in_exact_dup_groups": 186,
+      "n_groups": 71
+    },
+    "d_fire/test": {
+      "n_images": 4306,
+      "n_images_in_exact_dup_groups": 762,
+      "n_groups": 280
+    },
+    "pyro_sdis/train": {
+      "n_images": 29537,
+      "n_images_in_exact_dup_groups": 15731,
+      "n_groups": 4608
+    },
+    "pyro_sdis/val": {
+      "n_images": 4099,
+      "n_images_in_exact_dup_groups": 2313,
+      "n_groups": 671
+    },
+    "thesis/train": {
+      "n_images": 3453,
+      "n_images_in_exact_dup_groups": 74,
+      "n_groups": 23
+    },
+    "thesis/valid": {
+      "n_images": 590,
+      "n_images_in_exact_dup_groups": 9,
+      "n_groups": 4
+    },
+    "thesis/test": {
+      "n_images": 628,
+      "n_images_in_exact_dup_groups": 14,
+      "n_groups": 7
+    }
+  },
+  "within_dataset_train_to_eval": {
+    "d_fire:val<-train": {
+      "n_target": 1722,
+      "ham<=0": {
+        "n_matched": 470,
+        "frac": 0.2729
+      },
+      "ham<=4": {
+        "n_matched": 790,
+        "frac": 0.4588
+      },
+      "ham<=8": {
+        "n_matched": 936,
+        "frac": 0.5436
+      },
+      "samples_ham<=8": [
+        {
+          "target": "AoF00022.jpg",
+          "source": "AoF03663.jpg",
+          "dist": 0
+        },
+        {
+          "target": "AoF00025.jpg",
+          "source": "AoF03677.jpg",
+          "dist": 0
+        },
+        {
+          "target": "AoF00030.jpg",
+          "source": "AoF00014.jpg",
+          "dist": 8
+        },
+        {
+          "target": "AoF00033.jpg",
+          "source": "AoF00027.jpg",
+          "dist": 6
+        },
+        {
+          "target": "AoF00036.jpg",
+          "source": "AoF00037.jpg",
+          "dist": 6
+        },
+        {
+          "target": "AoF00043.jpg",
+          "source": "AoF00052.jpg",
+          "dist": 2
+        },
+        {
+          "target": "AoF00045.jpg",
+          "source": "AoF00042.jpg",
+          "dist": 6
+        },
+        {
+          "target": "AoF00096.jpg",
+          "source": "AoF00095.jpg",
+          "dist": 0
+        }
+      ]
+    },
+    "d_fire:test<-train": {
+      "n_target": 4306,
+      "ham<=0": {
+        "n_matched": 1211,
+        "frac": 0.2812
+      },
+      "ham<=4": {
+        "n_matched": 1986,
+        "frac": 0.4612
+      },
+      "ham<=8": {
+        "n_matched": 2315,
+        "frac": 0.5376
+      },
+      "samples_ham<=8": [
+        {
+          "target": "AoF06726.jpg",
+          "source": "AoF03323.jpg",
+          "dist": 6
+        },
+        {
+          "target": "AoF06727.jpg",
+          "source": "AoF03688.jpg",
+          "dist": 8
+        },
+        {
+          "target": "AoF06730.jpg",
+          "source": "AoF00039.jpg",
+          "dist": 4
+        },
+        {
+          "target": "AoF06732.jpg",
+          "source": "AoF00051.jpg",
+          "dist": 6
+        },
+        {
+          "target": "AoF06733.jpg",
+          "source": "AoF00083.jpg",
+          "dist": 0
+        },
+        {
+          "target": "AoF06734.jpg",
+          "source": "AoF00083.jpg",
+          "dist": 2
+        },
+        {
+          "target": "AoF06735.jpg",
+          "source": "AoF00084.jpg",
+          "dist": 0
+        },
+        {
+          "target": "AoF06736.jpg",
+          "source": "AoF00097.jpg",
+          "dist": 2
+        }
+      ]
+    },
+    "pyro_sdis:val<-train": {
+      "n_target": 4099,
+      "ham<=0": {
+        "n_matched": 15,
+        "frac": 0.0037
+      },
+      "ham<=4": {
+        "n_matched": 592,
+        "frac": 0.1444
+      },
+      "ham<=8": {
+        "n_matched": 1995,
+        "frac": 0.4867
+      },
+      "samples_ham<=8": [
+        {
+          "target": "force-06_cabanelle-125_2024-02-24T09-07-34.jpg",
+          "source": "force-06_cabanelle-125_2024-04-03T10-26-00.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_cabanelle-125_2024-02-24T09-07-56.jpg",
+          "source": "force-06_cabanelle-125_2024-04-03T10-26-00.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_cabanelle-125_2024-02-24T09-08-26.jpg",
+          "source": "force-06_cabanelle-125_2024-04-03T10-26-00.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_cabanelle-125_2024-02-24T09-08-56.jpg",
+          "source": "force-06_cabanelle-125_2024-04-03T10-26-00.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_cabanelle-125_2024-02-24T09-09-26.jpg",
+          "source": "force-06_cabanelle-125_2024-04-03T10-26-00.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_cabanelle-125_2024-04-08T09-45-21.jpg",
+          "source": "force-06_cabanelle-125_2024-04-07T10-10-16.jpg",
+          "dist": 6
+        },
+        {
+          "target": "force-06_cabanelle-125_2024-04-08T09-45-29.jpg",
+          "source": "force-06_cabanelle-125_2024-04-07T10-10-16.jpg",
+          "dist": 4
+        },
+        {
+          "target": "force-06_cabanelle-125_2024-04-08T09-45-35.jpg",
+          "source": "force-06_cabanelle-125_2024-04-07T10-10-16.jpg",
+          "dist": 4
+        }
+      ]
+    },
+    "thesis:valid<-train": {
+      "n_target": 590,
+      "ham<=0": {
+        "n_matched": 7,
+        "frac": 0.0119
+      },
+      "ham<=4": {
+        "n_matched": 33,
+        "frac": 0.0559
+      },
+      "ham<=8": {
+        "n_matched": 72,
+        "frac": 0.122
+      },
+      "samples_ham<=8": [
+        {
+          "target": "00000008_png.rf.70dad1d8ea107faae77eaa01e6e86276.jpg",
+          "source": "00000006_png.rf.ca7a750d7632fc8cf5a42b017b7caa85.jpg",
+          "dist": 4
+        },
+        {
+          "target": "00000057_png.rf.9aafea728512377036fad0b3c37164f5.jpg",
+          "source": "00000056_png.rf.3a45cc50a05ad014deb1a92a64e6c003.jpg",
+          "dist": 2
+        },
+        {
+          "target": "00000062_png.rf.57a4f19953d8b0b7824b3ae73946abc5.jpg",
+          "source": "00000063_png.rf.4ab527edfd68125483fc498fb970ebbd.jpg",
+          "dist": 4
+        },
+        {
+          "target": "00000170_png.rf.cb48cea8a1ac3c1f95e43428058e8d22.jpg",
+          "source": "00000172_png.rf.419f5fe16f897e7771aafacdad0acd82.jpg",
+          "dist": 4
+        },
+        {
+          "target": "FB_IMG_1661315336347_jpg.rf.e38b76cb6be4044f3e9a6dbec0efd072.jpg",
+          "source": "IMG_2210_PNG.rf.521afe70fe7b10fa5510681ad376d800.jpg",
+          "dist": 4
+        },
+        {
+          "target": "images-16-_jpg.rf.9b6b59e5a7556295dff0b8d30b6a1c54.jpg",
+          "source": "121125121820-bangladesh-factory-fire_jpg.rf.07da0c77695b2a4cd017f212158c5b63.jpg",
+          "dist": 8
+        },
+        {
+          "target": "images_jpg.rf.e036d64f1760acbab6c5462200d8ea59.jpg",
+          "source": "IMG_2210_PNG.rf.521afe70fe7b10fa5510681ad376d800.jpg",
+          "dist": 8
+        },
+        {
+          "target": "Img_1030_jpg.rf.29f259cb6651990e8aa227edc115c698.jpg",
+          "source": "Img_1039_jpg.rf.cb68d8caf7778fe49aee26a96e38e2f7.jpg",
+          "dist": 2
+        }
+      ]
+    },
+    "thesis:test<-train": {
+      "n_target": 628,
+      "ham<=0": {
+        "n_matched": 3,
+        "frac": 0.0048
+      },
+      "ham<=4": {
+        "n_matched": 19,
+        "frac": 0.0303
+      },
+      "ham<=8": {
+        "n_matched": 37,
+        "frac": 0.0589
+      },
+      "samples_ham<=8": [
+        {
+          "target": "00000029_png.rf.fcc7bd85ec1ed53842ff6ce4595bf3a9.jpg",
+          "source": "00000030_png.rf.7d001caebdd3ffb18ed2ca0b7883d232.jpg",
+          "dist": 4
+        },
+        {
+          "target": "00000119_png.rf.81364cfd5214e788737ebf9f09fc0da3.jpg",
+          "source": "00000121_png.rf.ecda17ff6a4cd1cdb465e66f39e46c77.jpg",
+          "dist": 2
+        },
+        {
+          "target": "00000224_png.rf.8947dabf936067c957172fb967bdcdd6.jpg",
+          "source": "00000220_png.rf.5ae57401172c1afd411a597f107c42a9.jpg",
+          "dist": 2
+        },
+        {
+          "target": "download_jpg.rf.2522cbef7038365a5731b7633c7b708a.jpg",
+          "source": "121125121820-bangladesh-factory-fire_jpg.rf.07da0c77695b2a4cd017f212158c5b63.jpg",
+          "dist": 8
+        },
+        {
+          "target": "Img_1067_jpg.rf.99aff868502eb0eab2c4ae77830e8c1e.jpg",
+          "source": "Img_1051_jpg.rf.f84018adf2f78ec611edc9f4a1ea17af.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_1106_jpg.rf.989b8d4882e41087e67e02c708214a3c.jpg",
+          "source": "Img_1111_jpg.rf.83b212246bc0615c46ec2e6e89d293e3.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_1189_jpg.rf.75ca3df54a636ba696e072576703e0ab.jpg",
+          "source": "Img_1192_jpg.rf.5ca7a7f397b4616a8b1dd22c6bef0b3c.jpg",
+          "dist": 6
+        },
+        {
+          "target": "Img_1213_jpg.rf.26a742a050a8c5f73c5e661266fde915.jpg",
+          "source": "Img_1207_jpg.rf.a1a80ff3c8aa9b5f6cb97bf775c1dfe4.jpg",
+          "dist": 6
+        }
+      ]
+    }
+  },
+  "across_datasets": {
+    "pyro_sdis:val<-d_fire:all": {
+      "n_target": 4099,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=8": {
+        "n_matched": 19,
+        "frac": 0.0046
+      },
+      "samples_ham<=8": [
+        {
+          "target": "force-06_courmettes-212_2024-01-24T15-10-50.jpg",
+          "source": "WEB03782.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_valbonne-138_2024-01-16T07-48-10.jpg",
+          "source": "WEB01848.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_valbonne-138_2024-01-16T07-48-12.jpg",
+          "source": "WEB01848.jpg",
+          "dist": 8
+        },
+        {
+          "target": "force-06_valbonne-138_2024-01-16T07-48-50.jpg",
+          "source": "WEB01848.jpg",
+          "dist": 8
+        },
+        {
+          "target": "sdis-07_brison-110_2024-02-16T17-36-22.jpg",
+          "source": "PublicDataset00323.jpg",
+          "dist": 8
+        },
+        {
+          "target": "sdis-07_brison-110_2024-02-16T17-36-29.jpg",
+          "source": "PublicDataset00323.jpg",
+          "dist": 8
+        },
+        {
+          "target": "sdis-07_brison-110_2024-02-16T17-36-45.jpg",
+          "source": "PublicDataset00323.jpg",
+          "dist": 8
+        },
+        {
+          "target": "sdis-07_brison-110_2024-02-16T17-37-15.jpg",
+          "source": "PublicDataset00323.jpg",
+          "dist": 8
+        }
+      ]
+    },
+    "thesis:valid<-d_fire:all": {
+      "n_target": 590,
+      "ham<=0": {
+        "n_matched": 1,
+        "frac": 0.0017
+      },
+      "ham<=4": {
+        "n_matched": 11,
+        "frac": 0.0186
+      },
+      "ham<=8": {
+        "n_matched": 13,
+        "frac": 0.022
+      },
+      "samples_ham<=8": [
+        {
+          "target": "Fire-bg20170806103326_jpg.rf.b615822fdf2223e20b7cf3da57496d4a.jpg",
+          "source": "WEB10556.jpg",
+          "dist": 6
+        },
+        {
+          "target": "Img_1416_jpg.rf.8b49d8616e156bdadec1112168e5be2f.jpg",
+          "source": "WEB01949.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_1452_jpg.rf.792fc0a3e0c49766a9ed86593fba1655.jpg",
+          "source": "WEB01949.jpg",
+          "dist": 0
+        },
+        {
+          "target": "Img_1474_jpg.rf.db8af15586bf0a8360dacd9241b811cc.jpg",
+          "source": "WEB01949.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_1490_jpg.rf.3f6bdbaab4223633ba2b92415cfc8c72.jpg",
+          "source": "WEB01949.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_1971_jpg.rf.8d4be5e3882428e9fb04f81882ee7a13.jpg",
+          "source": "WEB03788.jpg",
+          "dist": 8
+        },
+        {
+          "target": "Img_2080_jpg.rf.b0b0e8d9ae82a62e7eb4b43c4fbd171c.jpg",
+          "source": "WEB03789.jpg",
+          "dist": 2
+        },
+        {
+          "target": "middle_-4376-_jpg.rf.c96c5fa9efc445176cd95f549ad77314.jpg",
+          "source": "PublicDataset01024.jpg",
+          "dist": 2
+        }
+      ]
+    },
+    "thesis:test<-d_fire:all": {
+      "n_target": 628,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 4,
+        "frac": 0.0064
+      },
+      "ham<=8": {
+        "n_matched": 8,
+        "frac": 0.0127
+      },
+      "samples_ham<=8": [
+        {
+          "target": "Img_1459_jpg.rf.bd0d7d60e4a08f0bfc48b70bf74f8398.jpg",
+          "source": "WEB01949.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_1484_jpg.rf.88b9b07424aab1af18920e52484a38b3.jpg",
+          "source": "WEB01949.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_2066_jpg.rf.c50166dd7a74e325cf71afb04a42b3d8.jpg",
+          "source": "WEB03789.jpg",
+          "dist": 2
+        },
+        {
+          "target": "Img_2104_jpg.rf.ceee66664418b597989b8d1201171390.jpg",
+          "source": "WEB03789.jpg",
+          "dist": 6
+        },
+        {
+          "target": "Img_2121_jpg.rf.3a04677bf400c0c69f67ed6d138e62fa.jpg",
+          "source": "WEB03789.jpg",
+          "dist": 8
+        },
+        {
+          "target": "other_-41-_jpg.rf.e12b6d0067fccc4b1de5506adf1e8ec3.jpg",
+          "source": "PublicDataset00885.jpg",
+          "dist": 2
+        },
+        {
+          "target": "other_-438-_jpg.rf.a0c8a83a816b8299a5106b804f636486.jpg",
+          "source": "WEB09570.jpg",
+          "dist": 8
+        },
+        {
+          "target": "other_-981-_jpg.rf.4fc68b98e128e92a9dfb81ea6eabc623.jpg",
+          "source": "WEB03750.jpg",
+          "dist": 8
+        }
+      ]
+    },
+    "d_fire:val<-pyro_sdis:all": {
+      "n_target": 1722,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=8": {
+        "n_matched": 5,
+        "frac": 0.0029
+      },
+      "samples_ham<=8": [
+        {
+          "target": "PublicDataset00124.jpg",
+          "source": "sdis-07_brison-110_2024-02-07T08-18-44.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB02621.jpg",
+          "source": "sdis-07_brison-200_2024-01-20T17-25-46.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB04339.jpg",
+          "source": "sdis-07_brison-200_2024-03-14T16-55-53.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB05352.jpg",
+          "source": "sdis-07_brison-200_2024-01-24T16-08-58.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB09249.jpg",
+          "source": "sdis-07_brison-200_2024-01-20T17-33-13.jpg",
+          "dist": 8
+        }
+      ]
+    },
+    "d_fire:test<-pyro_sdis:all": {
+      "n_target": 4306,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=8": {
+        "n_matched": 10,
+        "frac": 0.0023
+      },
+      "samples_ham<=8": [
+        {
+          "target": "PublicDataset01092.jpg",
+          "source": "force-06_courmettes-212_2024-01-11T16-35-45.jpg",
+          "dist": 8
+        },
+        {
+          "target": "PublicDataset01193.jpg",
+          "source": "force-06_courmettes-160_2024-02-12T09-54-51.jpg",
+          "dist": 8
+        },
+        {
+          "target": "PublicDataset01243.jpg",
+          "source": "force-06_courmettes-212_2024-02-17T17-47-51.jpg",
+          "dist": 8
+        },
+        {
+          "target": "PublicDataset01256.jpg",
+          "source": "force-06_courmettes-160_2024-01-20T09-40-51.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB09452.jpg",
+          "source": "sdis-07_brison-110_2024-02-12T11-57-44.jpg",
+          "dist": 6
+        },
+        {
+          "target": "WEB09499.jpg",
+          "source": "sdis-07_brison-200_2024-02-23T15-33-44.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB09521.jpg",
+          "source": "sdis-07_brison-200_2024-01-25T17-35-48.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB10020.jpg",
+          "source": "force-06_courmettes-212_2024-04-20T09-05-58.jpg",
+          "dist": 8
+        }
+      ]
+    },
+    "thesis:valid<-pyro_sdis:all": {
+      "n_target": 590,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=8": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "samples_ham<=8": []
+    },
+    "thesis:test<-pyro_sdis:all": {
+      "n_target": 628,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=8": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "samples_ham<=8": []
+    },
+    "d_fire:val<-thesis:all": {
+      "n_target": 1722,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 1,
+        "frac": 0.0006
+      },
+      "ham<=8": {
+        "n_matched": 3,
+        "frac": 0.0017
+      },
+      "samples_ham<=8": [
+        {
+          "target": "PublicDataset00875.jpg",
+          "source": "other_-219-_jpg.rf.725d0172bbf503c794448d465e0d6287.jpg",
+          "dist": 4
+        },
+        {
+          "target": "WEB03750.jpg",
+          "source": "other_-760-_jpg.rf.c6ddbb299b5771b6ee362bc5626e5d4d.jpg",
+          "dist": 6
+        },
+        {
+          "target": "WEB05701.jpg",
+          "source": "other_-557-_jpg.rf.d01007d634f1e770269b6949f80ce957.jpg",
+          "dist": 8
+        }
+      ]
+    },
+    "d_fire:test<-thesis:all": {
+      "n_target": 4306,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 5,
+        "frac": 0.0012
+      },
+      "ham<=8": {
+        "n_matched": 13,
+        "frac": 0.003
+      },
+      "samples_ham<=8": [
+        {
+          "target": "PublicDataset01287.jpg",
+          "source": "other_-207-_jpg.rf.f60cfea82a64c1f74711a7aaa76bc8c0.jpg",
+          "dist": 4
+        },
+        {
+          "target": "PublicDataset01288.jpg",
+          "source": "other_-504-_jpg.rf.bddfa5b4d23782eb4c1d2937d001e49f.jpg",
+          "dist": 2
+        },
+        {
+          "target": "PublicDataset01292.jpg",
+          "source": "other_-824-_jpg.rf.336903269c3d14eb27adb1bf4b47cf22.jpg",
+          "dist": 4
+        },
+        {
+          "target": "PublicDataset01299.jpg",
+          "source": "other_-543-_jpg.rf.6aa2237068e58736ee83165b63409cbb.jpg",
+          "dist": 4
+        },
+        {
+          "target": "PublicDataset01318.jpg",
+          "source": "middle_-4650-_jpg.rf.c0ec98c3ea611b1dabcc3b9dffb70345.jpg",
+          "dist": 8
+        },
+        {
+          "target": "PublicDataset01322.jpg",
+          "source": "middle_-4455-_jpg.rf.ccc050972a251672dfaa6877f1ac1f56.jpg",
+          "dist": 2
+        },
+        {
+          "target": "WEB09570.jpg",
+          "source": "other_-438-_jpg.rf.a0c8a83a816b8299a5106b804f636486.jpg",
+          "dist": 8
+        },
+        {
+          "target": "WEB10438.jpg",
+          "source": "large_-10-_jpg.rf.5c0dccd37646e9bb47d603183f042d3d.jpg",
+          "dist": 6
+        }
+      ]
+    },
+    "pyro_sdis:val<-thesis:all": {
+      "n_target": 4099,
+      "ham<=0": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=4": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "ham<=8": {
+        "n_matched": 0,
+        "frac": 0.0
+      },
+      "samples_ham<=8": []
+    }
+  }
+}

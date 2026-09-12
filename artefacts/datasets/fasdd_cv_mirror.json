@@ -1,0 +1,33 @@
+{
+  "name": "fasdd_cv_mirror",
+  "source": "HF weslleyskah/fire_smoke_dataset_fasdd_cv (third-party Roboflow re-export of FASDD_CV)",
+  "licence": "official FASDD: CC BY-SA 4.0 (scidb.cn, read 2026-09-01); mirror card mislabels CC BY 4.0",
+  "format": "YOLO zip",
+  "notes": "PIPELINE DEVELOPMENT ONLY \u2014 resplit ~80/10/10, 188 images short of official 95,314, auto-orient applied. Paper numbers require official ScienceDB FASDD_CV.",
+  "splits": {
+    "train": {
+      "n_images": 76101,
+      "n_boxes_by_class": {
+        "fire": 60108,
+        "smoke": 42654
+      },
+      "n_empty_labels": 31378
+    },
+    "valid": {
+      "n_images": 9513,
+      "n_boxes_by_class": {
+        "fire": 7578,
+        "smoke": 5386
+      },
+      "n_empty_labels": 3860
+    },
+    "test": {
+      "n_images": 9512,
+      "n_boxes_by_class": {
+        "smoke": 4911,
+        "fire": 5472
+      },
+      "n_empty_labels": 3881
+    }
+  }
+}

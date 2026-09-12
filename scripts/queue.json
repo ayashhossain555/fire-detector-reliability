@@ -1,0 +1,121 @@
+{
+ "note": "Read by train_queue.py at every iteration. Order = priority. Standard config batch=16 workers=2 unless overridden per job.",
+ "queue": [
+  {
+   "family": "rtdetrl",
+   "dataset": "pyrosdis",
+   "seed": 3407,
+   "why": "final core run (OOM'd pre-pagefile)"
+  },
+  {
+   "family": "v8s",
+   "dataset": "dfire",
+   "seed": 1337,
+   "why": "seed replicate"
+  },
+  {
+   "family": "rtdetrl",
+   "dataset": "pyrosdis",
+   "seed": 3407,
+   "tag": "_p60",
+   "patience": 60,
+   "why": "PROTOCOL DEVIATION (labelled): protocol run early-stopped at epoch 16 with best=epoch 1; this replicate disables early stopping to test whether RT-DETR-l recovers on Pyro-SDIS"
+  },
+  {
+   "family": "v8s",
+   "dataset": "pyrosdis",
+   "seed": 1337,
+   "why": "seed replicate"
+  },
+  {
+   "family": "y11s",
+   "dataset": "dfire",
+   "seed": 1337,
+   "why": "seed replicate"
+  },
+  {
+   "family": "y11s",
+   "dataset": "pyrosdis",
+   "seed": 1337,
+   "why": "seed replicate"
+  },
+  {
+   "family": "v8s",
+   "dataset": "dfiredd",
+   "seed": 3407,
+   "why": "de-duplicated D-Fire training (leakage experiment)"
+  },
+  {
+   "family": "y11s",
+   "dataset": "dfiredd",
+   "seed": 3407,
+   "why": "de-duplicated D-Fire training (leakage experiment)"
+  },
+  {
+   "family": "v8s",
+   "dataset": "dfiresub",
+   "seed": 3407,
+   "why": "size-matched random-subsample control for dfiredd"
+  },
+  {
+   "family": "rtdetrl",
+   "dataset": "dfire",
+   "seed": 1337,
+   "why": "seed replicate"
+  },
+  {
+   "family": "rtdetrl",
+   "dataset": "pyrosdis",
+   "seed": 1337,
+   "why": "seed replicate"
+  },
+  {
+   "family": "v8n",
+   "dataset": "dfire",
+   "seed": 3407,
+   "why": "scale axis (n/s/m): does capacity change calibration?"
+  },
+  {
+   "family": "y11n",
+   "dataset": "dfire",
+   "seed": 3407,
+   "why": "scale axis"
+  },
+  {
+   "family": "v8m",
+   "dataset": "dfire",
+   "seed": 3407,
+   "why": "scale axis"
+  },
+  {
+   "family": "y11m",
+   "dataset": "dfire",
+   "seed": 3407,
+   "why": "scale axis"
+  },
+  {
+   "family": "v8n",
+   "dataset": "pyrosdis",
+   "seed": 3407,
+   "why": "scale axis"
+  },
+  {
+   "family": "y11n",
+   "dataset": "pyrosdis",
+   "seed": 3407,
+   "why": "scale axis"
+  },
+  {
+   "family": "v8m",
+   "dataset": "pyrosdis",
+   "seed": 3407,
+   "why": "scale axis"
+  },
+  {
+   "family": "y11m",
+   "dataset": "pyrosdis",
+   "seed": 3407,
+   "why": "scale axis"
+  }
+ ]
+}

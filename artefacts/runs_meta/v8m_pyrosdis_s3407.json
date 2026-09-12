@@ -1,0 +1,20 @@
+{
+  "run": "v8m_pyrosdis_s3407",
+  "model": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\runs\\v8m_pyrosdis_s3407\\weights\\last.pt",
+  "dataset": "pyro_sdis_yolo (HF pyronear/pyro-sdis, canonical)",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 46,
+  "best_val_mAP50": 0.74556,
+  "best_val_mAP50_95": 0.48309,
+  "final_epoch_mAP50": 0.74198,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 15615.3,
+  "best_pt_sha256": "45954723ee39e9b00f9875b0befefc5246f0f504e49727459797278529db2239",
+  "written_by": "write_runs_meta.py"
+}

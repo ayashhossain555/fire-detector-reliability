@@ -1,0 +1,20 @@
+{
+  "run": "v8s_dfiredd_s3407",
+  "model": "yolov8s.pt",
+  "dataset": "d_fire_dedup_yolo",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 60,
+  "best_val_mAP50": 0.74902,
+  "best_val_mAP50_95": 0.43519,
+  "final_epoch_mAP50": 0.74902,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 5789.4,
+  "best_pt_sha256": "a380063942d08dc411a981f174e8f1fc207ffa443cf84bd174fc9a2d6b25abab",
+  "written_by": "write_runs_meta.py"
+}

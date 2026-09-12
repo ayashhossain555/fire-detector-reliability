@@ -1,0 +1,36 @@
+{
+  "name": "final_fire_project_v4",
+  "source": "Roboflow brac-university-uuemy/final-fire-project v4 (author's 2023 thesis dataset)",
+  "licence": "Public Domain (Roboflow API: public=true, license='Public Domain', read 2026-08-31)",
+  "format": "COCO zip",
+  "notes": "Held-out shifted eval + label-audit case. Cite thesis hdl.handle.net/10361/20208.",
+  "splits": {
+    "test": {
+      "n_images": 628,
+      "n_boxes_by_class": {
+        "nofire": 365,
+        "smoke": 245,
+        "human": 69255,
+        "fire": 312
+      }
+    },
+    "train": {
+      "n_images": 3453,
+      "n_boxes_by_class": {
+        "fire": 3745,
+        "human": 12683,
+        "nofire": 3025,
+        "smoke": 2683
+      }
+    },
+    "valid": {
+      "n_images": 590,
+      "n_boxes_by_class": {
+        "human": 5345,
+        "nofire": 840,
+        "smoke": 451,
+        "fire": 608
+      }
+    }
+  }
+}

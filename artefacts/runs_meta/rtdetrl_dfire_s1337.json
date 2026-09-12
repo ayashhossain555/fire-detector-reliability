@@ -1,0 +1,20 @@
+{
+  "run": "rtdetrl_dfire_s1337",
+  "model": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\runs\\rtdetrl_dfire_s1337\\weights\\last.pt",
+  "dataset": "d_fire_yolo (HF badsaarow/d-fire, verified exact vs official; val=seeded 10% of train)",
+  "seed": 1337,
+  "epochs_run": 56,
+  "best_epoch": 41,
+  "best_val_mAP50": 0.80452,
+  "best_val_mAP50_95": 0.47181,
+  "final_epoch_mAP50": 0.77047,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 18075.0,
+  "best_pt_sha256": "9733d25debdb2a92c213db5cbb1738b99ed0018df314b23a3a76d3ea4237d080",
+  "written_by": "write_runs_meta.py"
+}

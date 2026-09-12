@@ -1,0 +1,20 @@
+{
+  "run": "y11m_dfire_s3407",
+  "model": "yolo11m.pt",
+  "dataset": "d_fire_yolo (HF badsaarow/d-fire, verified exact vs official; val=seeded 10% of train)",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 48,
+  "best_val_mAP50": 0.79991,
+  "best_val_mAP50_95": 0.48717,
+  "final_epoch_mAP50": 0.79173,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 11947.8,
+  "best_pt_sha256": "ad3158b02076fbc0fff970683ff778264618839ae6ebdb08dc0a693f83bc1e5f",
+  "written_by": "write_runs_meta.py"
+}

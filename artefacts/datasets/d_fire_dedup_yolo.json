@@ -1,0 +1,31 @@
+{
+  "name": "d_fire_dedup_yolo",
+  "layout": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\data\\d_fire_dedup_yolo",
+  "rules": [
+    "drop train/val within pHash Hamming 8 of any test image",
+    "collapse pHash-identical groups within train / val to one image",
+    "test = clean test (no train match within Hamming 8)"
+  ],
+  "splits": {
+    "train": {
+      "original": 15499,
+      "dropped_near_test": 7091,
+      "dropped_within_split_duplicates": 92,
+      "kept": 8316
+    },
+    "val": {
+      "original": 1722,
+      "dropped_near_test": 794,
+      "dropped_within_split_duplicates": 1,
+      "kept": 927
+    },
+    "test": {
+      "original": 4306,
+      "kept": 1991
+    }
+  },
+  "calval_dedup": {
+    "n_images": 927,
+    "n_annotations": 1623
+  }
+}

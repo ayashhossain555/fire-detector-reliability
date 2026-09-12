@@ -1,0 +1,20 @@
+{
+  "run": "y11m_pyrosdis_s3407",
+  "model": "yolo11m.pt",
+  "dataset": "pyro_sdis_yolo (HF pyronear/pyro-sdis, canonical)",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 57,
+  "best_val_mAP50": 0.74911,
+  "best_val_mAP50_95": 0.48965,
+  "final_epoch_mAP50": 0.74944,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 29946.8,
+  "best_pt_sha256": "2ea2b4ae2a742178e5601bcf27d43598a8d591a0b83ef007e6c6c009f337dd3b",
+  "written_by": "write_runs_meta.py"
+}

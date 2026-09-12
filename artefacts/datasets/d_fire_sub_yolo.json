@@ -1,0 +1,10 @@
+{
+  "name": "d_fire_sub_yolo",
+  "layout": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\data\\d_fire_sub_yolo",
+  "rule": "random 8316 of the 15,499 original train images (random.Random(3407)); val/test unchanged \u2014 size-matched control for d_fire_dedup_yolo",
+  "splits": {
+    "train": 8316,
+    "val": 1722,
+    "test": 4306
+  }
+}

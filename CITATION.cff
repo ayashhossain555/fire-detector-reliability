@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this code or these artefacts, please cite the paper (preferred-citation) and this repository."
+type: software
+title: "Shift-aware operating points for open fire and smoke detectors: code and artefacts"
+authors:
+  - family-names: Chowdhury
+    given-names: Ayash Hossain
+    orcid: "https://orcid.org/0009-0005-1522-7958"
+    affiliation: "EMEC Ltd, Dhaka, Bangladesh"
+version: "1.0.0"
+date-released: "2026-09-13"
+repository-code: "https://github.com/ayashhossain555/fire-detector-reliability"
+license: MIT
+keywords:
+  - fire detection
+  - smoke detection
+  - object detection
+  - calibration
+  - distribution shift
+  - operating point
+  - conformal prediction
+preferred-citation:
+  type: article
+  title: "Shift-aware operating points for open fire and smoke detectors"
+  authors:
+    - family-names: Chowdhury
+      given-names: Ayash Hossain
+      orcid: "https://orcid.org/0009-0005-1522-7958"
+  year: 2026
+  journal: "Preprint (under review)"
+  notes: "Preprint DOI placeholder - to be replaced with the arXiv/Zenodo identifier on release."

@@ -1,0 +1,20 @@
+{
+  "run": "rtdetrl_pyrosdis_s3407",
+  "model": "rtdetr-l.pt",
+  "dataset": "pyro_sdis_yolo (HF pyronear/pyro-sdis, canonical)",
+  "seed": 3407,
+  "epochs_run": 16,
+  "best_epoch": 1,
+  "best_val_mAP50": 0.64871,
+  "best_val_mAP50_95": 0.33131,
+  "final_epoch_mAP50": 0.52403,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 21642.3,
+  "best_pt_sha256": "427c79df936ab3af775b60f7fdfd636dcf7b1e479a1d1f6ec56f2d04c1cefbb7",
+  "written_by": "write_runs_meta.py"
+}

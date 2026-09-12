@@ -1,0 +1,16 @@
+diff --git a/src/detection_calibration/utils.py b/src/detection_calibration/utils.py
+index 0306b16..979d37c 100644
+--- a/src/detection_calibration/utils.py
++++ b/src/detection_calibration/utils.py
+@@ -21,6 +21,11 @@ def threshold_detections(detections, detection_level_threshold, dataset_classes)
+     :return: detections                                 : thresholded detections
+     """
+ 
++    # P05 patch 2026-09-01 (documented in analysis/TOOLBOX-PATCHES.md):
++    # with a single-class dataset the per-class threshold array arrives
++    # 0-dimensional and indexing raises IndexError; atleast_1d restores the
++    # C=1 case without changing multi-class behaviour.
++    detection_level_threshold = np.atleast_1d(detection_level_threshold)
+     del_items = []
+     for idx, detection in enumerate(detections):
+         if detection['score'] < detection_level_threshold[dataset_classes.index(detection['category_id'])]:
