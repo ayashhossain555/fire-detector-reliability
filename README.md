@@ -172,5 +172,5 @@ released under its CC BY-NC-SA 4.0. Datasets are not redistributed; see
 
 ## Acknowledgement
 
-EMEC Ltd authorised publication. The D-Fire, Pyronear and HPWREN teams
+The D-Fire, Pyronear and HPWREN teams
 released the datasets used here.
