@@ -63,7 +63,7 @@ Figure numbers are the compiled paper's; the file name in
 | Bootstrap resolution check (B = 10,000) | `artefacts/calibration_ci_B10000/`, `artefacts/label_free_holm_B10000.json` | `bootstrap_ci_B10000.py`, `bootstrap_ci_B10000_compare.py`, `label_free_holm_B10000.py` |
 | Table 5 rows "BN adaptation" and the test-time-adaptation paragraph (Sec. 5.5) | `artefacts/bn_adaptation_baseline.json` (`summary.groups.yolo_all`, per-cell `cells`) | `bn_adaptation_baseline.py` (GPU; writes `detections_bnadapt/`, on Zenodo) |
 | Clean-split check, shift-diagnostic cut-off, Table 5 ties (Sec. 5.5) | `artefacts/label_free_clean_check.json` (`part_A_clean_split`, `part_B_shift_rule`, `part_C_table4_tallies`) | `label_free_clean_check.py` |
-| Training runs (24 checkpoints) | `artefacts/runs_meta/<run>.json` (model, dataset, seed, data hash, library versions, GPU, wall time, best-epoch metrics, checkpoint hash) | `train_queue.py` (reads `scripts/queue.json`), `train_run.py`, `write_runs_meta.py` |
+| Training runs (26 checkpoints) | `artefacts/runs_meta/<run>.json` (model, dataset, seed, data hash, library versions, GPU, wall time, best-epoch metrics, checkpoint hash) | `train_queue.py` (reads `scripts/queue.json`), `train_run.py`, `write_runs_meta.py` |
 
 `figures_paper/fig2_decomposition`
 and `fig5_paired_posthoc` are the all-cell versions of Figs. 4 and 5.
@@ -147,7 +147,7 @@ the sources and place them under `data/<name>_yolo/` as described in
 The Zenodo record also carries `detections_bnadapt/` (the batch-norm-adapted exports behind the Table 5 baseline rows, 228 MB).
 
 The exported detections (`detections/`, 2.3 GB, one JSON per model x split
-at conf 0.001) and the 24 trained checkpoints with their training logs
+at conf 0.001) and the 26 trained checkpoints with their training logs
 (`runs/`, 1.8 GB) exceed what a code repository should hold and are archived
 on Zenodo together with a tagged copy of this repository; the DOI will be
 recorded here once minted. Checkpoint hashes and best-epoch metrics are in

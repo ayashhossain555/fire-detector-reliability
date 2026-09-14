@@ -33,7 +33,7 @@ DATA = {
 }
 MODEL = {"v8n": "yolov8n.pt", "v8s": "yolov8s.pt", "v8m": "yolov8m.pt",
          "y11n": "yolo11n.pt", "y11s": "yolo11s.pt", "y11m": "yolo11m.pt",
-         "rtdetrl": "rtdetr-l.pt"}
+         "rtdetrl": "rtdetr-l.pt", "rtdetrx": "rtdetr-x.pt"}
 
 def log(msg):
     line = f"[{datetime.now().isoformat(timespec='seconds')}] {msg}"

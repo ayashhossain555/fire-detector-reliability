@@ -1,6 +1,6 @@
 # Decomposition fractions of the forward-cell LaECE_0 (machine-written by decomposition_fractions.py)
 
-Source: threshold_decomposition.json (81 cross cells; forward identity reproduced in 81/81). Fraction removed = (S/none - X) / S/none; interaction = both - threshold_alone - map_alone.
+Source: threshold_decomposition.json (88 cross cells; forward identity reproduced in 88/88). Fraction removed = (S/none - X) / S/none; interaction = both - threshold_alone - map_alone.
 
 ## Summary - core (n = 12), LaECE_0
 
@@ -19,22 +19,22 @@ Source: threshold_decomposition.json (81 cross cells; forward identity reproduce
 | source_platt | both | 0.566 | 0.594 | -0.092 | 0.942 |  |  |  |
 | source_platt | interaction | -0.025 | 0.021 | -0.637 | 0.185 |  |  |  |
 
-## Summary - all (n = 81), LaECE_0
+## Summary - all (n = 88), LaECE_0
 
 | map | component | mean | median | min | max | n thr>map | n map>thr | n interaction<0 |
 |---|---|---|---|---|---|---|---|---|
-| target_platt | threshold_alone | 0.541 | 0.668 | -0.352 | 0.974 | 37 | 44 | 70 |
-| target_platt | map_alone | 0.659 | 0.688 | 0.122 | 0.987 |  |  |  |
-| target_platt | both | 0.805 | 0.869 | 0.310 | 0.985 |  |  |  |
-| target_platt | interaction | -0.395 | -0.440 | -0.950 | 0.873 |  |  |  |
-| target_isotonic | threshold_alone | 0.541 | 0.668 | -0.352 | 0.974 | 32 | 49 | 68 |
-| target_isotonic | map_alone | 0.679 | 0.703 | -0.102 | 0.992 |  |  |  |
-| target_isotonic | both | 0.829 | 0.891 | 0.413 | 0.984 |  |  |  |
-| target_isotonic | interaction | -0.391 | -0.460 | -0.969 | 0.656 |  |  |  |
-| source_platt | threshold_alone | 0.541 | 0.668 | -0.352 | 0.974 | 68 | 13 | 27 |
-| source_platt | map_alone | 0.043 | 0.022 | -0.581 | 0.675 |  |  |  |
-| source_platt | both | 0.628 | 0.686 | -0.092 | 0.972 |  |  |  |
-| source_platt | interaction | 0.044 | 0.031 | -0.637 | 0.891 |  |  |  |
+| target_platt | threshold_alone | 0.528 | 0.662 | -0.352 | 0.974 | 40 | 48 | 72 |
+| target_platt | map_alone | 0.651 | 0.690 | -0.124 | 0.987 |  |  |  |
+| target_platt | both | 0.802 | 0.864 | 0.310 | 0.985 |  |  |  |
+| target_platt | interaction | -0.377 | -0.416 | -0.950 | 0.873 |  |  |  |
+| target_isotonic | threshold_alone | 0.528 | 0.662 | -0.352 | 0.974 | 32 | 56 | 73 |
+| target_isotonic | map_alone | 0.685 | 0.706 | -0.102 | 0.992 |  |  |  |
+| target_isotonic | both | 0.829 | 0.881 | 0.413 | 0.984 |  |  |  |
+| target_isotonic | interaction | -0.384 | -0.456 | -0.969 | 0.656 |  |  |  |
+| source_platt | threshold_alone | 0.528 | 0.662 | -0.352 | 0.974 | 73 | 15 | 27 |
+| source_platt | map_alone | 0.038 | 0.022 | -0.581 | 0.713 |  |  |  |
+| source_platt | both | 0.622 | 0.671 | -0.092 | 0.972 |  |  |  |
+| source_platt | interaction | 0.056 | 0.032 | -0.637 | 0.891 |  |  |  |
 
 ## Summary - yolo (n = 62), LaECE_0
 
@@ -53,22 +53,22 @@ Source: threshold_decomposition.json (81 cross cells; forward identity reproduce
 | source_platt | both | 0.638 | 0.688 | -0.092 | 0.972 |  |  |  |
 | source_platt | interaction | -0.011 | 0.018 | -0.637 | 0.346 |  |  |  |
 
-## Summary - rtdetr (n = 19), LaECE_0
+## Summary - rtdetr (n = 26), LaECE_0
 
 | map | component | mean | median | min | max | n thr>map | n map>thr | n interaction<0 |
 |---|---|---|---|---|---|---|---|---|
-| target_platt | threshold_alone | 0.241 | 0.187 | -0.352 | 0.898 | 5 | 14 | 10 |
-| target_platt | map_alone | 0.638 | 0.731 | 0.122 | 0.863 |  |  |  |
-| target_platt | both | 0.798 | 0.846 | 0.494 | 0.970 |  |  |  |
-| target_platt | interaction | -0.081 | -0.008 | -0.792 | 0.873 |  |  |  |
-| target_isotonic | threshold_alone | 0.241 | 0.187 | -0.352 | 0.898 | 4 | 15 | 12 |
-| target_isotonic | map_alone | 0.659 | 0.600 | 0.351 | 0.981 |  |  |  |
-| target_isotonic | both | 0.819 | 0.875 | 0.583 | 0.969 |  |  |  |
-| target_isotonic | interaction | -0.080 | -0.044 | -0.721 | 0.656 |  |  |  |
-| source_platt | threshold_alone | 0.241 | 0.187 | -0.352 | 0.898 | 9 | 10 | 1 |
-| source_platt | map_alone | 0.132 | 0.176 | -0.581 | 0.675 |  |  |  |
-| source_platt | both | 0.595 | 0.514 | 0.294 | 0.936 |  |  |  |
-| source_platt | interaction | 0.223 | 0.092 | -0.070 | 0.891 |  |  |  |
+| target_platt | threshold_alone | 0.277 | 0.212 | -0.352 | 0.898 | 8 | 18 | 12 |
+| target_platt | map_alone | 0.614 | 0.736 | -0.124 | 0.914 |  |  |  |
+| target_platt | both | 0.786 | 0.833 | 0.444 | 0.970 |  |  |  |
+| target_platt | interaction | -0.105 | 0.002 | -0.792 | 0.873 |  |  |  |
+| target_isotonic | threshold_alone | 0.277 | 0.212 | -0.352 | 0.898 | 4 | 22 | 17 |
+| target_isotonic | map_alone | 0.683 | 0.690 | 0.351 | 0.981 |  |  |  |
+| target_isotonic | both | 0.821 | 0.865 | 0.583 | 0.969 |  |  |  |
+| target_isotonic | interaction | -0.139 | -0.074 | -0.768 | 0.656 |  |  |  |
+| source_platt | threshold_alone | 0.277 | 0.212 | -0.352 | 0.898 | 14 | 12 | 1 |
+| source_platt | map_alone | 0.093 | 0.085 | -0.581 | 0.713 |  |  |  |
+| source_platt | both | 0.586 | 0.506 | 0.294 | 0.936 |  |  |  |
+| source_platt | interaction | 0.215 | 0.121 | -0.070 | 0.891 |  |  |  |
 
 ## Per cell (LaECE_0; target-fitted Platt unless stated)
 
@@ -101,6 +101,13 @@ Source: threshold_decomposition.json (81 cross cells; forward identity reproduce
 | rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly_dedup |  | 0.144 | 0.073 | 0.102 | 0.053 | 0.492 | 0.293 | 0.632 | -0.153 | -0.202 | 0.572 | 0.492/0.561/0.687 |
 | rtdetrl_pyrosdis_s3407_p60__to__thesis_test |  | 0.513 | 0.052 | 0.070 | 0.016 | 0.898 | 0.863 | 0.970 | -0.792 | -0.017 | 0.936 | 0.898/0.792/0.969 |
 | rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly |  | 0.513 | 0.052 | 0.070 | 0.016 | 0.898 | 0.863 | 0.970 | -0.792 | -0.017 | 0.936 | 0.898/0.792/0.969 |
+| rtdetrx_dfire_s3407__to__pyro_sdis_caltest |  | 0.249 | 0.250 | 0.060 | 0.047 | -0.004 | 0.757 | 0.809 | 0.056 | 0.713 | 0.725 | -0.004/0.813/0.820 |
+| rtdetrx_dfire_s3407__to__thesis_test |  | 0.315 | 0.327 | 0.082 | 0.078 | -0.039 | 0.740 | 0.751 | 0.050 | 0.380 | 0.483 | -0.039/0.872/0.884 |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test |  | 0.111 | 0.072 | 0.075 | 0.036 | 0.347 | 0.323 | 0.673 | 0.002 | -0.357 | 0.304 | 0.347/0.671/0.761 |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly |  | 0.111 | 0.072 | 0.075 | 0.036 | 0.347 | 0.323 | 0.673 | 0.002 | -0.357 | 0.304 | 0.347/0.671/0.761 |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup |  | 0.109 | 0.073 | 0.122 | 0.061 | 0.334 | -0.124 | 0.444 | 0.234 | -0.338 | 0.373 | 0.334/0.388/0.618 |
+| rtdetrx_pyrosdis_s3407__to__thesis_test |  | 0.439 | 0.078 | 0.038 | 0.013 | 0.823 | 0.914 | 0.970 | -0.766 | -0.058 | 0.863 | 0.823/0.914/0.969 |
+| rtdetrx_pyrosdis_s3407__to__thesis_test_smokeonly |  | 0.439 | 0.078 | 0.038 | 0.013 | 0.823 | 0.914 | 0.970 | -0.766 | -0.058 | 0.863 | 0.823/0.914/0.969 |
 | v8m_dfire_s3407__to__pyro_sdis_caltest |  | 0.110 | 0.057 | 0.077 | 0.045 | 0.486 | 0.303 | 0.590 | -0.198 | 0.014 | 0.273 | 0.486/0.598/0.686 |
 | v8m_dfire_s3407__to__thesis_test |  | 0.180 | 0.159 | 0.073 | 0.063 | 0.120 | 0.593 | 0.651 | -0.061 | 0.238 | 0.432 | 0.120/0.559/0.642 |
 | v8m_pyrosdis_s3407__to__d_fire_test |  | 0.223 | 0.062 | 0.078 | 0.025 | 0.721 | 0.649 | 0.887 | -0.483 | 0.007 | 0.752 | 0.721/0.744/0.913 |

@@ -1,17 +1,17 @@
 # Reflected / BCa bootstrap intervals - identity map (B=1000, seed 3407, image-level)
 
-Written by `bootstrap_ci_reflected.py` on 2026-09-13T01:59:05. Source: `bootstrap_ci_reflected.json`. Resampling copied verbatim from `bootstrap_ci.py`; per-cell artefacts in `calibration_ci_reflected/<cell>.json`.
+Written by `bootstrap_ci_reflected.py` on 2026-09-14T14:20:20. Source: `bootstrap_ci_reflected.json`. Resampling copied verbatim from `bootstrap_ci.py`; per-cell artefacts in `calibration_ci_reflected/<cell>.json`.
 
-Cells done: 49 / 49 (37 in-domain + 12 core cross). Values in percentage points (x100).
+Cells done: 56 / 56 (40 in-domain + 12 core cross + 4 extra cross). Values in percentage points (x100).
 
 ## LaECE_0
 
-- percentile interval reproduces `calibration_ci/<cell>.json` ci95 to 1e-9 in 49 / 49 cells (max abs diff 0.00e+00) - key `counts.LaECE_0.n_reproduces_calibration_ci_within_1e-9`
+- percentile interval reproduces `calibration_ci/<cell>.json` ci95 to 1e-9 in 56 / 56 cells (max abs diff 0.00e+00) - key `counts.LaECE_0.n_reproduces_calibration_ci_within_1e-9`
 - cells where the interval crosses zero: percentile 0, basic 1, BCa 0 (BCa undefined in 0) - keys `counts.LaECE_0.<kind>.n_crosses_zero`
 - cells where the interval excludes the point: percentile 2, basic 2, BCa 2 - keys `counts.LaECE_0.<kind>.n_excludes_point`
-- mean (boot_mean - point) = +0.427 pp; boot_mean above point in 46 / 49 cells
-- mean width: percentile 3.784 pp, BCa 3.319 pp; mean BCa shift of lower / upper endpoint vs percentile: -0.407 / -0.872 pp (max |shift| 1.133 / 2.858 pp)
-- max |a| = 0.0345, max |z0| = 2.120
+- mean (boot_mean - point) = +0.402 pp; boot_mean above point in 49 / 56 cells
+- mean width: percentile 3.953 pp, BCa 3.528 pp; mean BCa shift of lower / upper endpoint vs percentile: -0.375 / -0.800 pp (max |shift| 1.871 / 2.919 pp)
+- max |a| = 0.0524, max |z0| = 2.120
 
 | cell | role | n_img | point | boot mean | SE | percentile | basic | BCa | z0 | a | basic flags | BCa flags |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -22,6 +22,9 @@ Cells done: 49 / 49 (37 in-domain + 12 core cross). Values in percentage points 
 | rtdetrl_pyrosdis_s1337__to__pyro_sdis_caltest | in_domain | 2050 | 3.45 | 4.07 | 0.61 | [2.91, 5.34] | [1.56, 4.00] | [2.30, 4.04] | -0.999 | +0.0001 | ok | ok |
 | rtdetrl_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 2050 | 7.32 | 7.62 | 0.70 | [6.20, 8.95] | [5.68, 8.43] | [5.90, 8.31] | -0.479 | +0.0033 | ok | ok |
 | rtdetrl_pyrosdis_s3407_p60__to__pyro_sdis_caltest | in_domain | 2050 | 4.53 | 4.80 | 0.64 | [3.65, 6.07] | [2.98, 5.40] | [3.08, 5.49] | -0.410 | -0.0036 | ok | ok |
+| rtdetrx_dfire_s3407__to__d_fire_test | in_domain | 4306 | 14.28 | 14.28 | 0.42 | [13.48, 15.08] | [13.49, 15.09] | [13.46, 15.05] | -0.045 | +0.0063 | ok | ok |
+| rtdetrx_dfire_s3407__to__d_fire_test_dedup | in_domain | 1991 | 16.63 | 16.63 | 0.54 | [15.62, 17.74] | [15.53, 17.64] | [15.66, 17.78] | +0.045 | +0.0067 | ok | ok |
+| rtdetrx_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 2050 | 4.10 | 4.47 | 0.67 | [3.18, 5.79] | [2.42, 5.02] | [2.82, 5.08] | -0.533 | -0.0037 | ok | ok |
 | v8m_dfire_s3407__to__d_fire_test | in_domain | 4306 | 3.83 | 4.05 | 0.39 | [3.27, 4.82] | [2.83, 4.38] | [2.93, 4.34] | -0.601 | +0.0041 | ok | ok |
 | v8m_dfire_s3407__to__d_fire_test_dedup | in_domain | 1991 | 5.98 | 6.09 | 0.53 | [5.10, 7.20] | [4.77, 6.87] | [4.98, 7.02] | -0.166 | +0.0038 | ok | ok |
 | v8m_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 2050 | 2.80 | 3.49 | 0.60 | [2.36, 4.70] | [0.91, 3.25] | [1.70, 3.27] | -1.150 | +0.0018 | ok | ok |
@@ -64,15 +67,19 @@ Cells done: 49 / 49 (37 in-domain + 12 core cross). Values in percentage points 
 | y11s_pyrosdis_s3407__to__thesis_test_smokeonly | core_cross | 628 | 39.52 | 39.54 | 7.29 | [24.78, 53.27] | [25.77, 54.26] | [24.32, 53.25] | -0.010 | -0.0019 | ok | ok |
 | rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly | core_cross | 4306 | 24.43 | 24.63 | 1.40 | [21.88, 27.48] | [21.38, 26.98] | [21.48, 26.89] | -0.166 | -0.0035 | ok | ok |
 | rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly | core_cross | 628 | 51.93 | 51.98 | 1.97 | [48.24, 55.90] | [47.95, 55.62] | [48.29, 56.07] | -0.038 | +0.0286 | ok | ok |
+| rtdetrx_dfire_s3407__to__pyro_sdis_caltest | extra_cross | 2050 | 24.86 | 24.84 | 1.33 | [22.32, 27.45] | [22.28, 27.40] | [22.43, 27.58] | +0.025 | +0.0119 | ok | ok |
+| rtdetrx_dfire_s3407__to__thesis_test | extra_cross | 628 | 31.49 | 31.46 | 2.06 | [27.50, 35.65] | [27.33, 35.49] | [28.04, 36.05] | +0.068 | +0.0152 | ok | ok |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly | extra_cross | 4306 | 11.07 | 12.33 | 1.91 | [8.52, 16.24] | [5.89, 13.62] | [6.65, 13.33] | -0.690 | -0.0020 | ok | ok |
+| rtdetrx_pyrosdis_s3407__to__thesis_test_smokeonly | extra_cross | 628 | 43.91 | 43.91 | 2.21 | [40.08, 48.71] | [39.10, 47.73] | [40.59, 49.74] | +0.065 | +0.0524 | ok | ok |
 
 ## D_ECE
 
-- percentile interval reproduces `calibration_ci/<cell>.json` ci95 to 1e-9 in 49 / 49 cells (max abs diff 0.00e+00) - key `counts.D_ECE.n_reproduces_calibration_ci_within_1e-9`
-- cells where the interval crosses zero: percentile 0, basic 1, BCa 0 (BCa undefined in 0) - keys `counts.D_ECE.<kind>.n_crosses_zero`
+- percentile interval reproduces `calibration_ci/<cell>.json` ci95 to 1e-9 in 56 / 56 cells (max abs diff 0.00e+00) - key `counts.D_ECE.n_reproduces_calibration_ci_within_1e-9`
+- cells where the interval crosses zero: percentile 0, basic 2, BCa 0 (BCa undefined in 0) - keys `counts.D_ECE.<kind>.n_crosses_zero`
 - cells where the interval excludes the point: percentile 0, basic 0, BCa 0 - keys `counts.D_ECE.<kind>.n_excludes_point`
-- mean (boot_mean - point) = +0.178 pp; boot_mean above point in 44 / 49 cells
-- mean width: percentile 4.910 pp, BCa 4.855 pp; mean BCa shift of lower / upper endpoint vs percentile: -0.292 / -0.347 pp (max |shift| 2.062 / 4.227 pp)
-- max |a| = 0.0556, max |z0| = 1.019
+- mean (boot_mean - point) = +0.209 pp; boot_mean above point in 48 / 56 cells
+- mean width: percentile 5.110 pp, BCa 5.019 pp; mean BCa shift of lower / upper endpoint vs percentile: -0.299 / -0.390 pp (max |shift| 3.372 / 6.415 pp)
+- max |a| = 0.0556, max |z0| = 1.499
 
 | cell | role | n_img | point | boot mean | SE | percentile | basic | BCa | z0 | a | basic flags | BCa flags |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -83,6 +90,9 @@ Cells done: 49 / 49 (37 in-domain + 12 core cross). Values in percentage points 
 | rtdetrl_pyrosdis_s1337__to__pyro_sdis_caltest | in_domain | 2050 | 11.55 | 11.85 | 0.97 | [9.96, 13.76] | [9.34, 13.15] | [9.52, 13.17] | -0.287 | -0.0043 | ok | ok |
 | rtdetrl_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 2050 | 7.99 | 8.07 | 0.95 | [6.24, 9.96] | [6.02, 9.74] | [6.06, 9.88] | -0.075 | -0.0030 | ok | ok |
 | rtdetrl_pyrosdis_s3407_p60__to__pyro_sdis_caltest | in_domain | 2050 | 14.94 | 15.05 | 0.91 | [13.31, 16.78] | [13.10, 16.56] | [13.10, 16.62] | -0.113 | -0.0048 | ok | ok |
+| rtdetrx_dfire_s3407__to__d_fire_test | in_domain | 4306 | 4.95 | 4.97 | 0.49 | [4.05, 5.91] | [3.99, 5.85] | [4.03, 5.90] | -0.033 | -0.0023 | ok | ok |
+| rtdetrx_dfire_s3407__to__d_fire_test_dedup | in_domain | 1991 | 4.24 | 4.33 | 0.71 | [2.98, 5.69] | [2.80, 5.51] | [2.87, 5.60] | -0.095 | +0.0008 | ok | ok |
+| rtdetrx_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 2050 | 16.59 | 16.64 | 0.90 | [14.99, 18.41] | [14.77, 18.19] | [14.93, 18.31] | -0.030 | -0.0047 | ok | ok |
 | v8m_dfire_s3407__to__d_fire_test | in_domain | 4306 | 10.71 | 10.74 | 0.57 | [9.60, 11.86] | [9.55, 11.81] | [9.55, 11.80] | -0.055 | -0.0029 | ok | ok |
 | v8m_dfire_s3407__to__d_fire_test_dedup | in_domain | 1991 | 7.66 | 7.84 | 0.70 | [6.45, 9.19] | [6.14, 8.87] | [6.07, 8.80] | -0.264 | -0.0025 | ok | ok |
 | v8m_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 2050 | 9.76 | 9.79 | 0.94 | [7.99, 11.61] | [7.90, 11.53] | [7.96, 11.57] | -0.030 | -0.0037 | ok | ok |
@@ -125,5 +135,9 @@ Cells done: 49 / 49 (37 in-domain + 12 core cross). Values in percentage points 
 | y11s_pyrosdis_s3407__to__thesis_test_smokeonly | core_cross | 628 | 44.48 | 44.52 | 5.22 | [35.10, 55.49] | [33.46, 53.86] | [36.45, 57.59] | +0.023 | +0.0556 | ok | ok |
 | rtdetrl_pyrosdis_s3407__to__d_fire_test_smokeonly | core_cross | 4306 | 20.30 | 20.44 | 1.93 | [16.65, 24.25] | [16.35, 23.95] | [16.08, 23.74] | -0.093 | -0.0047 | ok | ok |
 | rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly | core_cross | 628 | 51.93 | 51.98 | 1.97 | [48.24, 55.90] | [47.95, 55.62] | [48.29, 56.07] | -0.038 | +0.0286 | ok | ok |
+| rtdetrx_dfire_s3407__to__pyro_sdis_caltest | extra_cross | 2050 | 13.77 | 13.74 | 2.00 | [10.01, 17.75] | [9.79, 17.54] | [10.10, 17.84] | +0.010 | +0.0064 | ok | ok |
+| rtdetrx_dfire_s3407__to__thesis_test | extra_cross | 628 | 28.28 | 28.10 | 3.52 | [21.41, 34.83] | [21.74, 35.15] | [21.87, 35.42] | +0.053 | +0.0113 | ok | ok |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly | extra_cross | 4306 | 5.25 | 8.27 | 2.08 | [4.67, 12.50] | [-2.00, 5.82] | [1.30, 6.08] | -1.499 | -0.0098 | cross0  | ok |
+| rtdetrx_pyrosdis_s3407__to__thesis_test_smokeonly | extra_cross | 628 | 43.93 | 43.93 | 2.20 | [40.13, 48.71] | [39.14, 47.73] | [40.66, 49.76] | +0.073 | +0.0526 | ok | ok |
 
-Total wall time of the per-cell runs: 708 s.
+Total wall time of the per-cell runs: 808 s.

@@ -1,0 +1,20 @@
+{
+  "run": "rtdetrx_dfire_s3407",
+  "model": "rtdetr-x.pt",
+  "dataset": "d_fire_yolo (HF badsaarow/d-fire, verified exact vs official; val=seeded 10% of train)",
+  "seed": 3407,
+  "epochs_run": 60,
+  "best_epoch": 56,
+  "best_val_mAP50": 0.80464,
+  "best_val_mAP50_95": 0.47578,
+  "final_epoch_mAP50": 0.79851,
+  "workers": 2,
+  "batch": 16,
+  "imgsz": 640,
+  "ultralytics": "8.4.136",
+  "torch": "2.11.0+cu128",
+  "gpu": "RTX 5070 Ti",
+  "wall_s_total": 38204.9,
+  "best_pt_sha256": "2b22dc23ae25a4408705efff8848b182b11cc217293b454740c5a9bc132e55eb",
+  "written_by": "write_runs_meta.py"
+}

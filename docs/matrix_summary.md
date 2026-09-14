@@ -24,6 +24,15 @@
 | rtdetrl_pyrosdis_s3407_p60__to__figlib_bb | cross | 0.71976 | 12.3 | [9.4, 18.6] | 13.6 | 14.6 | 13.9 | 9.6 | 76.4 | 25.2 | 0.3 |
 | rtdetrl_pyrosdis_s3407_p60__to__thesis_test | cross | 0.71976 | 51.3 | [45.9, 57.1] | 51.4 | 52.1 | 50.8 | 51.3 | 99.8 | 0.9 | 3.3 |
 | rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly | cross | 0.71976 | 51.3 | [45.9, 57.1] | 51.4 | 52.1 | 50.8 | 51.3 | 99.6 | 0.9 | 3.3 |
+| rtdetrx_dfire_s3407__to__figlib_bb | cross | 0.80464 | 34.6 | [31.6, 37.3] | 25.6 | 17.7 | 18.1 | 37.7 | 36.2 | 63.8 | 0.3 |
+| rtdetrx_dfire_s3407__to__pyro_sdis_caltest | cross | 0.80464 | 24.9 | [22.3, 27.4] | 16.7 | 7.1 | 9.7 | 13.8 | 70.5 | 33.0 | 17.2 |
+| rtdetrx_dfire_s3407__to__thesis_test | cross | 0.80464 | 31.5 | [27.5, 35.6] | 21.9 | 19.5 | 18.3 | 28.3 | 63.3 | 75.8 | 0.9 |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test | cross | 0.72808 | 11.1 | [8.5, 16.2] | 13.1 | 15.0 | 15.2 | 5.2 | 96.6 | 8.6 | 2.5 |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly | cross | 0.72808 | 11.1 | [8.5, 16.2] | 13.1 | 15.0 | 15.2 | 5.2 | 93.1 | 8.6 | 2.5 |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup | cross | 0.72808 | 10.9 | [8.1, 19.5] | 10.8 | 14.6 | 9.4 | 11.6 | 96.3 | 4.8 | 0.6 |
+| rtdetrx_pyrosdis_s3407__to__figlib_bb | cross | 0.72808 | 14.4 | [10.7, 20.0] | 17.5 | 17.8 | 20.2 | 16.0 | 76.4 | 24.9 | 0.0 |
+| rtdetrx_pyrosdis_s3407__to__thesis_test | cross | 0.72808 | 43.9 | [40.1, 48.7] | 42.0 | 46.5 | 43.7 | 43.9 | 99.8 | 0.9 | 2.1 |
+| rtdetrx_pyrosdis_s3407__to__thesis_test_smokeonly | cross | 0.72808 | 43.9 | [40.1, 48.7] | 42.0 | 46.5 | 43.7 | 43.9 | 99.6 | 0.9 | 2.1 |
 | v8m_dfire_s3407__to__figlib_bb | cross | 0.80018 | 11.3 | [9.1, 14.8] | 11.5 | 9.1 | 10.5 | 7.8 | 44.7 | 46.9 | 0.0 |
 | v8m_dfire_s3407__to__pyro_sdis_caltest | cross | 0.80018 | 11.0 | [8.9, 14.2] | 10.5 | 10.9 | 14.9 | 12.5 | 77.0 | 21.2 | 14.2 |
 | v8m_dfire_s3407__to__thesis_test | cross | 0.80018 | 18.0 | [15.7, 22.2] | 18.2 | 13.7 | 13.9 | 12.4 | 66.4 | 69.6 | 1.5 |
@@ -118,6 +127,9 @@
 | rtdetrl_pyrosdis_s1337__to__pyro_sdis_caltest | in_domain | 0.65236 | 3.5 | [2.9, 5.3] | 3.5 | 3.4 | 2.7 | 11.6 | 21.9 | 82.2 | 49.5 |
 | rtdetrl_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 0.64871 | 7.3 | [6.2, 8.9] | 7.3 | 3.3 | 2.3 | 8.0 | 18.0 | 89.3 | 60.2 |
 | rtdetrl_pyrosdis_s3407_p60__to__pyro_sdis_caltest | in_domain | 0.71976 | 4.5 | [3.7, 6.1] | 2.6 | 3.0 | 1.8 | 14.9 | 19.5 | 86.5 | 43.3 |
+| rtdetrx_dfire_s3407__to__d_fire_test | in_domain | 0.80464 | 14.3 | [13.5, 15.1] | 6.7 | 2.4 | 1.7 | 4.9 | 14.8 | 96.8 | 0.8 |
+| rtdetrx_dfire_s3407__to__d_fire_test_dedup | in_domain | 0.80464 | 16.6 | [15.6, 17.7] | 8.2 | 4.1 | 3.7 | 4.2 | 18.2 | 97.3 | 1.3 |
+| rtdetrx_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 0.72808 | 4.1 | [3.2, 5.8] | 3.0 | 2.1 | 2.1 | 16.6 | 18.9 | 85.8 | 41.1 |
 | v8m_dfire_s3407__to__d_fire_test | in_domain | 0.80018 | 3.8 | [3.3, 4.8] | 3.6 | 2.2 | 2.4 | 10.7 | 15.4 | 94.0 | 0.7 |
 | v8m_dfire_s3407__to__d_fire_test_dedup | in_domain | 0.80018 | 6.0 | [5.1, 7.2] | 5.8 | 2.9 | 3.4 | 7.7 | 18.3 | 95.1 | 1.4 |
 | v8m_pyrosdis_s3407__to__pyro_sdis_caltest | in_domain | 0.74556 | 2.8 | [2.4, 4.7] | 2.7 | 3.0 | 2.5 | 9.8 | 19.1 | 86.4 | 51.6 |
@@ -152,6 +164,10 @@
 | rtdetrl_pyrosdis_s3407__to__thesis_test_smokeonly__repair | repair | 0.64871 | 26.6 | [25.6, 27.7] | 7.7 | 4.4 | 4.5 | 26.3 | 88.2 | 37.7 | 53.7 |
 | rtdetrl_pyrosdis_s3407_p60__to__d_fire_test_smokeonly__repair | repair | 0.71976 | 5.6 | [4.7, 7.5] | 3.9 | 3.5 | 2.9 | 3.6 | 80.5 | 23.0 | 12.0 |
 | rtdetrl_pyrosdis_s3407_p60__to__thesis_test_smokeonly__repair | repair | 0.71976 | 5.2 | [4.8, 5.6] | 2.8 | 1.6 | 1.9 | 5.3 | 86.1 | 26.3 | 58.0 |
+| rtdetrx_dfire_s3407__to__pyro_sdis_caltest__repair | repair | 0.80464 | 25.0 | [22.9, 27.2] | 11.5 | 4.7 | 4.5 | 14.5 | 59.6 | 56.1 | 33.9 |
+| rtdetrx_dfire_s3407__to__thesis_test__repair | repair | 0.80464 | 32.7 | [30.0, 35.5] | 20.9 | 7.8 | 3.7 | 29.7 | 51.9 | 80.1 | 4.3 |
+| rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly__repair | repair | 0.72808 | 7.2 | [5.8, 9.7] | 6.3 | 3.6 | 2.6 | 2.0 | 83.5 | 18.2 | 8.8 |
+| rtdetrx_pyrosdis_s3407__to__thesis_test_smokeonly__repair | repair | 0.72808 | 7.8 | [7.3, 8.2] | 2.2 | 1.3 | 1.4 | 7.9 | 89.8 | 14.9 | 44.6 |
 | v8m_dfire_s3407__to__pyro_sdis_caltest__repair | repair | 0.80018 | 5.7 | [5.0, 7.6] | 5.1 | 4.5 | 3.9 | 10.2 | 57.8 | 53.3 | 36.8 |
 | v8m_dfire_s3407__to__thesis_test__repair | repair | 0.80018 | 15.9 | [14.2, 18.7] | 16.5 | 6.3 | 6.5 | 10.5 | 51.7 | 77.6 | 5.1 |
 | v8m_pyrosdis_s3407__to__d_fire_test_smokeonly__repair | repair | 0.74556 | 6.2 | [5.3, 7.7] | 5.1 | 2.5 | 1.9 | 7.6 | 72.7 | 28.5 | 16.4 |

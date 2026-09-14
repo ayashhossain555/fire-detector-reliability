@@ -24,16 +24,17 @@ HERE = Path(__file__).resolve().parent
 M = json.loads((HERE / "matrix_summary.json").read_text(encoding="utf-8"))
 runs, cells = M["runs"], M["cells"]
 
-SIZE_ORDER = {"n": 0, "s": 1, "m": 2, "l": 3}
+SIZE_ORDER = {"n": 0, "s": 1, "m": 2, "l": 3, "x": 4}
 
 
 def parse_run(name):
-    m = re.match(r"(v8|y11|rtdetrl)([nsml])?_(dfire|pyrosdis|dfiredd|dfiresub)_s(\d+)(_p60)?$", name)
+    # 2026-09-14: rtdetrx (RT-DETR-x) added; parsed as family "rtdetr", size "x" (rtdetrl unchanged)
+    m = re.match(r"(v8|y11|rtdetrl|rtdetrx)([nsml])?_(dfire|pyrosdis|dfiredd|dfiresub)_s(\d+)(_p60)?$", name)
     if not m:
         return None
     fam, size, src, seed, p60 = m.groups()
-    if fam == "rtdetrl":
-        fam, size = "rtdetr", "l"
+    if fam in ("rtdetrl", "rtdetrx"):
+        fam, size = "rtdetr", fam[-1]
     variant = {"dfiredd": "dedup", "dfiresub": "subset"}.get(src, "") + ("p60" if p60 else "")
     src = "dfire" if src.startswith("dfire") else src
     return {"family": fam, "size": size, "source": src, "seed": int(seed), "variant": variant}
@@ -100,7 +101,7 @@ def main():
     for r, v in out["runs"].items():
         if v["variant"]:
             continue
-        key = f"{v['family']}{'' if v['family']=='rtdetr' else v['size']}_{v['source']}"
+        key = f"{v['family']}{'' if (v['family']=='rtdetr' and v['size']=='l') else v['size']}_{v['source']}"  # rtdetr_<src> = RT-DETR-l (unchanged); rtdetrx_<src> = RT-DETR-x
         B.setdefault(key, {})[v["seed"]] = {"run": r, "val_mAP50": v["best_val_mAP50"], "cells": v["cells"]}
     seeds = {}
     diffs = {"val_mAP50": [], "LaECE_id_in": [], "LaECE_id_cross_main": []}

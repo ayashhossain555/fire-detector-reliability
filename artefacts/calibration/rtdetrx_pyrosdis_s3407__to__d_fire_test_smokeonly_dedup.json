@@ -1,0 +1,109 @@
+{
+  "cell": "rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup",
+  "inputs": {
+    "calval-gt": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\coco_gt\\pyro_sdis_calval.json",
+    "calval-dets": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\detections\\rtdetrx_pyrosdis_s3407__pyro_sdis_calval.bbox.json",
+    "test-gt": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\coco_gt\\d_fire_test_smokeonly_dedup.json",
+    "test-dets": "E:\\ayash\\projects\\research-hub\\papers\\05-fire-detector-reliability\\analysis\\detections\\rtdetrx_pyrosdis_s3407__d_fire_test_smokeonly_dedup.bbox.json",
+    "calval_dets_dropped_offclass": 0,
+    "test_dets_dropped_offclass": 0
+  },
+  "results": {
+    "identity": {
+      "LaECE_0": 0.108937059677778,
+      "LaACE_0": 0.24062526094049702,
+      "D_ECE": 0.1156420526315789,
+      "lrp": 0.9785549590046827,
+      "lrp_loc": 0.41835796973924927,
+      "lrp_fp": 0.14035087719298245,
+      "lrp_fn": 0.9629068887206662,
+      "settings": {
+        "tau": 0.0,
+        "bin_count": 25,
+        "max_dets": 100,
+        "dece_convention": "bbox/10bins/tau0.5",
+        "toolbox_commit": "bf59c92"
+      },
+      "thresholds": {
+        "pre": [
+          0.353226
+        ],
+        "operating": [
+          0.353226
+        ]
+      }
+    },
+    "temperature_scaling": {
+      "LaECE_0": 0.10810690805842921,
+      "LaACE_0": 0.23938807139180598,
+      "D_ECE": 0.1239251214690295,
+      "lrp": 0.9785549590046827,
+      "lrp_loc": 0.41835796973924927,
+      "lrp_fp": 0.14035087719298245,
+      "lrp_fn": 0.9629068887206662,
+      "settings": {
+        "tau": 0.0,
+        "bin_count": 25,
+        "max_dets": 100,
+        "dece_convention": "bbox/10bins/tau0.5",
+        "toolbox_commit": "bf59c92"
+      },
+      "thresholds": {
+        "pre": [
+          0.353226
+        ],
+        "operating": [
+          0.3092929257599161
+        ]
+      }
+    },
+    "platt_scaling": {
+      "LaECE_0": 0.14575376482231306,
+      "LaACE_0": 0.24511526959536417,
+      "D_ECE": 0.1151296040506058,
+      "lrp": 0.9785549590046827,
+      "lrp_loc": 0.41835796973924927,
+      "lrp_fp": 0.14035087719298245,
+      "lrp_fn": 0.9629068887206662,
+      "settings": {
+        "tau": 0.0,
+        "bin_count": 25,
+        "max_dets": 100,
+        "dece_convention": "bbox/10bins/tau0.5",
+        "toolbox_commit": "bf59c92"
+      },
+      "thresholds": {
+        "pre": [
+          0.353226
+        ],
+        "operating": [
+          0.36126838523123095
+        ]
+      }
+    },
+    "isotonic_regression": {
+      "LaECE_0": 0.09391439279230657,
+      "LaACE_0": 0.24417188913700602,
+      "D_ECE": 0.10384143616437523,
+      "lrp": 0.9785549590046827,
+      "lrp_loc": 0.4183579697392493,
+      "lrp_fp": 0.14035087719298245,
+      "lrp_fn": 0.9629068887206662,
+      "settings": {
+        "tau": 0.0,
+        "bin_count": 25,
+        "max_dets": 100,
+        "dece_convention": "bbox/10bins/tau0.5",
+        "toolbox_commit": "bf59c92"
+      },
+      "thresholds": {
+        "pre": [
+          0.353226
+        ],
+        "operating": [
+          0.3191154619292606
+        ]
+      }
+    }
+  }
+}

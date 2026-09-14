@@ -116,6 +116,20 @@
    "dataset": "pyrosdis",
    "seed": 3407,
    "why": "scale axis"
+  },
+  {
+   "family": "rtdetrx",
+   "dataset": "dfire",
+   "seed": 3407,
+   "patience": 60,
+   "why": "REVIEW ROUND 2026-09-13: second transformer size (RT-DETR-x) to test whether the map-failure result is a property of the architecture; patience 60 as for the RT-DETR-l Pyro-SDIS re-run (labelled deviation)"
+  },
+  {
+   "family": "rtdetrx",
+   "dataset": "pyrosdis",
+   "seed": 3407,
+   "patience": 60,
+   "why": "REVIEW ROUND 2026-09-13: second transformer size (RT-DETR-x) to test whether the map-failure result is a property of the architecture; patience 60 as for the RT-DETR-l Pyro-SDIS re-run (labelled deviation)"
   }
  ]
 }

@@ -2,7 +2,7 @@
  "fig1_transfer_matrix": [
   "matrix_summary.json: cells.<run>__to__<target>.metrics.identity.LaECE_0",
   "calibration_ci/*.json: results.identity.LaECE_0.ci95",
-  "dagger marks (lrp_fn > 0.95): matrix_summary.json cells.<cell>.metrics.identity.lrp_fn -> rtdetrl_pyrosdis_s3407__to__thesis_test, v8m_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8m_pyrosdis_s3407__to__thesis_test, v8n_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8n_pyrosdis_s3407__to__thesis_test, v8s_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8s_pyrosdis_s3407__to__thesis_test, y11m_pyrosdis_s3407__to__thesis_test, y11n_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, y11n_pyrosdis_s3407__to__thesis_test, y11s_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, y11s_pyrosdis_s3407__to__thesis_test"
+  "dagger marks (lrp_fn > 0.95): matrix_summary.json cells.<cell>.metrics.identity.lrp_fn -> rtdetrl_pyrosdis_s3407__to__thesis_test, rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, rtdetrx_pyrosdis_s3407__to__thesis_test, v8m_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8m_pyrosdis_s3407__to__thesis_test, v8n_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8n_pyrosdis_s3407__to__thesis_test, v8s_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, v8s_pyrosdis_s3407__to__thesis_test, y11m_pyrosdis_s3407__to__thesis_test, y11n_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, y11n_pyrosdis_s3407__to__thesis_test, y11s_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup, y11s_pyrosdis_s3407__to__thesis_test"
  ],
  "fig2_decomposition": [
   "threshold_decomposition.json: cells.<cell>.results.<condition>.LaECE_0"

@@ -191,6 +191,44 @@
    "mAP50_leaky": 0.06336603036705256,
    "mAP50_full": 0.07698174233531445
   },
+  "rtdetrx_dfire_s3407__to__d_fire_test_dedup": {
+   "LaECE_0": {
+    "identity": 0.16632689074549206,
+    "temperature_scaling": 0.08170629389491932,
+    "platt_scaling": 0.0411084435479072,
+    "isotonic_regression": 0.0365643699256275
+   },
+   "LaECE_0_full_test": {
+    "identity": 0.14283047570586077,
+    "temperature_scaling": 0.0674477578414308,
+    "platt_scaling": 0.02417885268830125,
+    "isotonic_regression": 0.01664617903476532
+   },
+   "lrp_identity": 0.46197810831941355,
+   "lrp_identity_full_test": 0.429157655139138,
+   "mAP50_clean": 0.7466191859403157,
+   "mAP50_leaky": 0.8702534668058146,
+   "mAP50_full": 0.7893257469903069
+  },
+  "rtdetrx_pyrosdis_s3407__to__d_fire_test_smokeonly_dedup": {
+   "LaECE_0": {
+    "identity": 0.108937059677778,
+    "temperature_scaling": 0.10810690805842921,
+    "platt_scaling": 0.14575376482231306,
+    "isotonic_regression": 0.09391439279230657
+   },
+   "LaECE_0_full_test": {
+    "identity": 0.11068466071220145,
+    "temperature_scaling": 0.13058091764095964,
+    "platt_scaling": 0.15015232271509893,
+    "isotonic_regression": 0.1519067866161235
+   },
+   "lrp_identity": 0.9785549590046827,
+   "lrp_identity_full_test": 0.9609296843742562,
+   "mAP50_clean": 0.04707941320285901,
+   "mAP50_leaky": 0.06122594190360953,
+   "mAP50_full": 0.07928535765582159
+  },
   "v8m_dfire_s3407__to__d_fire_test_dedup": {
    "LaECE_0": {
     "identity": 0.059828754902211595,

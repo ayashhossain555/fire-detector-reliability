@@ -25,6 +25,12 @@ Nothing in bootstrap_ci.py or calibration_ci/ is touched: outputs go to
 analysis/calibration_ci_reflected/<cell>.json, summary to
 analysis/bootstrap_ci_reflected.json / .md; temp files use the prefix "cir__".
 
+2026-09-14 addition (RT-DETR-x runs rtdetrx_dfire_s3407 / rtdetrx_pyrosdis_s3407, 26-run matrix):
+their in-domain cells join the in-domain list by the existing rule (the count assert is now
+derived from matrix_summary.json: 2 x D-Fire-trained runs + Pyro-SDIS-trained runs = 40), and
+their four labelled cross cells are listed under the role "extra_cross" (EXTRA_CROSS_RUNS) so
+that --cells can address them; the 12 core_cross cells and every existing output are unchanged.
+
 Usage: python analysis/bootstrap_ci_reflected.py --cells A B    # verification pair
        python analysis/bootstrap_ci_reflected.py --all           # every listed cell lacking output
        python analysis/bootstrap_ci_reflected.py --summary       # (re)build the summary only
@@ -54,6 +60,8 @@ B_DEFAULT = 1000
 METRICS = {"LaECE_0": (25, 0.0, False), "D_ECE": (10, 0.5, True)}
 CORE_RUNS = ["v8s_dfire_s3407", "y11s_dfire_s3407", "rtdetrl_dfire_s3407",
              "v8s_pyrosdis_s3407", "y11s_pyrosdis_s3407", "rtdetrl_pyrosdis_s3407"]
+# 2026-09-14: RT-DETR-x runs; their two labelled cross targets each get role "extra_cross" (not core).
+EXTRA_CROSS_RUNS = ["rtdetrx_dfire_s3407", "rtdetrx_pyrosdis_s3407"]
 
 
 def _q(fn, *a, **k):
@@ -174,13 +182,22 @@ def cell_list():
             cells += [(f"{run}__to__pyro_sdis_caltest", "core_cross"), (f"{run}__to__thesis_test", "core_cross")]
         else:
             cells += [(f"{run}__to__d_fire_test_smokeonly", "core_cross"), (f"{run}__to__thesis_test_smokeonly", "core_cross")]
+    for run in EXTRA_CROSS_RUNS:
+        if run not in m["runs"]:
+            continue
+        if "_dfire" in run:
+            cells += [(f"{run}__to__pyro_sdis_caltest", "extra_cross"), (f"{run}__to__thesis_test", "extra_cross")]
+        else:
+            cells += [(f"{run}__to__d_fire_test_smokeonly", "extra_cross"), (f"{run}__to__thesis_test_smokeonly", "extra_cross")]
     out = []
     for c, role in cells:
         assert (CAL / f"{c}.json").exists(), f"missing calibration cell {c}"
         out.append({"cell": c, "role": role, "matrix_summary_kind": m["cells"][c]["kind"]})
     # 13 D-Fire-trained runs x 2 splits + 11 Pyro-SDIS-trained runs (incl. rtdetrl_pyrosdis_s3407_p60) = 37,
     # one more than the "36" of the brief: every run of matrix_summary.json is kept, none is dropped.
-    assert len([c for c in out if c["role"] == "in_domain"]) == 37, "expected 37 in-domain cells"
+    # 2026-09-14: 14 D-Fire-trained x 2 + 12 Pyro-SDIS-trained = 40 with the two RT-DETR-x runs; derived, not hard-coded.
+    n_df = sum(1 for r in m["runs"] if "_dfire" in r); n_py = sum(1 for r in m["runs"] if "_pyrosdis" in r)
+    assert len([c for c in out if c["role"] == "in_domain"]) == 2 * n_df + n_py, f"expected {2 * n_df + n_py} in-domain cells"
     assert len([c for c in out if c["role"] == "core_cross"]) == 12, "expected 12 core cross cells"
     return out
 
@@ -360,7 +377,9 @@ def build_summary(entries):
     L = [f"# Reflected / BCa bootstrap intervals - identity map (B={B_DEFAULT}, seed {SEED}, image-level)", "",
          f"Written by `bootstrap_ci_reflected.py` on {summary['created']}. Source: `bootstrap_ci_reflected.json`. "
          f"Resampling copied verbatim from `bootstrap_ci.py`; per-cell artefacts in `calibration_ci_reflected/<cell>.json`.", "",
-         f"Cells done: {len(rows)} / {len(entries)} (37 in-domain + 12 core cross). Values in percentage points (x100).", ""]
+         f"Cells done: {len(rows)} / {len(entries)} ({sum(1 for e in entries if e['role'] == 'in_domain')} in-domain + "
+         f"{sum(1 for e in entries if e['role'] == 'core_cross')} core cross + {sum(1 for e in entries if e['role'] == 'extra_cross')} extra cross). "
+         "Values in percentage points (x100).", ""]
     for metric in METRICS:
         c = counts[metric]
         L += [f"## {metric}", "",
