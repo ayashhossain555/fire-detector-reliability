@@ -77,8 +77,8 @@ rendered as tables by the scripts that wrote the JSON.
 2. `parquet_to_yolo.py`, `make_thesis_gt.py`, `figlib_index.py` — export Pyro-SDIS, the thesis set and FIgLib to the YOLO/COCO layouts.
 3. `make_coco_gt.py` — canonical COCO ground truth (`fire` = 1, `smoke` = 2; categories sorted by id), seeded calval/caltest halves.
 4. `duplicate_audit.py`, `dfire_leakage.py` — pHash near-duplicate audit and D-Fire leakage; `make_dfire_dedup.py`, `make_dfire_sub.py` — de-duplicated and size-matched D-Fire training sets.
-5. `train_queue.py` (`queue.json`, `train_run.py`, `write_runs_meta.py`) — the 24 runs under `docs/TRAINING-PROTOCOL.md`.
-6. `export_predictions.py` — raw detections at conf 0.001, max_det 300, for every model x split (the 2.3 GB `detections/` folder; see Zenodo below).
+5. `train_queue.py` (`queue.json`, `train_run.py`, `write_runs_meta.py`) — the 26 runs under `docs/TRAINING-PROTOCOL.md`.
+6. `export_predictions.py` — raw detections at conf 0.001, max_det 300, for every model x split (the 2.9 GB `detections/` folder; see Zenodo below).
 7. `run_matrix.py` (with `run_calibration.py`, `calib_metrics.py`, `selftest_calibration.py`) — one calibration cell per model x split x map.
 8. `bootstrap_ci.py` — image-level bootstrap intervals per cell; `summarise_matrix.py` — `matrix_summary.json/.md`.
 9. `threshold_decomposition.py` -> `decomposition_fractions.py`; `operating_points.py`, `pyro_event_timing.py`, `pyro_negatives.py`; `camera_conformal.py`, `pyro_camera_overlap.py`; `figlib_eval.py`, `figlib_temporal_conformal.py`; `label_free_threshold_pilot.py` -> `label_free_threshold_refine.py` -> `label_free_revision.py` -> `label_free_clean_check.py` -> `label_free_holm_B10000.py`; `scale_seed_summary.py`, `dedup_training_comparison.py`.
@@ -144,15 +144,30 @@ the sources and place them under `data/<name>_yolo/` as described in
 
 ## Detections and checkpoints (Zenodo)
 
-The Zenodo record also carries `detections_bnadapt/` (the batch-norm-adapted exports behind the Table 5 baseline rows, 228 MB).
+The raw detections and the trained checkpoints exceed what a code repository
+should hold, and are archived on Zenodo together with a copy of this
+repository; the DOI will be recorded here once minted. The record carries:
 
-The exported detections (`detections/`, 2.3 GB, one JSON per model x split
-at conf 0.001) and the 26 trained checkpoints with their training logs
-(`runs/`, 1.8 GB) exceed what a code repository should hold and are archived
-on Zenodo together with a tagged copy of this repository; the DOI will be
-recorded here once minted. Checkpoint hashes and best-epoch metrics are in
-`artefacts/runs_meta/`, so a downloaded checkpoint can be checked against the
-one the paper used.
+| file | contents | raw | upload |
+|---|---|---|---|
+| `detections.zip` | `detections/` — one JSON per model x split at conf 0.001, max_det 300 (441 files) | 2.906 GB | 531 MB |
+| `detections_bnadapt.zip` | `detections_bnadapt/` — batch-norm-adapted exports behind the Table 5 baseline rows (136 files) | 227 MB | 44 MB |
+| `detections_bndeconf.zip` | `detections_bndeconf/` — de-confounded TTA exports behind Sec. 5.5: source-BN control, target-BN, Tent (714 files) | 1.001 GB | 189 MB |
+| `checkpoints_and_logs.zip` | the 26 `best.pt` with their `args.yaml`, `results.csv` and training curves | 1.372 GB | 1.372 GB |
+| `fire-detector-reliability-repo.zip` | `git archive` of this repository at the commit named in the record's `manifest.json` | — | 25 MB |
+
+`last.pt` is not deposited: the paper uses the best-epoch checkpoint only, and
+shipping both would double the record.
+
+Checkpoint hashes and best-epoch metrics are in `artefacts/runs_meta/`, so a
+downloaded checkpoint can be checked against the one the paper used. All 26
+were verified against those hashes when the deposit was built (26/26 matched),
+and the record's `manifest.json` carries the SHA-256 of each file above.
+
+Licensing in the record is mixed: the trained weights are AGPL-3.0-or-later
+(they were produced with Ultralytics and fine-tuned from its pretrained
+checkpoints), while the detection exports, manifests and training logs are
+CC BY 4.0. The record's `LICENSE-DEPOSIT.txt` states the operative terms.
 
 ## Verification
 
