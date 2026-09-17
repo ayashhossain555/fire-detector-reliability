@@ -3,6 +3,8 @@
 Ayash Hossain Chowdhury (ORCID 0009-0005-1522-7958). Companion repository for
 the paper *Shift-aware operating points for open fire and smoke detectors*
 (2026, under review; preprint DOI to be added here and in `CITATION.cff`).
+Detections, checkpoints and training logs are archived on Zenodo:
+[doi:10.5281/zenodo.22776642](https://doi.org/10.5281/zenodo.22776642).
 
 ## Summary
 
@@ -146,15 +148,21 @@ the sources and place them under `data/<name>_yolo/` as described in
 
 The raw detections and the trained checkpoints exceed what a code repository
 should hold, and are archived on Zenodo together with a copy of this
-repository; the DOI will be recorded here once minted. The record carries:
+repository, at
+[doi:10.5281/zenodo.22776642](https://doi.org/10.5281/zenodo.22776642). The record carries:
 
 | file | contents | raw | upload |
 |---|---|---|---|
 | `detections.zip` | `detections/` — one JSON per model x split at conf 0.001, max_det 300 (441 files) | 2.906 GB | 531 MB |
 | `detections_bnadapt.zip` | `detections_bnadapt/` — batch-norm-adapted exports behind the Table 5 baseline rows (136 files) | 227 MB | 44 MB |
 | `detections_bndeconf.zip` | `detections_bndeconf/` — de-confounded TTA exports behind Sec. 5.5: source-BN control, target-BN, Tent (714 files) | 1.001 GB | 189 MB |
-| `checkpoints_and_logs.zip` | the 26 `best.pt` with their `args.yaml`, `results.csv` and training curves | 1.372 GB | 1.372 GB |
+| `checkpoints_<run>.zip` × 26 | one archive per run: `best.pt` with that run's `args.yaml`, `results.csv`, training curves and console logs | 1.372 GB total | 16–169 MB each |
+| `run_queue_logs.zip` | the queue-level training logs not belonging to a single run | — | &lt;1 MB |
 | `fire-detector-reliability-repo.zip` | `git archive` of this repository at the commit named in the record's `manifest.json` | — | 25 MB |
+
+Checkpoints ship one archive per run rather than one 1.4 GB bundle, so you can
+take a single model without downloading all 26. The run names are listed in
+`artefacts/runs_meta/`.
 
 `last.pt` is not deposited: the paper uses the best-epoch checkpoint only, and
 shipping both would double the record.

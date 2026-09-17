@@ -10,6 +10,10 @@ authors:
 version: "1.0.0"
 date-released: "2026-09-13"
 repository-code: "https://github.com/ayashhossain555/fire-detector-reliability"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22776642
+    description: "Zenodo archive: detections, trained checkpoints, training logs and a copy of this repository"
 license: MIT
 keywords:
   - fire detection
@@ -28,4 +32,4 @@ preferred-citation:
       orcid: "https://orcid.org/0009-0005-1522-7958"
   year: 2026
   journal: "Preprint (under review)"
-  notes: "Preprint DOI placeholder - to be replaced with the arXiv/Zenodo identifier on release."
+  notes: "Preprint DOI placeholder - to be replaced with the arXiv identifier on release. Data and checkpoints: doi:10.5281/zenodo.22776642."
